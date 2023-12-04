@@ -8,7 +8,8 @@ import { useState } from "react";
 
 import style from "../components/Ecom/CardProduct/CardProduct.module.css";
 import { GridList } from "../components/Layout";
-import { fetchProducts,fetchproduct } from "../store/product/thunk/getProduct";
+import { fetchProducts } from "../store/product/thunk/getProduct";
+import { fetchproduct } from "../store/product/productSlice";
 
 
 const Products = () => {
@@ -17,23 +18,28 @@ const Products = () => {
   );
  
   const { name } = useParams();
-
+// const item=product;
+// console.log(item,"item");
   const [filteredData, setFiltered] = useState(Object.values(products));
   const dispatch = useAppDispatch();
+ 
   useEffect(() => {
     if (name) {
-      dispatch(fetchproduct(name));
-    
       setFiltered(product);
     } else if (Object.values(products).length > 0 && !name) {
       setFiltered(Object.values(products));
     }
     
-  }, [name, products]);
+  
+  }, [name,product,products,dispatch]);
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+    if(name){
+      dispatch(fetchproduct(name));
+    }
+   
+  }, [dispatch,name]);
 
   return (
     <div className={style.cardParent}>

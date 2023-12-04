@@ -1,0 +1,1 @@
+export type CheckoutState = "LOADING" | "READY" | "ERROR";

@@ -16,16 +16,15 @@ const cartSlice = createSlice({
       const CartId = action.payload.id;
       const CartMax_quentity = action.payload.max_quantity;
 
-      if (state.items[CartId]) {
-        const numbersOfItems = state.items[CartId];
-
-        if (numbersOfItems > CartMax_quentity) {
-          state.items[CartId]++;
-        } else if (numbersOfItems <= CartMax_quentity) {
-          state.items[CartId] = CartMax_quentity;
-        }
-      } else {
+      if (state.items[CartId]&&state.items[CartId]<CartMax_quentity) {
+        state.items[CartId]++;
+      
+      } else if(state.items[CartId]&&state.items[CartId]>=CartMax_quentity){
+        state.items[CartId] = CartMax_quentity;
+     
+      }else{
         state.items[CartId] = 1;
+        console.log(1);
       }
     },
     removeFromCart(state, action: PayloadAction<string>) {

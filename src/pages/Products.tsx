@@ -8,8 +8,8 @@ import { useState } from "react";
 
 import style from "../components/Ecom/CardProduct/CardProduct.module.css";
 import { GridList } from "../components/Layout";
-import { fetchProducts } from "../store/product/thunk/getProduct";
-import { fetchproduct } from "../store/product/productSlice";
+import { fetchProducts ,fetchproduct} from "../store/product/thunk/getProduct";
+
 
 
 const Products = () => {

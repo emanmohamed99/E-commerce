@@ -12,9 +12,7 @@ import { fetchCategories } from "./thunk/getCategory";
 const categorySlice = createSlice({
   name: "category",
   initialState:initialStateCategory,
-  reducers: {
-  
-  },
+  reducers: {},
  extraReducers(builder) {
   builder.addCase(fetchCategories.pending, (state) => {
     state.loading = true;

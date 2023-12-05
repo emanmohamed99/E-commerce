@@ -1,32 +1,11 @@
-import {  createAsyncThunk,createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {  createSlice } from "@reduxjs/toolkit";
 import { initialStateProduct } from "./intialState";
-import { fetchProducts } from "./thunk/getProduct";
-import { product } from "./types";
-import axios from "axios";
-export const fetchproduct = createAsyncThunk(
-  "posts/fetchproduct",
-  async (cat_prefix:string, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-     
-      const { data } = await axios.get(`http://localhost:7400/items?cat_prefix=${cat_prefix}`);
-      return data;
-    } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
+import { fetchProducts, fetchproduct } from "./thunk/getProduct";
 const itemsSlice = createSlice({
   name: "items",
   initialState:initialStateProduct,
   reducers: {
-    receivedProducts(state, action: PayloadAction<product[]>) {
-      const products = action.payload;
 
-      products.forEach((product) => {
-        state.products[product.id] = product;
-      });
-    },
   },
   extraReducers(builder) {
     builder.addCase(fetchProducts.pending, (state) => {
@@ -38,6 +17,7 @@ const itemsSlice = createSlice({
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.loading = false;
         state.products = action.payload;
+      
          state.error = null;
      
     })
@@ -67,4 +47,4 @@ const itemsSlice = createSlice({
   },
 });
 export default itemsSlice.reducer;
-export const { receivedProducts } = itemsSlice.actions;
+

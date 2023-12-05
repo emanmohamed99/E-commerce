@@ -24,7 +24,7 @@ const cartSlice = createSlice({
      
       }else{
         state.items[CartId] = 1;
-        console.log(1);
+      
       }
     },
     removeFromCart(state, action: PayloadAction<string>) {

@@ -1,5 +1,6 @@
 import { useAppDispatch } from "../../../Hooks/hooks";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 
 import styles from "./Cart.module.css";
@@ -55,19 +56,19 @@ const Cart = ({
     
     <div>
       <main className="page">
-        <h1>Shopping Cart</h1>
+
         <table className={tableClasses}>
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th>Remove</th>
+              <th><div>Shopping cart</div></th>
+              
             </tr>
           </thead>
           <tbody>
             {Object.values(items).map(({product,quantity}) => (
               <tr key={product.id}>
+            <td><div   className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>  
+             
                 <td>{product.title}</td>
                 <td>
                   <select
@@ -83,11 +84,12 @@ const Cart = ({
                 </td>
                 <td>${product.price}</td>
                 <td>
-                  <button
+                  <button 
                     onClick={() => dispatch(removeFromCart(product.id))}
                     aria-label={`Remove ${product.title}} from Shopping Cart`}
+                    className={styles.cartButton}
                   >
-                    X
+                    <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
               </tr>

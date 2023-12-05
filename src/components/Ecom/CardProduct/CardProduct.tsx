@@ -5,23 +5,14 @@ import { useAppDispatch } from "../../../Hooks/hooks";
 import { addToCart } from "../../../store/cart/cartSlice";
 
 import { CardBody,CardTitle ,CardSubtitle,CardText,Button,Card} from 'reactstrap';
-type productType = {
-  id: number;
-  title: string;
-  price: string;
-  cat_prefix: string;
-  img: string;
-  max_quantity: number;
+import { product } from "../../../store/product/types";
+type productProps = {
+  item:product
 };
 
 const CardProduct = ({
-  id,
-  title,
-  price,
-  cat_prefix,
-  img,
-  max_quantity,
-}: productType) => {
+  item
+}: productProps) => {
   const dispatch = useAppDispatch();
   return (
    
@@ -31,10 +22,10 @@ const CardProduct = ({
       width: '18rem'
     }}
   >
-      <img src={img} alt={title} />
+      <img src={item.img} alt={item.title} />
     <CardBody>
       <CardTitle tag="h5">
-      {title}
+      {item.title}
       </CardTitle>
       <CardSubtitle
         className="mb-2 text-muted"
@@ -43,12 +34,12 @@ const CardProduct = ({
         Card subtitle
       </CardSubtitle>
       <CardText>
-      {price}
+      {item.price}
       </CardText>
       <Button
             onClick={() =>
               dispatch(
-                addToCart({ id, title, price, cat_prefix, img, max_quantity })
+                addToCart(item)
               )
             }
           >

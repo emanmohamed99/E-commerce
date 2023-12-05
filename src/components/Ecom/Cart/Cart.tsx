@@ -9,12 +9,15 @@ import {
   removeFromCart,
   updateQuantity,
 } from "../../../store/cart/cartSlice";
-import { product } from "../../../store/product/types";
+import { product } from '../../../store/product/types';
 import { checkoutCart } from "../../../store/cart/thunk/getCart";
 
 type CartType = {
-  products: { [id: string]: product };
-  items: { [id: string]: number };
+
+  items: { [id: string]: {
+    product:product,
+    quantity:number
+  } };
   totalPrice: string;
   checkoutState: "LOADING" | "READY" | "ERROR";
   errorMessage: string;
@@ -22,7 +25,6 @@ type CartType = {
 
 const Cart = ({
   items,
-  products,
   totalPrice,
   checkoutState,
   errorMessage,
@@ -35,10 +37,10 @@ const Cart = ({
   }
   function onQuantityChanged(
     e: React.ChangeEvent<HTMLSelectElement>,
-    id: string
+    id: number
   ) {
     const quantity = Number(e.target.value) || 0;
-    const max_quantityProduct = products[id].max_quantity;
+    const max_quantityProduct = items[id].product.max_quantity;
     dispatch(updateQuantity({ id, quantity, max_quantityProduct }));
   }
 
@@ -47,6 +49,9 @@ const Cart = ({
     [styles.checkoutError]: checkoutState === "ERROR",
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
+ console.log(Object.values(items));
+ console.log(Object.entries(items));
+ console.log(items);
   return (
   
     
@@ -63,26 +68,26 @@ const Cart = ({
             </tr>
           </thead>
           <tbody>
-            {Object.entries(items).map(([id, quantity]) => (
-              <tr key={id}>
-                <td>{products[id].title}</td>
+            {Object.values(items).map(({product,quantity}) => (
+              <tr key={product.id}>
+                <td>{product.title}</td>
                 <td>
                   <select
                     name="numbers"
                     className={styles.input}
                     defaultValue={quantity}
-                    onChange={(e) => onQuantityChanged(e, id)}
+                    onChange={(e) => onQuantityChanged(e, product.id)}
                   >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                   </select>
                 </td>
-                <td>${products[id].price}</td>
+                <td>${product.price}</td>
                 <td>
                   <button
-                    onClick={() => dispatch(removeFromCart(id))}
-                    aria-label={`Remove ${products[id].title}} from Shopping Cart`}
+                    onClick={() => dispatch(removeFromCart(product.id))}
+                    aria-label={`Remove ${product.title}} from Shopping Cart`}
                   >
                     X
                   </button>

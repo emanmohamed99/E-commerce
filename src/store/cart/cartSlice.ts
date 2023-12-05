@@ -13,36 +13,39 @@ const cartSlice = createSlice({
   initialState: initialStateCart,
   reducers: {
     addToCart(state, action: PayloadAction<product>) {
+      
       const CartId = action.payload.id;
       const CartMax_quentity = action.payload.max_quantity;
 
-      if (state.items[CartId]&&state.items[CartId]<CartMax_quentity) {
-        state.items[CartId]++;
+      if (state.items[CartId]&&state.items[CartId].quantity<CartMax_quentity) {
+        state.items[CartId].quantity++;
       
-      } else if(state.items[CartId]&&state.items[CartId]>=CartMax_quentity){
-        state.items[CartId] = CartMax_quentity;
+      } else if(state.items[CartId]&&state.items[CartId].quantity>=CartMax_quentity){
+        state.items[CartId].quantity = CartMax_quentity;
      
       }else{
-        state.items[CartId] = 1;
-      
+        state.items[CartId]={
+          product:action.payload,
+          quantity:1
+        }
       }
     },
-    removeFromCart(state, action: PayloadAction<string>) {
+    removeFromCart(state, action: PayloadAction<number>) {
       delete state.items[action.payload];
     },
     updateQuantity(
       state,
       action: PayloadAction<{
-        id: string;
+        id: number;
         quantity: number;
         max_quantityProduct: number;
       }>
     ) {
       const { id, quantity, max_quantityProduct } = action.payload;
       if (quantity <= max_quantityProduct) {
-        state.items[id] = quantity;
+        state.items[id].quantity = quantity;
       } else if (quantity > 3) {
-        state.items[id] = max_quantityProduct;
+        state.items[id].quantity = max_quantityProduct;
       }
     },
   },
@@ -79,18 +82,17 @@ export const getMemoizedNumItems = createSelector(
   (items) => {
     let numItems = 0;
     for (const id in items) {
-      numItems += items[id];
+      numItems += items[id].quantity;
     }
     return numItems;
   }
 );
 export const getTotalPrice = createSelector(
   (state: RootState) => state.cart.items,
-  (state: RootState) => state.products.products,
-  (items, products ) => {
+  (items ) => {
     let total = 0;
     for (const id in items) {
-      total += parseInt(products[id].price) * items[id];
+      total += parseInt(items[id].product.price) * items[id].quantity;
     }
     return total.toFixed(2);
   }

@@ -6,7 +6,7 @@ import Loading from "../components/Ecom/Loading/Loading";
 import { getTotalPrice } from "../store/cart/cartSlice";
 
 const ShoppingCard = () => {
-  const products = useAppSelector((state) => state.products.products);
+
   const items = useAppSelector((state) => state.cart.items);
   const totalPrice = useAppSelector(getTotalPrice);
   const checkoutState = useAppSelector((state) => state.cart.checkoutState);
@@ -18,7 +18,7 @@ const ShoppingCard = () => {
       <Loading loading={loading} error={error}>
         <Cart
           items={items}
-          products={products}
+        
           totalPrice={totalPrice}
           checkoutState={checkoutState}
           errorMessage={errorMessage}

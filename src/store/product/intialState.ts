@@ -2,16 +2,16 @@ import { product } from "./types";
 
 
 export interface ProductsState {
-    products: { [id: string]: product }
+    products:  product[]
     loading:boolean,
     error:null|string,
-    product:product[],
+  
   }
   
  export const initialStateProduct: ProductsState = {
-    products: {},
+    products: [],
     loading:false,
     error:null,
-    product:[]
+    
   };
   

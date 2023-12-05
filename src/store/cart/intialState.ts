@@ -1,8 +1,12 @@
 import { category } from "../category/types";
 import { CheckoutState } from "./types";
+import { product } from '../product/types';
 
 export interface CartState {
-  items: { [id: string]: number };
+  items: { [id: string]: {
+    product:product,
+    quantity:number
+  } };
   checkoutState: CheckoutState;
   errorMessage: string;
   loading: boolean;

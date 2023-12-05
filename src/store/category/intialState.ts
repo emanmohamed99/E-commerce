@@ -1,13 +1,13 @@
 import { category } from "./types";
 
  interface ProductsState {
-    categories: { [id: string]: category };
+    categories:category[];
     loading:boolean,
 error:null|string,
   }
   
 export  const initialStateCategory: ProductsState = {
-    categories: {},
+    categories: [],
     loading:false,
     error:null,
   };

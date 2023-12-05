@@ -18,26 +18,14 @@ const Products = () => {
   );
  
   const { name } = useParams();
-// const item=product;
-// console.log(item,"item");
-  // const [filteredData, setFiltered] = useState(products);
+
   const dispatch = useAppDispatch();
  
-  // useEffect(() => {
-    // if (name) {
-    
-    //   setFiltered(product);
-    // } else if (Object.values(products).length > 0 && !name) {
-    //   setFiltered(Object.values(products));
-    // }
-    
-  
-  // }, [name,product,products,dispatch]);
 
   useEffect(() => {
   
     if(name){
-      dispatch(fetchproduct(name));//prefix
+      dispatch(fetchproduct(name));
     }else{
       dispatch(fetchProducts());
     }

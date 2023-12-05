@@ -49,9 +49,7 @@ const Cart = ({
     [styles.checkoutError]: checkoutState === "ERROR",
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
- console.log(Object.values(items));
- console.log(Object.entries(items));
- console.log(items);
+
   return (
   
     

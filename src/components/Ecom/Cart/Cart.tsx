@@ -50,22 +50,21 @@ const Cart = ({
     [styles.checkoutError]: checkoutState === "ERROR",
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
-
   return (
-  
-    
     <div>
       <main className="page">
-
         <table className={tableClasses}>
           <thead>
             <tr>
-              <th><div>Shopping cart</div></th>
-              
+            <th>Product</th>
+            <th></th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
-            {Object.values(items).map(({product,quantity}) => (
+            {totalPrice!="0.00"?Object.values(items).map(({product,quantity}) => (
               <tr key={product.id}>
             <td><div   className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>  
              
@@ -93,7 +92,7 @@ const Cart = ({
                   </button>
                 </td>
               </tr>
-            ))}
+            )):<tr ><td><div className={styles.centerDiv} >there is no items avalible</div></td></tr>}
           </tbody>
           <tfoot>
             <tr>

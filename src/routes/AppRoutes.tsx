@@ -9,7 +9,7 @@ import { Suspense } from "react";
 // import ShoppingCard from './pages/Cart.tsx';
 
 import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "../components/Layouts/MainLayout/MainLayout";
+import RootLayout from "../Layouts/MainLayout/MainLayout";
 import ErrorPage from "../pages/ErrorPage";
 import Products from "../pages/Products";
 import Category from "../pages/Category";

@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
 import { product as p } from '../store/product/types';
 import CardProduct from "../components/Ecom/CardProduct/CardProduct";
 import { useParams } from "react-router-dom";
-// import { useState } from "react";
 
 import style from "../components/Ecom/CardProduct/CardProduct.module.css";
 import { GridList } from "../components/Layout";

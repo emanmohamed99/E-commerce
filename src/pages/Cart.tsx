@@ -18,7 +18,6 @@ const ShoppingCard = () => {
       <Loading loading={loading} error={error}>
         <Cart
           items={items}
-        
           totalPrice={totalPrice}
           checkoutState={checkoutState}
           errorMessage={errorMessage}

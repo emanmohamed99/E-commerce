@@ -1,9 +1,10 @@
 import styles from "./GridList.module.css"
 import Loading from '../../Ecom/Loading/Loading';
+import { ReactElement } from "react";
 type GridListTypes<T>={
   loading:boolean,
   error:null|string,
-  renderChild:(record: T)=>JSX.Element,
+  renderChild:(record: T )=>ReactElement,
   data:T[];
 } 
 const GridList  =<T,> ({data,loading,error,renderChild}:GridListTypes<T>) => {

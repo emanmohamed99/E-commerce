@@ -66,7 +66,7 @@ const Cart = ({
           <tbody>
             {totalPrice!="0.00"?Object.values(items).map(({product,quantity}) => (
               <tr key={product.id}>
-            <td><div   className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>  
+            <td><div className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>  
              
                 <td>{product.title}</td>
                 <td>

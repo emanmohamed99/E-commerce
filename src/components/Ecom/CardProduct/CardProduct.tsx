@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../../Hooks/hooks";
 
 import { addToCart } from "../../../store/cart/cartSlice";
 
-import { CardBody,CardTitle ,CardSubtitle,CardText,Button,Card} from 'reactstrap';
+import { CardBody,CardTitle ,CardText,Button,Card, CardSubtitle} from 'reactstrap';
 import { product } from "../../../store/product/types";
 type productProps = {
   item:product
@@ -31,7 +31,8 @@ const CardProduct = ({
         className="mb-2 text-muted"
         tag="h6"
       >
-        Card subtitle
+        Available Quantity  :
+        {item.max_quantity}
       </CardSubtitle>
       <CardText>
       {item.price}

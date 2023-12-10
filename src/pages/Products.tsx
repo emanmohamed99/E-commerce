@@ -37,7 +37,7 @@ const Products = () => {
         data={products}
         loading={loading}
         error={error}
-        renderChild={(records: p) => (
+        renderChild={(records: p) => (//tproduct
           <CardProduct key={records.id} item={records} />
         )}
       />

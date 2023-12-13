@@ -11,7 +11,6 @@ import { CardBody,CardTitle ,Card} from 'reactstrap';
     img: string;
 }
 
-
 const CardCategory = ({title,prefix,img}:categoryType) => {
 
   const navigate = useNavigate();

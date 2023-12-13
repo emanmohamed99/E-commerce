@@ -2,32 +2,29 @@ import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
 
 import type { RootState } from "../index";
 
-
 import { initialStateCart } from "./intialState";
-import { product } from '../product/types';
+import { product } from "../product/types";
 import { checkoutCart } from "./thunk/getCart";
-
 
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialStateCart,
   reducers: {
     addToCart(state, action: PayloadAction<product>) {
-      
-      const CartId = action.payload.id;
-      const CartMax_quentity = action.payload.max_quantity;
+      const { id, max_quantity } = action.payload;
 
-      if (state.items[CartId]&&state.items[CartId].quantity<CartMax_quentity) {
-        state.items[CartId].quantity++;
-      
-      } else if(state.items[CartId]&&state.items[CartId].quantity>=CartMax_quentity){
-        state.items[CartId].quantity = CartMax_quentity;
-     
-      }else{
-        state.items[CartId]={
-          product:action.payload,
-          quantity:1
-        }
+      if (state.items[id] && state.items[id].quantity < max_quantity) {
+        //1//2
+        state.items[id].quantity++;
+      } else if (state.items[id] && state.items[id].quantity >= max_quantity) {
+        //3 or more
+        state.items[id].quantity = max_quantity;
+      } else {
+        state.items[id] = {
+          product: action.payload,
+          quantity: 1,
+          productbtid: [],
+        };
       }
     },
     removeFromCart(state, action: PayloadAction<number>) {
@@ -48,6 +45,7 @@ const cartSlice = createSlice({
         state.items[id].quantity = max_quantityProduct;
       }
     },
+  
   },
   extraReducers: function (builder) {
     builder.addCase(checkoutCart.pending, (state) => {
@@ -89,7 +87,7 @@ export const getMemoizedNumItems = createSelector(
 );
 export const getTotalPrice = createSelector(
   (state: RootState) => state.cart.items,
-  (items ) => {
+  (items) => {
     let total = 0;
     for (const id in items) {
       total += parseInt(items[id].product.price) * items[id].quantity;
@@ -97,6 +95,7 @@ export const getTotalPrice = createSelector(
     return total.toFixed(2);
   }
 );
+
 export const { addToCart } = cartSlice.actions;
 export const { removeFromCart } = cartSlice.actions;
 export const { updateQuantity } = cartSlice.actions;

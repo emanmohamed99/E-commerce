@@ -2,18 +2,45 @@ import style from "./CardProduct.module.css";
 
 import { useAppDispatch } from "../../../Hooks/hooks";
 
-import { addToCart } from "../../../store/cart/cartSlice";
+import {addToCart ,} from "../../../store/cart/cartSlice";
 
 import { CardBody,CardTitle ,CardText,Button,Card, CardSubtitle} from 'reactstrap';
 import { product } from "../../../store/product/types";
+
+
+
+
 type productProps = {
-  item:product
+  id: number;
+  title: string;
+  price: string;
+  cat_prefix: string;
+  img: string;
+  max_quantity: number;
+  items: { [id: string]: {
+    product:product,
+    quantity:number,
+    productbtid:[]|undefined
+  } };
 };
 
+
+
 const CardProduct = ({
-  item
+  id,
+  title,
+  price,
+  cat_prefix,
+  img,
+  max_quantity,
+  items,
 }: productProps) => {
   const dispatch = useAppDispatch();
+
+
+const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
+console.log(max_quantity2);
+
   return (
    
       <div className={style.cardWrapper}>
@@ -22,30 +49,50 @@ const CardProduct = ({
       width: '18rem'
     }}
   >
-      <img src={item.img} alt={item.title} />
+      <img src={img} alt={title} />
     <CardBody>
       <CardTitle tag="h5">
-      {item.title}
+      {title}
       </CardTitle>
       <CardSubtitle
         className="mb-2 text-muted"
         tag="h6"
       >
         Available Quantity  :
-        {item.max_quantity}
+        
+        {max_quantity2 }
       </CardSubtitle>
       <CardText>
-      {item.price}
+      {price}
       </CardText>
-      <Button
-            onClick={() =>
-              dispatch(
-                addToCart(item)
-              )
+      {max_quantity2?
+      <Button disabled={false}
+            onClick={() =>{
+              dispatch(addToCart({ id,
+                title,
+                price,
+                cat_prefix,
+                img,
+                max_quantity}))        
+           
             }
+          }
           >
             Add to Cart
-          </Button>
+          </Button>: <Button disabled={true}
+            onClick={() =>{
+              dispatch(addToCart({ id,
+                title,
+                price,
+                cat_prefix,
+                img,
+                max_quantity}))        
+           
+            }
+          }
+          >
+            Add to Cart
+          </Button>}
     </CardBody>
   </Card>
     </div>

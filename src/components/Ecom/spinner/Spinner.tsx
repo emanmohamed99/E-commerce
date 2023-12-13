@@ -5,7 +5,7 @@ import Lottie from "lottie-react"
 function SpinnerComponent() {
   return (
 
-    <div className={styles.spinnerWrapper}>
+    <div className={styles.WrapperIcon}>
    
     <Lottie  animationData={iconLoading}/>
     </div>

@@ -7,7 +7,8 @@ import { getTotalPrice } from "../store/cart/cartSlice";
 
 const ShoppingCard = () => {
 
-  const items = useAppSelector((state) => state.cart.items);
+  const {items} = useAppSelector((state) => state.cart);
+
   const totalPrice = useAppSelector(getTotalPrice);
   const checkoutState = useAppSelector((state) => state.cart.checkoutState);
   const { loading, error } = useAppSelector((state) => state.cart);

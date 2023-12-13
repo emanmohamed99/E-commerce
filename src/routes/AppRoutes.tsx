@@ -14,6 +14,8 @@ import ErrorPage from "../pages/ErrorPage";
 import Products from "../pages/Products";
 import Category from "../pages/Category";
 import ShoppingCard from "../pages/Cart";
+import Login from "../pages/login";
+import Register from "../pages/Register";
 
 // const ShoppingCard = React.lazy(() => import("./pages/cart"));
 
@@ -64,6 +66,22 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback="loading please wait...">
             <ShoppingCard />
+          </Suspense>
+        ),
+      },
+      {
+        path: "main/login",
+        element: (
+          <Suspense fallback="loading please wait...">
+            <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "main/register",
+        element: (
+          <Suspense fallback="loading please wait...">
+            <Register />
           </Suspense>
         ),
       },

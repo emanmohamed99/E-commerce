@@ -17,7 +17,8 @@ type CartType = {
 
   items: { [id: string]: {
     product:product,
-    quantity:number
+    quantity:number,
+    productbtid:[]|undefined
   } };
   totalPrice: string;
   checkoutState: "LOADING" | "READY" | "ERROR";
@@ -42,8 +43,12 @@ const Cart = ({
   ) {
     const quantity = Number(e.target.value) || 0;
     const max_quantityProduct = items[id].product.max_quantity;
+  if(quantity>3){
+    alert(`sorry but maximum quentity is ${max_quantityProduct} `)
+  }
     dispatch(updateQuantity({ id, quantity, max_quantityProduct }));
   }
+
 
   const tableClasses = classNames({
     [styles.table]: true,
@@ -79,6 +84,9 @@ const Cart = ({
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                   </select>
                 </td>
                 <td>${product.price}</td>

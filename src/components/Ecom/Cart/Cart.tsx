@@ -50,8 +50,7 @@ const Cart = ({
   
   }
 
-console.log(items,"items");
-console.log(productsData,"product data");
+
   const tableClasses = classNames({
     [styles.table]: true,
     [styles.checkoutError]: checkoutState === "ERROR",

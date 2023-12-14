@@ -20,7 +20,7 @@ type productProps = {
   items: { [id: string]: {
     product:product,
     quantity:number,
-    productbtid:[]|undefined
+   
   } };
 };
 
@@ -39,7 +39,7 @@ const CardProduct = ({
 
 
 const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
-console.log(max_quantity2);
+
 
   return (
    

@@ -10,4 +10,5 @@ export  const initialStateCategory: ProductsState = {
     categories: [],
     loading:false,
     error:null,
+    
   };

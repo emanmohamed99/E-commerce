@@ -4,11 +4,6 @@ import { initialStateCategory } from "./intialState";
 import { fetchCategories } from "./thunk/getCategory";
 
 
-
-  
-
-
-
 const categorySlice = createSlice({
   name: "category",
   initialState:initialStateCategory,

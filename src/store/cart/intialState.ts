@@ -1,12 +1,13 @@
 import { category } from "../category/types";
-import { CheckoutState } from './types';
 import { product } from '../product/types';
+import { CheckoutState } from './types';
+
 
 export interface CartState {
   items: { [id: string]: {
-    product:product,
+product:product
     quantity:number,
-    productbtid:[]|undefined
+  
   } };
   
  
@@ -14,7 +15,8 @@ export interface CartState {
   errorMessage: string;
   loading: boolean;
   error: null | string ;
-  isabled: boolean;
+
+  productsData: product[]
 
 }
 export const initialStateCart: CartState = {
@@ -24,7 +26,8 @@ export const initialStateCart: CartState = {
   errorMessage: "",
   loading: false,
   error: null,
-  isabled:false,
+
+  productsData: [],
 
 }
 interface ProductsState {

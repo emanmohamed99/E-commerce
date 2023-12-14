@@ -32,7 +32,8 @@ const Products = () => {
   const dispatch = useAppDispatch();
   const token = localStorage.getItem('token');
 
-//  console.log(token);
+
+
 
   useEffect(() => {
   

@@ -5,10 +5,10 @@ import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
 
 import { GridList } from "../components/Layout";
 
-import Card from "../components/Ecom/CardCategory/CardCategory";
+import CardCategory from "../components/Ecom/CardCategory/CardCategory";
 import { category } from "../store/category/types";
 import { fetchCategories } from "../store/category/thunk/getCategory";
-
+import { SwiperSlide } from 'swiper/react';
 
 
 const Category = () => {
@@ -25,7 +25,7 @@ const Category = () => {
 
   return (
   <div className="d-flex">
-    <GridList data={categoriesData} loading={loading} error={error} renderChild={(records:category)=>(<Card key={records.id} {...records}/>)}/>
+    <GridList data={categoriesData} loading={loading} error={error} renderChild={(records:category)=>(<SwiperSlide key={records.id}><CardCategory {...records}/></SwiperSlide>)}/>
     </div>
 
   );

@@ -1,6 +1,6 @@
-import { product } from '../store/product/types';
+
 export type CartItems = { [productID: string]: {
-  product:product,
+
   quantity: number;
 } };
 export type CheckoutResponse = { success: boolean; error?: string };

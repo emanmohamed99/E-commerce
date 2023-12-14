@@ -1,25 +1,23 @@
-import { useAppDispatch } from "../../../Hooks/hooks";
+import { useAppDispatch, useAppSelector } from '../../../Hooks/hooks';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
-
 import styles from "./Cart.module.css";
-
 import {
-
   removeFromCart,
   updateQuantity,
 } from "../../../store/cart/cartSlice";
+
+import { checkoutCart, fetchProductbyids } from "../../../store/cart/thunk/getCart";
+import { useEffect } from 'react';
 import { product } from '../../../store/product/types';
-import { checkoutCart } from "../../../store/cart/thunk/getCart";
 
 type CartType = {
-
   items: { [id: string]: {
-    product:product,
-    quantity:number
+    quantity:number,
+product:product
   } };
-  totalPrice: string;
+  totalPrice: number;
   checkoutState: "LOADING" | "READY" | "ERROR";
   errorMessage: string;
 };
@@ -31,6 +29,7 @@ const Cart = ({
   errorMessage,
 }: CartType) => {
   const dispatch = useAppDispatch();
+  const productsData = useAppSelector((state) => state.cart.productsData);
 
   function onCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,18 +37,30 @@ const Cart = ({
   }
   function onQuantityChanged(
     e: React.ChangeEvent<HTMLSelectElement>,
-    id: number
+    id: number,
+    max_quantity:number
   ) {
     const quantity = Number(e.target.value) || 0;
-    const max_quantityProduct = items[id].product.max_quantity;
-    dispatch(updateQuantity({ id, quantity, max_quantityProduct }));
+   
+    
+  if(quantity>3){
+    alert(`sorry but maximum quentity is ${max_quantity} `)
+  }
+    dispatch(updateQuantity({ id, quantity, max_quantity }));
+  
   }
 
+console.log(items,"items");
+console.log(productsData,"product data");
   const tableClasses = classNames({
     [styles.table]: true,
     [styles.checkoutError]: checkoutState === "ERROR",
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
+ 
+  useEffect(() => {
+    dispatch(fetchProductbyids(Object.keys(items)))
+  }, [dispatch, items]);
   return (
     <div>
       <main className="page">
@@ -64,7 +75,7 @@ const Cart = ({
             </tr>
           </thead>
           <tbody>
-            {totalPrice!="0.00"?Object.values(items).map(({product,quantity}) => (
+            {productsData.length!=0?productsData.map((product) => (
               <tr key={product.id}>
             <td><div className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>  
              
@@ -73,12 +84,15 @@ const Cart = ({
                   <select
                     name="numbers"
                     className={styles.input}
-                    defaultValue={quantity}
-                    onChange={(e) => onQuantityChanged(e, product.id)}
+                    defaultValue={items[product.id].quantity}
+                    onChange={(e) => onQuantityChanged(e, product.id,product.max_quantity)}
                   >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                   </select>
                 </td>
                 <td>${product.price}</td>
@@ -92,7 +106,9 @@ const Cart = ({
                   </button>
                 </td>
               </tr>
-            )):<tr ><td><div className={styles.centerDiv} >there is no items avalible</div></td></tr>}
+            )):"no items"
+            // :<tr ><td><div className={styles.centerDiv} >there is no items avalible</div></td></tr>
+            }
           </tbody>
           <tfoot>
             <tr>

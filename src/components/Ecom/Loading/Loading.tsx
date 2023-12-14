@@ -1,4 +1,5 @@
 
+import ErrorLottie from "../ErrorLogo/ErrorLottie";
 import SpinnerComponent from "../spinner/Spinner";
 type Loadingtypes = {
   loading: boolean;
@@ -11,7 +12,7 @@ const Loading = ({ loading, error, children }: Loadingtypes) => {
   const renderHandler = () => {
    
     return (
-      <>{loading ? <SpinnerComponent /> : error ? <p>{error}</p> : children}</>
+      <>{loading ? <SpinnerComponent /> : error ? <ErrorLottie/> : children}</>
     );
   };
 

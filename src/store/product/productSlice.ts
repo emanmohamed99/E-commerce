@@ -1,6 +1,6 @@
 import {  createSlice } from "@reduxjs/toolkit";
 import { initialStateProduct } from "./intialState";
-import { fetchProducts, fetchproduct } from "./thunk/getProduct";
+import {  fetchProducts, fetchproduct } from "./thunk/getProduct";
 const itemsSlice = createSlice({
   name: "items",
   initialState:initialStateProduct,
@@ -38,11 +38,11 @@ const itemsSlice = createSlice({
     })
     builder.addCase(fetchproduct.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message||"";
-       
-     
-    })
+      state.error = action.error.message||""; 
+    }) 
+  
   },
+
 });
 export default itemsSlice.reducer;
 

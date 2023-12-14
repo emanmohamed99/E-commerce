@@ -6,6 +6,19 @@ const Header = () => {
  const numberdata  =useAppSelector(getMemoizedNumItems) ;
   return (
     <div>
+      <div>
+        <div className={styles.nav2}>
+          <ul>
+       <li><div className={styles.logo}><img src="images/ecom.jpg" alt="e commerce" /></div></li>
+       <div className={styles.shoppingIcon}>
+        <li >
+          <NavLink to="/main/shoppingCard">
+            🛒&nbsp;&nbsp;{numberdata ? numberdata : "Cart"}
+          </NavLink>
+        </li></div>
+          </ul></div>
+      </div>
+      <div className={styles.nav}>
       <ul>
         <li>
           <NavLink className="active" to="/main">
@@ -15,13 +28,16 @@ const Header = () => {
         <li>
           <NavLink to="/main/category">category</NavLink>
         </li>
-
-        <li className={styles.shoppingIcon}>
-          <NavLink to="/main/shoppingCard">
-            🛒&nbsp;&nbsp;{numberdata ? numberdata : "Cart"}
-          </NavLink>
+        <div className={styles.directionChange}>
+        <li>
+          <NavLink to="/main/login">login</NavLink>
         </li>
+        <li>
+          <NavLink to="/main/register">register</NavLink>
+        </li>
+        </div>
       </ul>
+    </div>
     </div>
   );
 };

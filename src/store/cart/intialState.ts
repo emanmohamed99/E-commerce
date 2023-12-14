@@ -1,28 +1,40 @@
 import { category } from "../category/types";
-import { CheckoutState } from "./types";
 import { product } from '../product/types';
+import { CheckoutState } from './types';
+
 
 export interface CartState {
   items: { [id: string]: {
-    product:product,
-    quantity:number
+product:product
+    quantity:number,
+  
   } };
+  
+ 
   checkoutState: CheckoutState;
   errorMessage: string;
   loading: boolean;
   error: null | string ;
+
+  productsData: product[]
+
 }
 export const initialStateCart: CartState = {
+
   items: {},
   checkoutState: "READY",
   errorMessage: "",
   loading: false,
   error: null,
-};
+
+  productsData: [],
+
+}
 interface ProductsState {
-  categories: { [id: string]: category };
+  categories:  category[];
+  
 }
 
 export const initialState: ProductsState = {
-  categories: {},
+  categories: [],
 };

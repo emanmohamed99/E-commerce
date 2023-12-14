@@ -275,30 +275,15 @@
   ],
   "users": [
     {
-      "email": "rest@test.com",
-      "password": "$2a$10$F8VKhpflsiWkyeVV7FxoAeaR3JHJMpYkD64/bUL0JWbHf3vZLYgH6",
-      "userName": "test",
-      "mobile": "1234567890",
-      "id": 1
+      "email": "emansalah1999@gmail.com",
+      "password": "$2a$10$uTxQwnsT0Lr/fErVxG5q8ONEbYx/DTPJ80XU2MEZ0jRgT.pvv/OQy",
+      "id": 5
     },
     {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$puk94BEaODdDBPCbHIUX6ON6zr7aqP8KgL7yr1rDofL6iS2hbJEyS",
-      "id": 2
-    },
-    {
-      "email": "fayrouzhussien15@gmail.com",
-      "password": "$2a$10$/MAsWsV3FvOMwwXVGvFt7eHVsp7yHamrBAEslk20otuLOIybdsrk.",
-      "userName": "fayr",
-      "mobile": "9876",
-      "id": 3
-    },
-    {
-      "email": "htarek47@gmail.com",
-      "password": "$2a$10$6sOmIjaWbilhO1WXi6psDOsTIstvHTC4IX7w.w7hWtUuvK9vxyoXm",
-      "userName": "fayrouz",
-      "mobile": "01154474036",
-      "id": 4
+      "email": "eman@gg.com",
+      "password": "$2a$10$QNB2i3QdeMWVWUvkuUeYOezuhgEwXit8f1jUB/m2IAm5vTol8JKY6",
+      "username": "eman",
+      "id": 6
     }
   ],
   "orders": [
@@ -318,7 +303,42 @@
       ],
       "userId": 3,
       "id": 1
+    },
+    {
+      "quantity": 1,
+      "product": {
+        "id": 20,
+        "title": "Regular Fit Jersey top",
+        "price": "249.00",
+        "cat_prefix": "men",
+        "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+        "max_quantity": 3
+      },
+      "id": 2
+    },
+    {
+      "quantity": 1,
+      "product": {
+        "id": 22,
+        "title": "Regular Fit Jersey top",
+        "price": "249.00",
+        "cat_prefix": "men",
+        "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+        "max_quantity": 3
+      },
+      "id": 3
+    },
+    {
+      "quantity": 1,
+      "product": {
+        "id": 20,
+        "title": "Regular Fit Jersey top",
+        "price": "249.00",
+        "cat_prefix": "men",
+        "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+        "max_quantity": 3
+      },
+      "id": 4
     }
   ]
-  
 }

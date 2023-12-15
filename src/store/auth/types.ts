@@ -1,3 +1,5 @@
+import { product } from "../product/types";
+
 export type Tauth = {
    email:string,
   id:number
@@ -11,8 +13,22 @@ export type Tauth = {
    email:string,
   password:string
   };
-  export type Tuser = {
+  export type TuserUpdate = {
    email:string,
-  password:string,
+  username:string,
   id:number
   };
+  export type Tuser = {
+   email:string,
+  username:string,
+
+  };
+  export type Torder={
+   productsData:product[]|null,
+   items:{ [id: string]: {
+      quantity:number,
+    } ,
+
+   }
+   currentUser:TuserUpdate|null
+  }

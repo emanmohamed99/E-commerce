@@ -8,14 +8,14 @@ import {
   updateQuantity,
 } from "../../../store/cart/cartSlice";
 
-import { checkoutCart, fetchProductbyids } from "../../../store/cart/thunk/getCart";
-import { useEffect } from 'react';
-import { product } from '../../../store/product/types';
+import {  checkoutCart, fetchProductbyids } from "../../../store/cart/thunk/getCart";
+// import { useCallback, useEffect } from 'react';
+
 
 type CartType = {
   items: { [id: string]: {
     quantity:number,
-product:product
+
   } };
   totalPrice: number;
   checkoutState: "LOADING" | "READY" | "ERROR";
@@ -30,7 +30,49 @@ const Cart = ({
 }: CartType) => {
   const dispatch = useAppDispatch();
   const productsData = useAppSelector((state) => state.cart.productsData);
+  // const currentUser = useAppSelector((state) => state.auth.currentUser);
+//  console.log(currentUser.id);
+//   console.log(items)
+//   console.log(productsData);
 
+  // useEffect( () => {
+  
+    
+
+  //     // dispatch(Addorders({   productsData,    items,    currentUser}))
+  
+  //    if (productsData&&items) {
+         
+    
+  //         for (const productId in items) {
+       
+  //             const quantity = items[productId].quantity;
+    
+  //             const product = productsData?.find(product => product.id === Number(productId));
+    
+  //             if (product) {
+  //               const order = {
+  //                 orders: [
+  //                   {
+  //                     quantity,
+  //                     product
+  //                   }
+  //                 ],
+                
+                
+  //               };
+    
+  //               dispatch(Addorders(order))
+  //               console.log(order);
+  //             }
+  //           }
+  //         }
+        
+  
+        
+      
+   
+  // }, [dispatch, items, productsData]);
   function onCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(checkoutCart());
@@ -41,15 +83,13 @@ const Cart = ({
     max_quantity:number
   ) {
     const quantity = Number(e.target.value) || 0;
-   
-    
   if(quantity>3){
     alert(`sorry but maximum quentity is ${max_quantity} `)
   }
+  //product,quantity
     dispatch(updateQuantity({ id, quantity, max_quantity }));
-  
   }
-
+ 
 
   const tableClasses = classNames({
     [styles.table]: true,
@@ -76,15 +116,15 @@ const Cart = ({
           <tbody>
             {productsData.length!=0?productsData.map((product) => (
               <tr key={product.id}>
-            <td><div className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>  
-             
+            <td><div className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>     
                 <td>{product.title}</td>
                 <td>
                   <select
                     name="numbers"
                     className={styles.input}
                     defaultValue={items[product.id].quantity}
-                    onChange={(e) => onQuantityChanged(e, product.id,product.max_quantity)}
+                    onChange={(e) =>{onQuantityChanged(e, product.id,product.max_quantity)   
+                    }}
                   >
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -105,7 +145,7 @@ const Cart = ({
                   </button>
                 </td>
               </tr>
-            )):"no items"
+            )):<tr><td>no items</td></tr>
             // :<tr ><td><div className={styles.centerDiv} >there is no items avalible</div></td></tr>
             }
           </tbody>

@@ -14,7 +14,7 @@ import { SwiperSlide } from 'swiper/react';
 
 
 import 'swiper/css';
-import { getUser } from "../store/auth/thunk/getAuth";
+
 
 
 const Products = () => {
@@ -30,7 +30,7 @@ const Products = () => {
   const { name } = useParams();
 
   const dispatch = useAppDispatch();
-  const token = localStorage.getItem('token');
+ 
 
 
 
@@ -47,13 +47,7 @@ const Products = () => {
     }
    
   }, [dispatch,name]);
-  useEffect(() => {
-  if(token){
-    dispatch(getUser())
-  }
-    
-   
-  }, [dispatch,token]);
+ 
  
   return (
     <div className={style.cardParent}>

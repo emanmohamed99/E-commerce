@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../../Hooks/hooks";
 import {addToCart ,} from "../../../store/cart/cartSlice";
 
 import { CardBody,CardTitle ,CardText,Button,Card, CardSubtitle} from 'reactstrap';
-import { product } from "../../../store/product/types";
+
 
 
 
@@ -18,7 +18,6 @@ type productProps = {
   img: string;
   max_quantity: number;
   items: { [id: string]: {
-    product:product,
     quantity:number,
    
   } };

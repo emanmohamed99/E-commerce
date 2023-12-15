@@ -16,7 +16,7 @@ import Category from "../pages/Category";
 import ShoppingCard from "../pages/Cart";
 import Login from "../pages/login";
 import Register from "../pages/Register";
-
+import Profile from "../pages/Profile";
 // const ShoppingCard = React.lazy(() => import("./pages/cart"));
 
 // const CategoryPage = React.lazy(() => import("./pages/Category"));
@@ -82,6 +82,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback="loading please wait...">
             <Register />
+          </Suspense>
+        ),
+      },
+      {
+        path: "main/profile",
+        element: (
+          <Suspense fallback="loading please wait...">
+            <Profile />
           </Suspense>
         ),
       },

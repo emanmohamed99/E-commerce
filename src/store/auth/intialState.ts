@@ -1,11 +1,13 @@
-import { Tauth, Tuser } from "./types";
+import { Tauth, Tuser, TuserUpdate } from './types';
 
 interface AuthState {
     user: Tauth,
     token:string,
     loading:boolean,
     error:null|string,
-    currentUser:Tuser
+    currentUser:TuserUpdate,
+    UpdateUser:Tuser,
+ 
   }
  
 export const initialStateAuth:AuthState = {
@@ -19,8 +21,14 @@ export const initialStateAuth:AuthState = {
     error:null,
     currentUser:{
       email: "",
-      password: "",
-      id:0
-    }
+      username:"",
+   id:0
+    },
+    UpdateUser:{
+      email: "",
+      username:"",
+      
+    },
+    
     
   };

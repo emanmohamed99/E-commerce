@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Tlogin, Tresgister } from "../types";
+import { Tlogin, Tresgister, TuserUpdate } from '../types';
 export const getUser = createAsyncThunk(
     "user/getUser",
     async (_, thunkAPI) => {
@@ -50,3 +50,20 @@ export const loginuser = createAsyncThunk(
       }
     }
   );
+  export const UpdateUser = createAsyncThunk(
+    "user/updateUser",
+    async (dataUpdate: TuserUpdate, thunkAPI) => {
+  
+     
+      const { rejectWithValue } = thunkAPI;
+      try {
+        const { data } = await axios.patch(`http://localhost:7400/users/${dataUpdate.id}`, dataUpdate);
+        console.log(data); // Logging the response data
+        return data;
+      } catch (error) {
+        return rejectWithValue(error);
+      }
+    }
+  );
+ 
+  

@@ -5,6 +5,10 @@ import type { RootState } from "../../index";
 import checkout from "../../../services/getCart";
 import { getProductAPIbyid } from "../../../services/getProducts";
 
+import axios from "axios";
+
+import { Torders } from "../types";
+
 
 
 
@@ -28,3 +32,27 @@ export const checkoutCart = createAsyncThunk(
         return rejectWithValue(error);
       }
     })
+  
+    export const Addorders = createAsyncThunk(
+      "user/postorders",
+      
+      async (userorder: Torders, thunkAPI) => {
+      
+        console.log(userorder,"orders");
+        const { rejectWithValue } = thunkAPI;
+        try {
+          // const { data } = await axios.post(`http://localhost:7400/orders`, userorder);
+          // console.log(data); 
+          // return data;
+        } catch (error) {
+          return rejectWithValue(error);
+        }
+     
+      }
+      
+    );
+    
+      
+   
+       
+       

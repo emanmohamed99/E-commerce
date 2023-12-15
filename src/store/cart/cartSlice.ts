@@ -4,7 +4,7 @@ import type { RootState } from "../index";
 
 import { initialStateCart } from "./intialState";
 import { product } from '../product/types';
-import { checkoutCart, fetchProductbyids } from "./thunk/getCart";
+import { Addorders, checkoutCart, fetchProductbyids } from "./thunk/getCart";
 
 
 const cartSlice = createSlice({
@@ -22,7 +22,7 @@ const cartSlice = createSlice({
         state.items[id].quantity = max_quantity;
       } else {
         state.items[id] = {
-         product:action.payload,
+        
           quantity: 1,
          
         };
@@ -103,6 +103,23 @@ const cartSlice = createSlice({
       // console.log(action.error.message);
    
     }) 
+    builder.addCase(Addorders.pending, (state) => {
+      state.loading = true;
+        state.error = null;
+     
+    })
+    builder.addCase(Addorders.fulfilled, (state,action) => {
+      state.loading = false;
+
+      console.log("action payload");
+      state.orderData=action.payload
+      console.log(action.payload);
+     
+    })
+    builder.addCase(Addorders.rejected, (state,action) => {
+      state.loading = false;
+      state.error = action.error.message||"";
+    })
   },
 });
 

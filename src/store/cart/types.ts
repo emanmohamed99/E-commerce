@@ -1,7 +1,10 @@
 import { product } from "../product/types";
 
+
 export type CheckoutState = "LOADING" | "READY" | "ERROR";
-export type Torder ={
-    product:product,
-    quantity:number,
+export type Torders= {
+    orders: {
+        quantity: number;
+        product: product;
+    }[];
 }

@@ -8,7 +8,7 @@ interface AuthState {
     error:null|string,
   
     UpdateUser:Tuser,
-    isLoggedIn:boolean;
+  
     currentUser2:TuserUpdate,
   }
  
@@ -35,5 +35,5 @@ export const initialStateAuth:AuthState = {
       
     },
     
-    isLoggedIn:false
+   
   };

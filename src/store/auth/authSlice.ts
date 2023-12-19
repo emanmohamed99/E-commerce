@@ -7,12 +7,11 @@ const authSlice = createSlice({
   reducers:{
     logout: (state) => {
       state.currentUser2 = initialStateAuth.currentUser2;
-      state.isLoggedIn = false;
+     
     },
     login(state, action) {
       state.currentUser2 = action.payload;
-      console.log(action.payload);
-      state.isLoggedIn = true;
+     
     },
 
   },extraReducers(builder) {
@@ -25,7 +24,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.user=action.payload.users
         state.token = action.payload.accessToken;
-   
+       
        
       })
       builder.addCase(registerUser.rejected, (state,action) => {

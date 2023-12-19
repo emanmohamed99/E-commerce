@@ -46,6 +46,11 @@
   .sidebarbuttons button:focus {
     background-color: #ccc;
   }
-  
+  /* .tableorder td{
+    border: black 1px solid;
+  }
+  .tableorder th{
+    border: black 1px solid;
+  } */
   /* Add more styles as needed */
   

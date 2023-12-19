@@ -3,10 +3,10 @@ import { UpdateUser } from '../../store/auth/thunk/getAuth';
 import { Form, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { FormGroup, Input, Label } from 'reactstrap';
-import styles from "./profile.module.css"
+import styles from "../../Layouts/ProfileLayout/profile.module.css"
 import { useTranslation } from 'react-i18next';
 const ProfileEdit = () => {
-    const token = localStorage.getItem("token");
+ 
     const dispatch = useAppDispatch();
     const { t } = useTranslation();
     const currentUser = useAppSelector((state) => state.auth.currentUser2);
@@ -24,7 +24,7 @@ const ProfileEdit = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
     
-      if (token) {
+      
         dispatch(
           UpdateUser({
             username: userData.username,
@@ -40,7 +40,7 @@ const ProfileEdit = () => {
            
           });
         setUserData({ email: "", username: "", id: "" });
-      }
+      
     };
   return (
     <div className={styles.profileEditWrapper}>

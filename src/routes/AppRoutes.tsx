@@ -10,7 +10,7 @@ import Category from "../pages/Category";
 import ShoppingCard from "../pages/Cart";
 import Login from "../pages/login";
 import Register from "../pages/Register";
-import Profile from "../pages/profile/Profile";
+import Profile from "../Layouts/ProfileLayout/ProfileLayout";
 
 import {  useAppSelector } from "../Hooks/hooks";
 

@@ -9,7 +9,7 @@ import { logout } from "../../../store/auth/authSlice";
 
 const Header = () => {
  const numberdata  =useAppSelector(getMemoizedNumItems) ;
- const { isLoggedIn } = useAppSelector((state) => state.auth);
+ const { currentUser2 } = useAppSelector((state) => state.auth);
  const dispatch = useAppDispatch();
 
  const handleLogout = () => {
@@ -49,14 +49,15 @@ const Header = () => {
         <li>
           <NavLink to="/main/category">{t("categories")}</NavLink>
         </li>
-        <div className={styles.directionChange}>
-        <li>
-        { i18n.language==="en"&&<input type="button" value="AR" onClick={()=>{i18n.changeLanguage("ar")} } />}
-        { i18n.language==="ar"&&<input type="button" value="EN" onClick={()=>{i18n.changeLanguage("en")}}/>}
+      <li></li>  
+      <div className={styles.directionChange}>
+      
+      <li>  { i18n.language==="en"&&<input className={styles.language_button} type="button" value="العربية" onClick={()=>{i18n.changeLanguage("ar")} } />}</li>
+    <li>    { i18n.language==="ar"&&<input className={styles.language_button} type="button" value="English" onClick={()=>{i18n.changeLanguage("en")}}/>}</li>
 
-          </li>
+        
        
-        {isLoggedIn ? <button onClick={handleLogout}>Logout</button>:<li><li><NavLink to="/main/login"> {t("log in")}</NavLink></li>
+        {currentUser2.email.length>0 ? <button className={styles.logout} onClick={handleLogout}>Logout</button>:<li><li><NavLink to="/main/login"> {t("log in")}</NavLink></li>
         <li>
           <NavLink to="/main/register"> {t("sign up")}</NavLink>
         </li>

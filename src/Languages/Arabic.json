@@ -27,5 +27,6 @@
           "Email or password not exist":"البريد الإلكتروني أو كلمة المرور غير موجودة",
           "password":"كلمة المرور",
           "Email Already Exist":"البريد الكتورونى موجود بالفعل ",
-          "Available Quantity":"الكميات المتاحة"
+          "Available Quantity":"الكميات المتاحة",
+          "number of orders":"عدد الطلبات"
         }

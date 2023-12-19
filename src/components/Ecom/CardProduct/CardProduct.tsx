@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../../Hooks/hooks";
 import {addToCart ,} from "../../../store/cart/cartSlice";
 
 import { CardBody,CardTitle ,CardText,Button,Card, CardSubtitle} from 'reactstrap';
+import { useTranslation } from "react-i18next";
 
 
 
@@ -39,7 +40,7 @@ const CardProduct = ({
 
 const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
 
-
+const { t } = useTranslation();
   return (
    
       <div className={style.cardWrapper}>
@@ -57,7 +58,7 @@ const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
         className="mb-2 text-muted"
         tag="h6"
       >
-        Available Quantity  :
+        { t("Available Quantity")}  :
         
         {max_quantity2 }
       </CardSubtitle>
@@ -77,7 +78,7 @@ const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
             }
           }
           >
-            Add to Cart
+           { t("Add to cart")}
           </Button>: <Button disabled={true}
             onClick={() =>{
               dispatch(addToCart({ id,
@@ -90,7 +91,7 @@ const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
             }
           }
           >
-            Add to Cart
+            { t("Add to cart")}
           </Button>}
     </CardBody>
   </Card>

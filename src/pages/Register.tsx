@@ -7,10 +7,12 @@ import { useAppDispatch } from "../Hooks/hooks";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import styles from "../components/Ecom/spinner/Spinner.module.css"
 import { registerUser } from "../store/auth/thunk/getAuth";
+import { useTranslation } from "react-i18next";
+import { login } from "../store/auth/authSlice";
 const Register = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
-
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const [userData, setUserData] = useState({ email: "", password: "",username:"" });
@@ -21,22 +23,22 @@ const Register = () => {
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     dispatch(registerUser({ email: userData.email, password: userData.password ,username:userData.username}))
       .unwrap()
-      .then(() => {
-        navigate("/");
+      .then((res) => {
+        dispatch(login(res.user))
+        navigate("/")
       })
       .catch(() => {
-        setError("Email Already Exist");
+        setError(t("Email Already Exist"));
       });
     setUserData({ email: "", password: "" ,username:""});
   };
-//   useEffect(() => {
-//     inputRef.current.focus();
-//   }, []);
+
   return (
     <div>
-        <h3>Register</h3>
+        <h3>  { t("sign up")}</h3>
 
     <div className={styles.formWrapper}>
       
@@ -52,7 +54,7 @@ const Register = () => {
         onChange={handleChange}
       />
       <Label for="exampleUsername">
-      Username
+     { t("Username")}
       </Label>
     </FormGroup>
     <FormGroup floating>
@@ -65,7 +67,7 @@ const Register = () => {
         onChange={handleChange}
       />
       <Label for="exampleEmail">
-        Email
+      { t("email")}
       </Label>
     </FormGroup>
  
@@ -79,13 +81,13 @@ const Register = () => {
         onChange={handleChange}
       />
       <Label for="examplePassword">
-        Password
+      { t("password")}
       </Label>
     </FormGroup>
    
     <p>  {error}  </p>
     <Button>
-      Submit
+    { t("sign up")}
     </Button>
   </Form>
   </div>

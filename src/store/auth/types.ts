@@ -2,6 +2,7 @@ import { product } from "../product/types";
 
 export type Tauth = {
    email:string,
+   username:string
   id:number
   };
   export type Tresgister = {
@@ -32,3 +33,4 @@ export type Tauth = {
    }
    currentUser:TuserUpdate|null
   }
+ 

@@ -17,8 +17,6 @@ const ShoppingCard = () => {
 // console.log(loading,"loading");
   return (
     <div>
-     
-    
         <Cart
           items={items}
           totalPrice={totalPrice}

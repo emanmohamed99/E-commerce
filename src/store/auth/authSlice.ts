@@ -1,10 +1,19 @@
 import {  createSlice } from "@reduxjs/toolkit";
-import {  getUser, loginuser, registerUser, UpdateUser } from './thunk/getAuth';
+import {   loginuser, registerUser, UpdateUser, } from './thunk/getAuth';
 import { initialStateAuth } from "./intialState";
 const authSlice = createSlice({
     name: "auth",
   initialState:initialStateAuth,
   reducers:{
+    logout: (state) => {
+      state.currentUser2 = initialStateAuth.currentUser2;
+      state.isLoggedIn = false;
+    },
+    login(state, action) {
+      state.currentUser2 = action.payload;
+      console.log(action.payload);
+      state.isLoggedIn = true;
+    },
 
   },extraReducers(builder) {
     builder.addCase(registerUser.pending, (state) => {
@@ -16,7 +25,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.user=action.payload.users
         state.token = action.payload.accessToken;
-        localStorage.setItem('token',action.payload.accessToken);
+   
        
       })
       builder.addCase(registerUser.rejected, (state,action) => {
@@ -32,27 +41,14 @@ const authSlice = createSlice({
         state.loading = false;
         state.user=action.payload.users
         state.token = action.payload.accessToken;
-        localStorage.setItem('token',action.payload.accessToken);
+       
        
       })
       builder.addCase(loginuser.rejected, (state,action) => {
         state.loading = false;
         state.error = action.error.message||"";
       })
-      builder.addCase(getUser.pending, (state) => {
-        state.loading = true;
-          state.error = null;
-       
-      })
-      builder.addCase(getUser.fulfilled, (state,action) => {
-        state.loading = false;
-        state.currentUser=action.payload[0];
-       
-      })
-      builder.addCase(getUser.rejected, (state,action) => {
-        state.loading = false;
-        state.error = action.error.message||"";
-      })
+    
       builder.addCase(UpdateUser.pending, (state) => {
         state.loading = true;
           state.error = null;
@@ -68,10 +64,10 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.error.message||"";
       })
-     
   },
-  
 
 }
 )
+export const { logout } = authSlice.actions;
+export const { login } = authSlice.actions;
 export default authSlice.reducer;

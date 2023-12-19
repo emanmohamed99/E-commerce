@@ -8,8 +8,11 @@ import {
   updateQuantity,
 } from "../../../store/cart/cartSlice";
 
-import {  checkoutCart, fetchProductbyids } from "../../../store/cart/thunk/getCart";
-// import { useCallback, useEffect } from 'react';
+import {   Addorders, checkoutCart, fetchProductbyids } from "../../../store/cart/thunk/getCart";
+import {  useEffect } from 'react';
+
+import { product } from '../../../store/product/types';
+import { useTranslation } from 'react-i18next';
 
 
 type CartType = {
@@ -30,52 +33,32 @@ const Cart = ({
 }: CartType) => {
   const dispatch = useAppDispatch();
   const productsData = useAppSelector((state) => state.cart.productsData);
-  // const currentUser = useAppSelector((state) => state.auth.currentUser);
-//  console.log(currentUser.id);
-//   console.log(items)
-//   console.log(productsData);
+  const currentUser = useAppSelector((state) => state.auth.currentUser2);
+ 
 
-  // useEffect( () => {
-  
-    
+  const orders: { product: product | undefined; quantity: number; }[]=[];
 
-  //     // dispatch(Addorders({   productsData,    items,    currentUser}))
   
-  //    if (productsData&&items) {
-         
-    
-  //         for (const productId in items) {
-       
-  //             const quantity = items[productId].quantity;
-    
-  //             const product = productsData?.find(product => product.id === Number(productId));
-    
-  //             if (product) {
-  //               const order = {
-  //                 orders: [
-  //                   {
-  //                     quantity,
-  //                     product
-  //                   }
-  //                 ],
-                
-                
-  //               };
-    
-  //               dispatch(Addorders(order))
-  //               console.log(order);
-  //             }
-  //           }
-  //         }
-        
   
-        
-      
-   
-  // }, [dispatch, items, productsData]);
+  const { t} = useTranslation();
+
   function onCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(checkoutCart());
+ 
+  
+    if(checkoutState=='READY'&&Object.keys(items).length>0){
+      for (const productId in items) {
+        const quantity = items[productId].quantity;
+        const product = productsData?.find(product => product.id === Number(productId));
+        const order={product:product,quantity:quantity}
+        orders.push(order)
+      } 
+   
+        dispatch(Addorders({orders:orders,userId:currentUser.id}))
+   
+    }
+    
   }
   function onQuantityChanged(
     e: React.ChangeEvent<HTMLSelectElement>,
@@ -89,7 +72,7 @@ const Cart = ({
   //product,quantity
     dispatch(updateQuantity({ id, quantity, max_quantity }));
   }
- 
+
 
   const tableClasses = classNames({
     [styles.table]: true,
@@ -106,11 +89,11 @@ const Cart = ({
         <table className={tableClasses}>
           <thead>
             <tr>
-            <th>Product</th>
+            <th> { t("product")}</th>
             <th></th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th>Remove</th>
+              <th>{ t("quantity")}</th>
+              <th>{ t("total")}</th>
+              <th>{ t("remove")}</th>
             </tr>
           </thead>
           <tbody>
@@ -122,7 +105,7 @@ const Cart = ({
                   <select
                     name="numbers"
                     className={styles.input}
-                    defaultValue={items[product.id].quantity}
+                    defaultValue={items[product.id]?.quantity}
                     onChange={(e) =>{onQuantityChanged(e, product.id,product.max_quantity)   
                     }}
                   >
@@ -145,13 +128,13 @@ const Cart = ({
                   </button>
                 </td>
               </tr>
-            )):<tr><td>no items</td></tr>
+            )):<tr><td>{ t("there is no items")}</td></tr>
             // :<tr ><td><div className={styles.centerDiv} >there is no items avalible</div></td></tr>
             }
           </tbody>
           <tfoot>
             <tr>
-              <td>Total</td>
+              <td>{ t("total")}</td>
               <td></td>
               <td className={styles.total}>${totalPrice}</td>
               <td></td>
@@ -163,7 +146,7 @@ const Cart = ({
             <p className={styles.errorBox}>{errorMessage}</p>
           ) : null}
           <button className={styles.button} type="submit">
-            Checkout
+          { t("checkout")}
           </button>
         </form>
       </main>

@@ -2,10 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
 import type { RootState } from "../../index";
-import checkout from "../../../services/getCart";
+import checkout, { addOrderAPI, getOrderAPI } from "../../../services/getCart";
 import { getProductAPIbyid } from "../../../services/getProducts";
 
-import axios from "axios";
 
 import { Torders } from "../types";
 
@@ -38,12 +37,12 @@ export const checkoutCart = createAsyncThunk(
       
       async (userorder: Torders, thunkAPI) => {
       
-        console.log(userorder,"orders");
+       console.log(userorder,"userorder");
         const { rejectWithValue } = thunkAPI;
         try {
-          // const { data } = await axios.post(`http://localhost:7400/orders`, userorder);
-          // console.log(data); 
-          // return data;
+          const { data } = await addOrderAPI(userorder);
+      
+          return data;
         } catch (error) {
           return rejectWithValue(error);
         }
@@ -52,7 +51,23 @@ export const checkoutCart = createAsyncThunk(
       
     );
     
+    export const getOrder = createAsyncThunk(
+      "user/getorder",
       
+      async (User_id:number, thunkAPI) => {
+       
+        const { rejectWithValue } = thunkAPI;
+        try {
+          const { data } = await getOrderAPI(User_id);
+      console.log(data,"data");
+          return data;
+        } catch (error) {
+          return rejectWithValue(error);
+        }
+     
+      }
+      
+    ); 
    
        
        

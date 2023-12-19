@@ -1,14 +1,8 @@
-import { Suspense } from "react";
-// import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-// import RootLayout from './pages/RootLayout.tsx';
-// import ErrorPage from './pages/ErrorPage.tsx';
-// import { Provider } from 'react-redux';
-// import store from './store/index.ts';
-// import Products from './pages/Products.tsx';
-// import Category from './pages/Category.tsx';
-// import ShoppingCard from './pages/Cart.tsx';
-
-import { createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import RootLayout from "../Layouts/MainLayout/MainLayout";
 import ErrorPage from "../pages/ErrorPage";
 import Products from "../pages/Products";
@@ -16,83 +10,94 @@ import Category from "../pages/Category";
 import ShoppingCard from "../pages/Cart";
 import Login from "../pages/login";
 import Register from "../pages/Register";
-import Profile from "../pages/Profile";
-// const ShoppingCard = React.lazy(() => import("./pages/cart"));
+import Profile from "../pages/profile/Profile";
 
-// const CategoryPage = React.lazy(() => import("./pages/Category"));
+import {  useAppSelector } from "../Hooks/hooks";
 
-// const ProductPage = React.lazy(() => import("./pages/Products"));
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: (
-          <Suspense fallback="loading please wait...">
-            <Products />
-          </Suspense>
-        ),
-      },
-      {
-        path: "main",
-        element: (
-          <Suspense fallback="loading please wait...">
-            <Products />
-          </Suspense>
-        ),
-      },
-      {
-        path: "main/category",
-        element: (
-          <Suspense fallback="loading please wait...">
-            <Category />
-          </Suspense>
-        ),
-      },
-      {
-        path: "main/category/:name",
-        element: (
-          <Suspense fallback="loading please wait...">
-            <Products />
-          </Suspense>
-        ),
-      },
+import ProfileInfo from "../pages/profile/ProfileInfo";
+import ProfileEdit from "../pages/profile/profileEdit";
+import OrderHistory from "../pages/profile/OrderHistory";
+function AppRoutes() {
 
-      {
-        path: "main/shoppingCard",
-        element: (
-          <Suspense fallback="loading please wait...">
-            <ShoppingCard />
-          </Suspense>
-        ),
-      },
-      {
-        path: "main/login",
-        element: (
-          <Suspense fallback="loading please wait...">
-            <Login />
-          </Suspense>
-        ),
-      },
-      {
-        path: "main/register",
-        element: (
-          <Suspense fallback="loading please wait...">
-            <Register />
-          </Suspense>
-        ),
-      },
-      {
-        path: "main/profile",
-        element: (
-          <Suspense fallback="loading please wait...">
-            <Profile />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-]);
+
+
+  const user = useAppSelector((state) => state.auth.currentUser2);
+ const userId=user.id
+
+
+  
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <Products />,
+        },
+        {
+          path: "main",
+          element: <Products />,
+        },
+        {
+          path: "main/category",
+          element: <Category />,
+        },
+        {
+          path: "main/category/:name",
+          element: <Products />,
+        },
+
+        {
+          path: "main/shoppingCard",
+          element: <ShoppingCard />,
+        },
+      
+     
+        {
+          path: "main/register",
+          
+          element: !userId ? <Register />: <Navigate to="/main/profile"></Navigate>,
+        },
+      
+        {
+          path: "main/profile",
+          element:
+          userId ? <Profile /> : <Navigate to="/main/login"></Navigate>
+              
+            
+            ,
+            children: [
+              {
+                index: true,
+                element: <ProfileInfo />,
+              },
+              {
+                path: "information",
+                element: <ProfileInfo />,
+              },
+              {
+                path: "edit",
+                element: <ProfileEdit />,
+              },
+              {
+                path: "orderhistory",
+                element: <OrderHistory />,
+              },
+              
+            ]
+        },
+        {
+          path: "main/login",
+          element:
+          !userId ? <Login/> : <Navigate to="/main/profile"></Navigate>
+           
+            
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router}></RouterProvider>;
+}
+export default AppRoutes;

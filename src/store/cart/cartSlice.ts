@@ -4,7 +4,7 @@ import type { RootState } from "../index";
 
 import { initialStateCart } from "./intialState";
 import { product } from '../product/types';
-import { Addorders, checkoutCart, fetchProductbyids } from "./thunk/getCart";
+import { Addorders, checkoutCart, fetchProductbyids, getOrder } from "./thunk/getCart";
 
 
 const cartSlice = createSlice({
@@ -37,11 +37,7 @@ const cartSlice = createSlice({
       if (indexToRemove !== -1) {
         state.productsData.splice(indexToRemove, 1);
         delete state.items[action.payload];
-      }
-    
-    
-  
-        
+      }       
       
 },
     updateQuantity(
@@ -110,13 +106,24 @@ const cartSlice = createSlice({
     })
     builder.addCase(Addorders.fulfilled, (state,action) => {
       state.loading = false;
-
-      console.log("action payload");
       state.orderData=action.payload
-      console.log(action.payload);
-     
     })
     builder.addCase(Addorders.rejected, (state,action) => {
+      state.loading = false;
+      state.error = action.error.message||"";
+    })
+    builder.addCase(getOrder.pending, (state) => {
+      state.loading = true;
+        state.error = null;
+     
+    })
+    builder.addCase(getOrder.fulfilled, (state,action) => {
+      state.loading = false;
+      state.userorder=action.payload
+    
+     
+    })
+    builder.addCase(getOrder.rejected, (state,action) => {
       state.loading = false;
       state.error = action.error.message||"";
     })

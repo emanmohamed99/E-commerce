@@ -1,7 +1,7 @@
 import { Torder } from "../auth/types";
 import { category } from "../category/types";
 import { product } from '../product/types';
-import { CheckoutState } from './types';
+import { CheckoutState, Torders } from './types';
 
 
 export interface CartState {
@@ -18,7 +18,8 @@ export interface CartState {
   error: null | string ;
 
   productsData: product[]
-  orderData:Torder[]
+  orderData:Torder[],
+  userorder:Torders[]
 }
 export const initialStateCart: CartState = {
 
@@ -29,7 +30,9 @@ export const initialStateCart: CartState = {
   error: null,
 
   productsData: [],
-  orderData:[]
+  orderData:[],
+  userorder:[]
+  
 }
 interface ProductsState {
   categories:  category[];

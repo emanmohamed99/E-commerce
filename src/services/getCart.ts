@@ -1,3 +1,5 @@
+import axios from "axios";
+import { Torders } from "../store/cart/types";
 
 export type CartItems = { [productID: string]: {
 
@@ -5,7 +7,11 @@ export type CartItems = { [productID: string]: {
 } };
 export type CheckoutResponse = { success: boolean; error?: string };
 
+const addOrderAPI = (userorder:Torders) => Promise.resolve(axios.post(`http://localhost:7400/orders`, userorder));
+const getOrderAPI = (User_id:number) => Promise.resolve(axios.get(`http://localhost:7400/orders/?userId=${User_id}`));
+
 const checkout= async function checkout(items: CartItems): Promise<CheckoutResponse> {
+ 
   const modifier = Object.keys(items).length > 0 ? "success" : "error";
   const url = `/checkout-${modifier}.json`;
 
@@ -21,3 +27,4 @@ const checkout= async function checkout(items: CartItems): Promise<CheckoutRespo
 }
 
 export default checkout;
+export {addOrderAPI,getOrderAPI} ;

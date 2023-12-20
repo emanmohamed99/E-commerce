@@ -1,0 +1,15 @@
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.form {
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 hsl(245, 95%, 36%);
+  padding: 20px;
+}
+.button {
+  display: flex;
+  justify-content: center;
+}

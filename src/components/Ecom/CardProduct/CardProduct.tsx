@@ -1,4 +1,4 @@
-import style from "./CardProduct.module.css";
+
 
 import { useAppDispatch } from "../../../Hooks/hooks";
 
@@ -8,6 +8,9 @@ import { CardBody,CardTitle ,CardText,Button,Card, CardSubtitle} from 'reactstra
 import { useTranslation } from "react-i18next";
 
 
+
+// Import Swiper styles
+import 'swiper/css';
 
 
 
@@ -42,11 +45,12 @@ const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
 
 const { t } = useTranslation();
   return (
-   
-      <div className={style.cardWrapper}>
+    <div>
+  
       <Card
     style={{
-      width: '18rem'
+      width: '12rem',
+      margin:"1em"
     }}
   >
       <img src={img} alt={title} />
@@ -63,6 +67,7 @@ const { t } = useTranslation();
         {max_quantity2 }
       </CardSubtitle>
       <CardText>
+        {t("price")}:{" "}
       {price}
       </CardText>
       {max_quantity2?
@@ -95,6 +100,7 @@ const { t } = useTranslation();
           </Button>}
     </CardBody>
   </Card>
+
     </div>
   );
 };

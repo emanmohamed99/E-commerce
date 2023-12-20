@@ -1,5 +1,5 @@
 
-  export type category = {
+  export type Tcategory = {
     id: number;
     title: string;
     prefix: string;

@@ -6,3 +6,9 @@ margin: 1em;
 img{
   width: 100%;
 }
+.lastEleWrapper{
+  display: flex;
+  justify-content: space-between;
+
+ flex-wrap: wrap;
+}

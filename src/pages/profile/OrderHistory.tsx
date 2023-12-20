@@ -1,52 +1,81 @@
-import  { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 
-import { getOrder } from '../../store/cart/thunk/getCart';
-import { useTranslation } from 'react-i18next';
+import { fetchProductbyids } from "../../store/cart/thunk/getCart";
+import { useTranslation } from "react-i18next";
+import {  Card, CardBody } from "reactstrap";
+import {  useParams } from "react-router-dom";
+import Loading from "../../components/Ecom/Loading/Loading";
+
 
 const OrderHistory = () => {
-    const dispatch = useAppDispatch();
-    const currentUser = useAppSelector((state) => state.auth.currentUser2);
-    const userorder = useAppSelector((state) => state.cart.userorder);
-    const { t } = useTranslation();
-    useEffect(() => {
-        if (currentUser.id !== 0) {
-            dispatch(getOrder(currentUser.id));
-        }
-    }, [dispatch, currentUser]);
+  const dispatch = useAppDispatch();
 
-    return (
-        <div>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">{t("number of orders")}</th>
-                        <th scope="col">{t("quantity")}</th>
-                        <th scope="col">{t("title")}</th>
-                        <th scope="col">{t("category")}</th>
-                        <th scope="col">{t("max quantity")}</th>
-                        <th scope="col">{t("price")}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {userorder.map((dataItem, index) => (
-                        dataItem.orders.map((order, orderIndex) => (
-                            <tr key={`${index}-${orderIndex}`}>
-                                {orderIndex === 0 && (
-                                    <td rowSpan={dataItem.orders.length}>{index + 1}</td>
-                                )}
-                                <td>{order.quantity}</td>
-                                <td>{order.product?.title}</td>
-                                <td>{order.product?.cat_prefix}</td>
-                                <td>{order.product?.max_quantity}</td>
-                                <td>{order.product?.price}</td>
-                            </tr>
-                        ))
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+
+  const { productsData, loading, error } = useAppSelector((state) => state.cart);
+  const { t } = useTranslation();
+
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if(id){
+        dispatch(fetchProductbyids(id))
+    }
+ 
+  }, [dispatch,id]);
+
+  return (
+    <div>
+      <Loading loading={loading} error={error}>
+    
+         
+              <Card
+                body
+               className="m-1"
+              >
+                <CardBody>
+                  
+                  
+
+                  
+                 
+                      <div
+                       
+                        className="m-1  d-flex align-items-center"
+                      >
+                      <div
+                 
+                        style={{width:"10rem"}}
+                        className="d-flex m-1 "
+                       
+                      >
+                        
+                        
+                        <img
+                          src={productsData[0]?.img}
+                          alt={productsData[0]?.title}
+                        />
+                       
+                      </div>
+                      <div>
+                      <div className="m-1">{productsData[0]?.title}</div>
+                      <div className="m-1">{t("EGP")}{productsData[0]?.price}</div>
+                      </div>
+                     </div>
+                    
+                 
+                 
+                
+                  
+                </CardBody>
+                
+              </Card>
+          
+      
+      </Loading>
+    </div>
+  );
 };
 
 export default OrderHistory;

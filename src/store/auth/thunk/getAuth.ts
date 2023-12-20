@@ -19,8 +19,6 @@ export const loginuser = createAsyncThunk(
   async (loginData: Tlogin, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const authstate = thunkAPI.getState();
-      console.log(authstate);
       const { data } = await 
       postAuthloginAPI(loginData)
       return data;

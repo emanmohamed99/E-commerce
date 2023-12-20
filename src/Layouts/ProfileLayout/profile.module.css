@@ -8,49 +8,14 @@
     background-color: transparent;
     border: none;
 }
-.profileEditWrapper{
-    width: 90%;
-    margin: 1em;
+.button{
+  background-color: transparent;
+  border: none;
+  color: white;
 }
-.container {
-    display: flex;
-  }
-  
-  .sidebar {
-    flex: 0 0 250px; /* Set sidebar width */
-    background-color: #f2f2f2;
-    padding: 20px;
-    /* Other styles */
-    height: 100vh;
-  }
-  
-  .maincontent {
-    flex: 1; /* Take remaining space */
-    padding: 20px;
-    /* Other styles */
-  }
-  
-  /* Style the sidebar buttons */
-  .sidebarbuttons button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #ddd;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Change button styles on hover/focus if needed */
-  .sidebarbuttons button:hover,
-  .sidebarbuttons button:focus {
-    background-color: #ccc;
-  }
-  /* .tableorder td{
-    border: black 1px solid;
-  }
-  .tableorder th{
-    border: black 1px solid;
-  } */
-  /* Add more styles as needed */
-  
+.color{
+  color:white
+}
+.nav-link {
+  color: white;
+}

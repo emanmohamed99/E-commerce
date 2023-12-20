@@ -29,5 +29,13 @@
   "password": "password",
   "Email Already Exist": "Email Already Exist",
   "Available Quantity": "Available Quantity",
-  "number of orders": "number of orders"
+  "number of orders": "number of orders",
+  "logout":"logout",
+  "EGP":"EGP",
+  "General Info":"General Info",
+  "orderID":"orderID",
+  "Menu":"Menu",
+  "Email":"Email",
+  "username": "Username",
+  "welcome":"welcome"
 }

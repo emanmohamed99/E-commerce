@@ -15,14 +15,14 @@ export const checkoutCart = createAsyncThunk(
     "cart/checkout",
     async (_, thunkAPI) => {
       const state = thunkAPI.getState() as RootState;
-      const items = state.cart.items;
+      const items = state.cart?.items;
       const response = await checkout(items);
       return response;
     }
   );
   export const fetchProductbyids = createAsyncThunk(
     "item/fetchproductbyid",
-    async (ids:string[]|undefined[], thunkAPI) => {
+    async (ids:string[]|string, thunkAPI) => {
       const { rejectWithValue } = thunkAPI;
       try {
         const { data } = await getProductAPIbyid(ids);
@@ -37,7 +37,7 @@ export const checkoutCart = createAsyncThunk(
       
       async (userorder: Torders, thunkAPI) => {
       
-       console.log(userorder,"userorder");
+   
         const { rejectWithValue } = thunkAPI;
         try {
           const { data } = await addOrderAPI(userorder);
@@ -59,7 +59,7 @@ export const checkoutCart = createAsyncThunk(
         const { rejectWithValue } = thunkAPI;
         try {
           const { data } = await getOrderAPI(User_id);
-      console.log(data,"data");
+ 
           return data;
         } catch (error) {
           return rejectWithValue(error);

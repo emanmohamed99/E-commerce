@@ -2,7 +2,7 @@ import React, {  useState } from 'react';
 import { UpdateUser } from '../../store/auth/thunk/getAuth';
 import { Form, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
-import { FormGroup, Input, Label } from 'reactstrap';
+import { Button, FormGroup, Input, Label } from 'reactstrap';
 import styles from "../../Layouts/ProfileLayout/profile.module.css"
 import { useTranslation } from 'react-i18next';
 const ProfileEdit = () => {
@@ -10,7 +10,7 @@ const ProfileEdit = () => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation();
     const currentUser = useAppSelector((state) => state.auth.currentUser2);
-  console.log(currentUser.email);
+
    
     const navigate = useNavigate();
   
@@ -72,7 +72,11 @@ const ProfileEdit = () => {
               </FormGroup>
 
              
-            <input type="submit" value={t("update")} />
+           
+            <Button variant="primary" type="submit" >
+            {t("update")}
+        </Button>
+           
             </Form>
           </div>
      

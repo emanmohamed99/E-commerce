@@ -3,7 +3,7 @@ import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "../index";
 
 import { initialStateCart } from "./intialState";
-import { product } from '../product/types';
+import { Tproduct } from '../product/types';
 import { Addorders, checkoutCart, fetchProductbyids, getOrder } from "./thunk/getCart";
 
 
@@ -11,7 +11,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: initialStateCart,
   reducers: {
-    addToCart(state, action: PayloadAction<product>) {
+    addToCart(state, action: PayloadAction<Tproduct>) {
       const { id, max_quantity } = action.payload;
 
       if (state.items[id] && state.items[id].quantity < max_quantity) {
@@ -96,7 +96,7 @@ const cartSlice = createSlice({
     builder.addCase(fetchProductbyids.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message||""; 
-      // console.log(action.error.message);
+ 
    
     }) 
     builder.addCase(Addorders.pending, (state) => {

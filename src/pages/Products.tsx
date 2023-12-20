@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
 
-import { product as Tproduct } from '../store/product/types';
+import {  Tproduct } from '../store/product/types';
 import CardProduct from "../components/Ecom/CardProduct/CardProduct";
 import { useParams } from "react-router-dom";
 
@@ -9,11 +9,10 @@ import style from "../components/Ecom/CardProduct/CardProduct.module.css";
 import { GridList } from "../components/Layout";
 import { fetchProducts ,fetchproduct} from "../store/product/thunk/getProduct";
 
-import { SwiperSlide } from 'swiper/react';
 
 
 
-import 'swiper/css';
+
 
 
 
@@ -57,12 +56,14 @@ const Products = () => {
         data={products}
         loading={loading}
         error={error}
-        renderChild={(records: Tproduct) => (
-          
-          <SwiperSlide key={records.id}><CardProduct  {...records} items={items}/></SwiperSlide>
+        renderChild={(records)=>(
+        
+        
+           <CardProduct  key={records.id}{...(records as Tproduct) } items={items}/>   
+
         )}
       />
-      
+ 
     </div>
   );
 };

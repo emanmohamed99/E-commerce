@@ -13,7 +13,8 @@ const ProfileInfo = () => {
   
   return (
     <div>
-      {currentUser ? (
+      <h3>{t("profile")}</h3>
+     
         <Card
           style={{
             margin: "2rem",
@@ -31,15 +32,13 @@ const ProfileInfo = () => {
             <CardSubtitle className="mb-2 text-muted" tag="h6">
               <div>{currentUser.username}</div>
             </CardSubtitle>
-            <CardTitle tag="h5">{t("email")}</CardTitle>
+            <CardTitle tag="h5">{t("Email")}</CardTitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
               <div>{currentUser.email}</div>
             </CardSubtitle>
           </CardBody>
         </Card>
-      ) : (
-        "there is no user"
-      )}
+   
     </div>
   );
 };

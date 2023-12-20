@@ -11,8 +11,9 @@ import {
 import {   Addorders, checkoutCart, fetchProductbyids } from "../../../store/cart/thunk/getCart";
 import {  useEffect } from 'react';
 
-import { product } from '../../../store/product/types';
+import { Tproduct } from '../../../store/product/types';
 import { useTranslation } from 'react-i18next';
+import { Table } from 'reactstrap';
 
 
 type CartType = {
@@ -36,7 +37,7 @@ const Cart = ({
   const currentUser = useAppSelector((state) => state.auth.currentUser2);
  
 
-  const orders: { product: product | undefined; quantity: number; }[]=[];
+  const orders: { product: Tproduct | undefined; quantity: number; }[]=[];
 
   
   
@@ -69,7 +70,7 @@ const Cart = ({
   if(quantity>3){
     alert(`sorry but maximum quentity is ${max_quantity} `)
   }
-  //product,quantity
+ 
     dispatch(updateQuantity({ id, quantity, max_quantity }));
   }
 
@@ -81,25 +82,28 @@ const Cart = ({
   });
  
   useEffect(() => {
-    dispatch(fetchProductbyids(Object.keys(items)))
+    if(items){
+      dispatch(fetchProductbyids(Object.keys(items)))
+    }
+   
   }, [dispatch, items]);
   return (
     <div>
       <main className="page">
-        <table className={tableClasses}>
+        <Table className={tableClasses}>
           <thead>
             <tr>
-            <th> { t("product")}</th>
+            <th scope="col"> { t("product")}</th>
             <th></th>
-              <th>{ t("quantity")}</th>
-              <th>{ t("total")}</th>
-              <th>{ t("remove")}</th>
+              <th >{ t("quantity")}</th>
+              <th >{ t("total")}</th>
+              <th >{ t("remove")}</th>
             </tr>
           </thead>
           <tbody>
             {productsData.length!=0?productsData.map((product) => (
               <tr key={product.id}>
-            <td><div className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </td>     
+            <th scope="row"><div className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </th>     
                 <td>{product.title}</td>
                 <td>
                   <select
@@ -128,7 +132,10 @@ const Cart = ({
                   </button>
                 </td>
               </tr>
-            )):<tr><td>{ t("there is no items")}</td></tr>
+            )):<tr>   <td></td>
+            <td></td><td>{ t("there is no items")}</td>
+            <td></td>
+              <td></td></tr>
             // :<tr ><td><div className={styles.centerDiv} >there is no items avalible</div></td></tr>
             }
           </tbody>
@@ -136,11 +143,12 @@ const Cart = ({
             <tr>
               <td>{ t("total")}</td>
               <td></td>
+              <td></td>
               <td className={styles.total}>${totalPrice}</td>
               <td></td>
             </tr>
           </tfoot>
-        </table>
+        </Table>
         <form onSubmit={onCheckout} className={styles.form}>
           {checkoutState === "ERROR" && errorMessage ? (
             <p className={styles.errorBox}>{errorMessage}</p>

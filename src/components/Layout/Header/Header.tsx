@@ -55,7 +55,7 @@ function Header() {
         <span className="d-flex justify-content-end">
           <NavItem className="d-flex align-items-center m-1">
         
-              <NavLink className="active text-decoration-none" to="/main">
+              <NavLink className="active text-decoration-none m-1" to="/main">
                 {t("Home")}
               </NavLink>
             
@@ -63,7 +63,7 @@ function Header() {
           <NavItem  className="d-flex align-items-center m-1">
            
               <NavLink
-                className="text-decoration-none color"
+                className="text-decoration-none color m-1"
                 to="/main/category"
               >
                 {t("Categories")}

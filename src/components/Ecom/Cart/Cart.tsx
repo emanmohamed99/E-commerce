@@ -13,7 +13,7 @@ import {  useEffect } from 'react';
 
 import { Tproduct } from '../../../store/product/types';
 import { useTranslation } from 'react-i18next';
-import { Table } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 
 
 type CartType = {
@@ -153,9 +153,9 @@ const Cart = ({
           {checkoutState === "ERROR" && errorMessage ? (
             <p className={styles.errorBox}>{errorMessage}</p>
           ) : null}
-          <button className={styles.button} type="submit">
+          <Button className={styles.button} type="submit">
           { t("checkout")}
-          </button>
+          </Button>
         </form>
       </main>
     </div>

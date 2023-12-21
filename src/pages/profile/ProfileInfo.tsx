@@ -22,8 +22,8 @@ const ProfileInfo = () => {
         >
           <button className={styles.cartinfo}>
             <Link to="/main/profile/edit">
-              {" "}
-              <FontAwesomeIcon icon={faPenToSquare} size="lg" />
+          
+              <FontAwesomeIcon icon={faPenToSquare} style={{color:"black"}} size="lg" />
             </Link>
           </button>
 

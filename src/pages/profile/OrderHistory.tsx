@@ -29,7 +29,7 @@ const OrderHistory = () => {
     <div>
       <Loading loading={loading} error={error}>
               <Card
-                body
+                
                className="m-1"
               >
                 <CardBody>
@@ -44,10 +44,11 @@ const OrderHistory = () => {
                         className="d-flex m-1 "
                        
                       >
+                         <div className="d-flex m-1 w-25">
                         <img
                           src={productsData[0]?.img}
                           alt={productsData[0]?.title}
-                        />
+                        /></div>
                        
                       </div>
                       <div>

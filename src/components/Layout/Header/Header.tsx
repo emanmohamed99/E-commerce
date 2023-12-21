@@ -78,7 +78,7 @@ function Header() {
                 {t("welcome")} {currentUser2.username}
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem header     className={styles.button}
+                <DropdownItem  className={styles.button}
                     onClick={() => navigate("/main/profile")}>
                  
                 

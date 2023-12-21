@@ -30,7 +30,7 @@ const OrderHistory = () => {
       <Loading loading={loading} error={error}>
               <Card
                 
-               className="m-1"
+             
               >
                 <CardBody>
                  

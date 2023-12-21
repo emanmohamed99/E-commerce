@@ -18,6 +18,7 @@ import "swiper/css/scrollbar";
 import { useTranslation } from "react-i18next";
 import { Navigation, Scrollbar } from 'swiper/modules';
 
+
 const Home = () => {
   const dispatch = useAppDispatch();
   const { products, loading, error } = useAppSelector(
@@ -32,13 +33,13 @@ const Home = () => {
   const lastElements = products.slice(-numberOfElements).reverse();
   const { i18n} = useTranslation();
 
-
-    const dir = i18n.dir(i18n.language);
+  const dir = i18n.dir(i18n.language);
+ 
 
 
   return (
     <Loading loading={loading} error={error}>
-      <div className="m-2  ">
+      <div className="m-2">
         <Swiper
        modules={[Navigation, Pagination, Scrollbar, ]}
        spaceBetween={50}
@@ -47,7 +48,8 @@ const Home = () => {
        scrollbar={{ draggable: true }}
          
       
-          dir={!dir ? "rtl" : "ltr"} 
+          dir={dir} 
+          key={dir}
           breakpoints={{
             // when window width is >= 320px
             320: {
@@ -76,6 +78,7 @@ const Home = () => {
               <Card
                 style={{
                   width: "13rem",
+                  marginBottom:"1rem"
                 }}
               >
                 {" "}

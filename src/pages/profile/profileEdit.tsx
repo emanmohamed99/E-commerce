@@ -68,7 +68,7 @@ const ProfileEdit = () => {
                   onChange={handleChange}
                   required
                 />
-                <Label for="exampleEmail">{t("log in")}</Label>
+                <Label for="exampleEmail">{t("Email")}</Label>
               </FormGroup>
 
              

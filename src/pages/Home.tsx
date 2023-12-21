@@ -1,7 +1,7 @@
 import { Card, CardBody, CardTitle, Pagination } from "reactstrap";
 
 import style from "../components/Ecom/CardProduct/CardProduct.module.css";
-// Import Swiper styles
+
 import "swiper/css";
 import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
 import Loading from "../components/Ecom/Loading/Loading";
@@ -62,7 +62,7 @@ const Home = () => {
           }}
         >
           {products.map((product) => (
-            <SwiperSlide>
+            <SwiperSlide key={product.id}>
               <Card
                 style={{
                   width: "13rem",
@@ -79,7 +79,7 @@ const Home = () => {
         </Swiper>
         <div className={style.lastEleWrapper}>
           {lastElements.map((product) => (
-            <Card
+            <Card key={product.id}
               style={{
                 width: "13rem",
                 margin: "1em 0",

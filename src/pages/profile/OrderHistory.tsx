@@ -28,17 +28,11 @@ const OrderHistory = () => {
   return (
     <div>
       <Loading loading={loading} error={error}>
-    
-         
               <Card
                 body
                className="m-1"
               >
                 <CardBody>
-                  
-                  
-
-                  
                  
                       <div
                        
@@ -50,8 +44,6 @@ const OrderHistory = () => {
                         className="d-flex m-1 "
                        
                       >
-                        
-                        
                         <img
                           src={productsData[0]?.img}
                           alt={productsData[0]?.title}
@@ -63,16 +55,9 @@ const OrderHistory = () => {
                       <div className="m-1">{t("EGP")}{productsData[0]?.price}</div>
                       </div>
                      </div>
-                    
-                 
-                 
-                
-                  
-                </CardBody>
-                
-              </Card>
           
-      
+                </CardBody>
+              </Card>
       </Loading>
     </div>
   );

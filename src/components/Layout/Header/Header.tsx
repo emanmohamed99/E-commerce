@@ -78,26 +78,26 @@ function Header() {
                 {t("welcome")} {currentUser2.username}
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem header>
-                  <button
-                    className={styles.button}
-                    onClick={() => navigate("/main/profile")}
-                  >
+                <DropdownItem className={styles.button}
+                    onClick={() => navigate("/main/profile")}>
+                 
+                
+                  
                     {t("profile")}
-                  </button>
+            
                 </DropdownItem>
-                <DropdownItem>
-                  <button
-                    className={styles.button}
-                    onClick={() => navigate("/main/profile/ordershistory")}
-                  >
+                <DropdownItem   className={styles.button}
+                    onClick={() => navigate("/main/profile/ordershistory")}>
+             
+                  
+                
                     {t("orders")}
-                  </button>
+            
                 </DropdownItem>
-                <DropdownItem>
-                  <button className={styles.button} onClick={handleLogout}>
+                <DropdownItem className={styles.button} onClick={handleLogout}>
+              
                     {t("logout")}
-                  </button>
+                
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>

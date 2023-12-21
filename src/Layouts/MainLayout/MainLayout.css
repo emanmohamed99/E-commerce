@@ -1,0 +1,21 @@
+body {
+    font-size: 1rem;
+}
+@media (min-width:768px) {
+    body {
+        font-size: 10px;
+    }
+}
+@media (min-width:1024px) {
+    body {
+        font-size: 14px;
+    }
+}
+@media (min-width:1280px) {
+    body {
+        font-size: 16px;
+    }
+}
+img{
+    width: 100%;
+}

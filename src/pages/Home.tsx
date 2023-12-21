@@ -1,6 +1,6 @@
 import { Card, CardBody, CardTitle, Pagination } from "reactstrap";
 
-import style from "../components/Ecom/CardProduct/CardProduct.module.css";
+
 
 import "swiper/css";
 import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <Loading loading={loading} error={error}>
-      <div className={style.cardWrapper}>
+      <div className="m-2  ">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={50}
@@ -62,7 +62,7 @@ const Home = () => {
           }}
         >
           {products.map((product) => (
-            <SwiperSlide key={product.id}>
+            <SwiperSlide key={product.id} className="d-flex justify-content-center" >
               <Card
                 style={{
                   width: "13rem",
@@ -77,7 +77,7 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className={style.lastEleWrapper}>
+        <div className="d-flex justify-content-center justify-content-lg-between justify-content-md-between justify-content-sm-between flex-wrap ">
           {lastElements.map((product) => (
             <Card key={product.id}
               style={{

@@ -51,7 +51,7 @@ function Header() {
           </div>
         </ul>
       </div>
-      <Nav className="bg-dark d-flex justify-content-between ">
+      <Nav  className="bg-dark d-flex justify-content-between ">
         <span className="d-flex justify-content-end">
           <NavItem className="d-flex align-items-center m-1">
         

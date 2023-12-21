@@ -5,7 +5,7 @@ import {  Tproduct } from '../store/product/types';
 import CardProduct from "../components/Ecom/CardProduct/CardProduct";
 import { useParams } from "react-router-dom";
 
-import style from "../components/Ecom/CardProduct/CardProduct.module.css";
+
 import { GridList } from "../components/Layout";
 import { fetchProducts ,fetchproduct} from "../store/product/thunk/getProduct";
 
@@ -49,7 +49,7 @@ const Products = () => {
  
  
   return (
-    <div className={style.cardParent}>
+   
 
       <GridList
       
@@ -64,7 +64,7 @@ const Products = () => {
         )}
       />
  
-    </div>
+
   );
 };
 

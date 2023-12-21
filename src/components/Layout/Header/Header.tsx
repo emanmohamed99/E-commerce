@@ -71,10 +71,10 @@ function Header() {
             </NavLinkBootstrap>
           </NavItem>
         </span>
-        <span className="d-flex justify-content-end">
+        <span className="d-flex justify-content-end ">
           {currentUser2.email.length > 0 ? (
-            <Dropdown nav isOpen={dropdownOpen} toggle={toggle}>
-              <DropdownToggle nav caret>
+            <Dropdown nav isOpen={dropdownOpen} toggle={toggle} >
+              <DropdownToggle nav caret className="text-light">
                 {t("welcome")} {currentUser2.username}
               </DropdownToggle>
               <DropdownMenu>

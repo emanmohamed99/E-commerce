@@ -51,24 +51,24 @@ function Header() {
           </div>
         </ul>
       </div>
-      <Nav className="bg-dark d-flex justify-content-between color">
+      <Nav className="bg-dark d-flex justify-content-between ">
         <span className="d-flex justify-content-end">
-          <NavItem>
-            <NavLinkBootstrap>
-              <NavLink className="active text-decoration-none color" to="/main">
+          <NavItem className="d-flex align-items-center m-1">
+        
+              <NavLink className="active text-decoration-none" to="/main">
                 {t("Home")}
               </NavLink>
-            </NavLinkBootstrap>
+            
           </NavItem>
-          <NavItem>
-            <NavLinkBootstrap>
+          <NavItem  className="d-flex align-items-center m-1">
+           
               <NavLink
                 className="text-decoration-none color"
                 to="/main/category"
               >
-                {t("categories")}
+                {t("Categories")}
               </NavLink>
-            </NavLinkBootstrap>
+           
           </NavItem>
         </span>
         <span className="d-flex justify-content-end ">
@@ -78,7 +78,7 @@ function Header() {
                 {t("welcome")} {currentUser2.username}
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem className={styles.button}
+                <DropdownItem header     className={styles.button}
                     onClick={() => navigate("/main/profile")}>
                  
                 
@@ -103,21 +103,21 @@ function Header() {
             </Dropdown>
           ) : (
             <Fragment>
-              <NavItem>
-                <NavLinkBootstrap>
+              <NavItem  className="d-flex align-items-center m-1">
+             
                   <NavLink className="text-decoration-none" to="/main/login">
                     {" "}
                     {t("log in")}
                   </NavLink>
-                </NavLinkBootstrap>
+                
               </NavItem>
-              <NavItem>
-                <NavLinkBootstrap>
+              <NavItem  className="d-flex align-items-center m-1">
+              
                   <NavLink className="text-decoration-none" to="/main/register">
                     {" "}
                     {t("sign up")}
                   </NavLink>
-                </NavLinkBootstrap>
+              
               </NavItem>
             </Fragment>
           )}

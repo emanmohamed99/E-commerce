@@ -77,7 +77,7 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="d-flex justify-content-center justify-content-lg-between justify-content-md-between justify-content-sm-between flex-wrap ">
+        <div className="d-flex justify-content-center justify-content-lg-between justify-content-md-between justify-content-sm-between flex-wrap m-4 ">
           {lastElements.map((product) => (
             <Card key={product.id}
               style={{

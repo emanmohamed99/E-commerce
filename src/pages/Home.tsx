@@ -14,7 +14,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { A11y, Navigation, Scrollbar } from "swiper/modules";
+
+import { useTranslation } from "react-i18next";
+import { Navigation, Scrollbar } from 'swiper/modules';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -28,16 +30,24 @@ const Home = () => {
   const numberOfElements = 5; // Number of elements to retrieve from the end
 
   const lastElements = products.slice(-numberOfElements).reverse();
+  const { i18n} = useTranslation();
+
+
+    const dir = i18n.dir(i18n.language);
+
 
   return (
     <Loading loading={loading} error={error}>
       <div className="m-2  ">
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={50}
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
+       modules={[Navigation, Pagination, Scrollbar, ]}
+       spaceBetween={50}
+       navigation
+       pagination={{ clickable: true }}
+       scrollbar={{ draggable: true }}
+         
+      
+          dir={!dir ? "rtl" : "ltr"} 
           breakpoints={{
             // when window width is >= 320px
             320: {

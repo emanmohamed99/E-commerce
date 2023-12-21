@@ -1,7 +1,7 @@
-import { category } from "./types";
+import { Tcategory } from "./types";
 
  interface ProductsState {
-    categories:category[];
+    categories:Tcategory[];
     loading:boolean,
 error:null|string,
   }

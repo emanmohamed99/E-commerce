@@ -25,9 +25,9 @@ const Category = () => {
 
 
   return (
-  <div className="d-flex">
+ 
     <GridList data={categoriesData} loading={loading} error={error} renderChild={(records)=>(<CardCategory  key={records.id}{...(records as Tcategory)}/>)}/>
-    </div>
+  
 
   );
 };

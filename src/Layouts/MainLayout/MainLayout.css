@@ -1,14 +1,22 @@
 body {
     font-size: 1rem;
 }
-@media (min-width:768px) {
+ @media (min-width:400px) and (max-width:768px)
+ {
     body {
         font-size: 10px;
     }
 }
+ 
+   
+@media (min-width:768px ) and (max-width: 1024px)  {
+    body {
+        font-size: 12px;
+    }
+}
 @media (min-width:1024px) {
     body {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 @media (min-width:1280px) {

@@ -15,7 +15,7 @@ const Profile = () => {
     <div className="m-2 ">
       <div className="container-fluid ">
         <div className="row flex-nowrap">
-          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark bg-opacity-75 rounded collapse show"  id="sidebar" style={{height:"100vh"}}>
+          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark bg-opacity-75 rounded collapse show"  id="sidebar" style={{height:"50vh"}}>
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
              
                 <span className="fs-5 d-none d-sm-inline">{t("Menu")}</span>
@@ -33,7 +33,7 @@ const Profile = () => {
                     <i className="fs-4 bi-speedometer2"></i>{" "}
                   </div>
                   <ul
-                    className="collapse show nav flex-column ms-1 "
+                    className="collapse show nav flex-column ms-1 m-0 p-0"
                     id="submenu1"
                     data-bs-parent="menu"
                     style={{width:"max-content"}}

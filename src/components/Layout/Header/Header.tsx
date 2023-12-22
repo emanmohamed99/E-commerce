@@ -51,8 +51,8 @@ function Header() {
           </div>
         </ul>
       </div>
-      <Nav  className="bg-dark d-flex justify-content-between ">
-        <span className="d-flex justify-content-end">
+      <Nav className="bg-dark d-flex justify-content-between ">
+        <div className="d-flex justify-content-end">
           <NavItem className="d-flex align-items-center m-1">
         
               <NavLink className="active text-decoration-none m-1" to="/main">
@@ -70,8 +70,8 @@ function Header() {
               </NavLink>
            
           </NavItem>
-        </span>
-        <span className="d-flex justify-content-end ">
+        </div>
+        <div className="d-flex justify-content-end ">
           {currentUser2.email.length > 0 ? (
             <Dropdown nav isOpen={dropdownOpen} toggle={toggle} >
               <DropdownToggle nav caret className="text-light">
@@ -155,7 +155,7 @@ function Header() {
               </span>
             </NavLinkBootstrap>
           </NavItem>
-        </span>
+        </div>
       </Nav>
     </div>
   );

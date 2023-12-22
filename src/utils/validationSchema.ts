@@ -9,4 +9,6 @@ export const postSchema = Yup.object().shape({
   .min(6, 'Password must be at least 6 characters')
   .matches(/^.*[^\s].*$/, 'Password must contain at least one character')
   .required('Password is required'),
+
+  
 });

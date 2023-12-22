@@ -5,15 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import styles from "./Register.module.css";
 import { postSchema } from "../../utils/validationSchema";
-import Loading from "../../components/Ecom/Loading/Loading";
+
 import { login } from "../../store/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
+import { useAppDispatch } from "../../Hooks/hooks";
 import { registerUser } from "../../store/auth/thunk/getAuth";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 const Register = () => {
-  const { loading, error } = useAppSelector((state) => state.auth);
-
+ 
+  const [Error, setError] = useState("");
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
@@ -38,11 +39,13 @@ const Register = () => {
           dispatch(login(res.user));
           navigate("/");
         })
-        .catch(() => {});
+        .catch(() => {
+          setError("user already exist please go to log in page")
+        });
     },
   });
   return (
-    <Loading loading={loading} error={error}>
+   
       <div className={styles.formWrapper}>
         <Form onSubmit={formik.handleSubmit} className={styles.form}>
           <h3> {t("sign up")}</h3>
@@ -71,7 +74,7 @@ const Register = () => {
               {formik.errors.username}
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
             <Form.Label>{t("password")}</Form.Label>
             <Form.Control
               type="password"
@@ -84,6 +87,9 @@ const Register = () => {
               {formik.errors.password}
             </Form.Control.Feedback>
           </Form.Group>
+          { Error?<div className="alert alert-danger" role="alert">
+          {Error}
+        </div>:""}
           <div className={styles.button}>
             <Button variant="primary" type="submit">
               {t("sign up")}
@@ -91,7 +97,7 @@ const Register = () => {
           </div>
         </Form>
       </div>
-    </Loading>
+ 
   );
 };
 

@@ -7,6 +7,7 @@ import {
   faUserPen,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+
 const Profile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Profile = () => {
     <div className="m-2 ">
       <div className="container-fluid ">
         <div className="row flex-nowrap">
-          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark rounded collapse show"  id="sidebar">
+          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark bg-opacity-75 rounded collapse show "  id="sidebar">
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
              
                 <span className="fs-5 d-none d-sm-inline">{t("Menu")}</span>

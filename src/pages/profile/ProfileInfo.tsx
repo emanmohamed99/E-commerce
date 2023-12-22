@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 const ProfileInfo = () => {
   
-
+  const {t, i18n} = useTranslation();
+  const dir = i18n.dir(i18n.language);
   const currentUser = useAppSelector((state) => state.auth.currentUser2);
-  const { t } = useTranslation();
+
   
   return (
     <div>
@@ -20,12 +21,17 @@ const ProfileInfo = () => {
             margin: "2rem",
           }}
         >
-          <button className={styles.cartinfo}>
+          {dir=="ltr"?<button className={styles.cartinfo}>
             <Link to="/main/profile/edit">
           
-              <FontAwesomeIcon icon={faPenToSquare} style={{color:"black"}} size="lg" />
+              <FontAwesomeIcon icon={faPenToSquare} style={{color:"blue"}} size="lg" />
             </Link>
-          </button>
+          </button>:<button className={styles.cartinfo_left}>
+            <Link to="/main/profile/edit">
+          
+              <FontAwesomeIcon icon={faPenToSquare}  rotation={270}style={{color:"black"}} size="lg" />
+            </Link>
+          </button>}
 
           <CardBody>
             <CardTitle tag="h5">{t("Username")}</CardTitle>

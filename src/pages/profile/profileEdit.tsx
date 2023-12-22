@@ -8,10 +8,11 @@ import { useTranslation } from 'react-i18next';
 const ProfileEdit = () => {
  
     const dispatch = useAppDispatch();
-    const { t } = useTranslation();
+
     const currentUser = useAppSelector((state) => state.auth.currentUser2);
 
-   
+    const {t} = useTranslation();
+ 
     const navigate = useNavigate();
   
  
@@ -46,29 +47,32 @@ const ProfileEdit = () => {
     <div className={styles.profileEditWrapper}>
         
             <Form onSubmit={handleSubmit}>
+            <Label for="exampleUsername">{t("Username")} </Label>
               <FormGroup floating>
+                <Label></Label>
                 <Input
                   id="exampleUsername"
                   name="username"
-                  placeholder="Username"
+              
                   type="text"
                   value={userData.username}
                   onChange={handleChange}
                   required
                 />
-                <Label for="exampleUsername">{t("Username")}</Label>
+               
               </FormGroup>
+              <Label for="exampleEmail">{t("Email")}</Label>
               <FormGroup floating>
                 <Input
                   id="exampleEmail"
                   name="email"
-                  placeholder="Email"
+                
                   type="email"
                   value={userData.email}
                   onChange={handleChange}
                   required
                 />
-                <Label for="exampleEmail">{t("Email")}</Label>
+              
               </FormGroup>
 
              

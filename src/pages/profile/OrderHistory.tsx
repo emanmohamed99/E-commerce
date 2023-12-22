@@ -13,7 +13,7 @@ const OrderHistory = () => {
 
 
   const { productsData, loading, error } = useAppSelector((state) => state.cart);
-  const { t } = useTranslation();
+
 
 
   const { id } = useParams();
@@ -24,7 +24,8 @@ const OrderHistory = () => {
     }
  
   }, [dispatch,id]);
-
+  const {t, i18n} = useTranslation();
+  const dir = i18n.dir(i18n.language);
   return (
     <div>
       <Loading loading={loading} error={error}>
@@ -53,7 +54,7 @@ const OrderHistory = () => {
                       </div>
                       <div>
                       <div className="m-1">{productsData[0]?.title}</div>
-                      <div className="m-1">{t("EGP")}{productsData[0]?.price}</div>
+                     {dir=="ltr"?<div className="m-1">{t("EGP")}{" "}{productsData[0]?.price}</div>:<div className="m-1">{productsData[0]?.price} {" "}{t("EGP")}</div>}
                       </div>
                      </div>
           

@@ -107,7 +107,7 @@ function Header() {
              
                   <NavLink className="text-decoration-none" to="/main/login">
                     {" "}
-                    {t("log in")}
+                    {t("Log in")}
                   </NavLink>
                 
               </NavItem>
@@ -115,7 +115,7 @@ function Header() {
               
                   <NavLink className="text-decoration-none" to="/main/register">
                     {" "}
-                    {t("sign up")}
+                    {t("Sign Up")}
                   </NavLink>
               
               </NavItem>

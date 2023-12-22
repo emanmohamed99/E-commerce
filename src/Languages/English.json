@@ -37,5 +37,7 @@
   "Menu":"Menu",
   "Email":"Email",
   "username": "Username",
-  "welcome":"welcome"
+  "welcome":"welcome",
+  "Log in":"Log in",
+  "Sign Up":"Sign Up"
 }

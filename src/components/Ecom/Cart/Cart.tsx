@@ -14,6 +14,7 @@ import {  useEffect } from 'react';
 import { Tproduct } from '../../../store/product/types';
 import { useTranslation } from 'react-i18next';
 import { Button, Table } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
 
 
 type CartType = {
@@ -40,9 +41,9 @@ const Cart = ({
   const orders: { product: Tproduct | undefined; quantity: number; }[]=[];
 
   
-  
-  const { t} = useTranslation();
 
+  const { t} = useTranslation();
+const navigate=useNavigate()
   function onCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(checkoutCart());
@@ -94,7 +95,7 @@ const Cart = ({
           <thead>
             <tr>
             <th scope="col"> { t("product")}</th>
-            <th></th>
+          
               <th >{ t("quantity")}</th>
               <th >{ t("total")}</th>
               <th >{ t("remove")}</th>
@@ -102,7 +103,7 @@ const Cart = ({
           </thead>
           <tbody>
             {productsData.length!=0?productsData.map((product) => (
-              <tr key={product.id}>
+              <tr key={product.id} className='w-100'>
             <th scope="row"><div className={styles.imageWrapper}> <img src={product.img} alt={product.title}/></div> </th>     
                 <td>{product.title}</td>
                 <td>
@@ -132,31 +133,37 @@ const Cart = ({
                   </button>
                 </td>
               </tr>
-            )):<tr>   <td></td>
+            )):<tr>  
             <td></td><td>{ t("there is no items")}</td>
             <td></td>
-              <td></td></tr>
-            // :<tr ><td><div className={styles.centerDiv} >there is no items avalible</div></td></tr>
+            <td></td>
+         </tr>
+           
             }
           </tbody>
           <tfoot>
             <tr>
               <td>{ t("total")}</td>
-              <td></td>
-              <td></td>
+            
               <td className={styles.total}>${totalPrice}</td>
+              <td></td>
               <td></td>
             </tr>
           </tfoot>
         </Table>
-        <form onSubmit={onCheckout} className={styles.form}>
+        {currentUser.username?<form onSubmit={onCheckout} className={styles.form}>
           {checkoutState === "ERROR" && errorMessage ? (
             <p className={styles.errorBox}>{errorMessage}</p>
           ) : null}
           <Button className={styles.button} type="submit">
           { t("checkout")}
           </Button>
-        </form>
+        </form>:<form onSubmit={onCheckout} className={styles.form}>
+          {checkoutState === "ERROR" && errorMessage ? (
+            <p className={styles.errorBox}>{errorMessage}</p>
+          ) : null}<Button  className={styles.button}  onClick={()=>{navigate('/main/login')}} >
+          { t("checkout")}
+          </Button></form>}
       </main>
     </div>
   );

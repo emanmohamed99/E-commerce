@@ -29,7 +29,7 @@ const ProfileInfo = () => {
           </button>:<button className={styles.cartinfo_left}>
             <Link to="/main/profile/edit">
           
-              <FontAwesomeIcon icon={faPenToSquare}  rotation={270}style={{color:"black"}} size="lg" />
+              <FontAwesomeIcon icon={faPenToSquare}  rotation={270}style={{color:"#007aff"}} size="lg" />
             </Link>
           </button>}
 

@@ -43,6 +43,7 @@ border: none;
   background-color: transparent;
   border: none;
   color: white;
+  margin-top: 0.3em;
    }
   .color{
     color: white;
@@ -58,4 +59,5 @@ border: none;
   .dropdown-toggle:active, .open .dropdown-toggle {
     background:#FFF !important; 
     color:#000 !important;
+  
 }

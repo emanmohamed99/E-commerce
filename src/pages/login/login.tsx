@@ -28,7 +28,7 @@ const Login = () => {
         .unwrap()
         .then((res) => {
           dispatch(login(res.user));
-          navigate("/");
+          navigate("/main");
         })
         .catch(() => {
           setError(t("Email or password isn't exist"));

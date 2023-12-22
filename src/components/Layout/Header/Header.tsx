@@ -9,7 +9,6 @@ import { getMemoizedNumItems } from "../../../store/cart/cartSlice";
 import "../../../i18n";
 import { useTranslation } from "react-i18next";
 import { logout } from "../../../store/auth/authSlice";
-import "./Header.css"
 import { Fragment } from "react";
 import { NavItem } from "react-bootstrap";
 
@@ -44,7 +43,7 @@ function Header() {
       </div>
       <Navbar collapseOnSelect expand="lg" className=" bg-dark" dir="">
         <Navbar.Brand >{" "}</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="bg-light"/>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="bg-light m-1"/>
         <Navbar.Collapse
           className="justify-content-between "
           id="responsive-navbar-nav"
@@ -68,7 +67,7 @@ function Header() {
           <Nav>
             {currentUser2.email.length > 0 ? (
               <NavDropdown    title={
-                <span className="text-white">{t(`welcome ${currentUser2.username}`)}</span>
+                <span className="text-white m-1">{t("welcome")}{" "}{currentUser2.username}</span>
             }id="navbarScrollingDropdown"  >
                 <NavDropdown.Item onClick={() => navigate("/main/profile")} >
                   {" "}

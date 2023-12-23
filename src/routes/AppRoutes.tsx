@@ -63,11 +63,9 @@ function AppRoutes() {
 
         {
           path: "main/profile",
-          element: userId ? (
+          element:
             <Profile />
-          ) : (
-            <Navigate to="/main/login"></Navigate>
-          ),
+          ,
 
           children: [
             {
@@ -94,11 +92,9 @@ function AppRoutes() {
         },
         {
           path: "main/login",
-          element: !userId ? (
+          element: 
             <Login />
-          ) : (
-            <Navigate to="/main/profile"></Navigate>
-          ),
+           ,
         },
       ],
     },

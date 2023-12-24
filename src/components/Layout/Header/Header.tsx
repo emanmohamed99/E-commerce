@@ -28,7 +28,7 @@ function Header() {
     <div>
     {dir=== "ltr"?(
    
-      <div className={styles.nav2}>
+      <div className={styles.nav}>
         <ul>
           <li>
             <div className={styles.logo}  onClick={() => navigate("/")}>
@@ -45,17 +45,17 @@ function Header() {
         </ul>
       </div>):(
    
-   <div className={styles.nav2}>
+   <div className={styles.nav}>
      <ul>
      <li>
            <NavLink to="/main/shoppingCard">
-          <div ><FontAwesomeIcon icon={faCartShopping} style={{color: "#707070",}} />{numberdata ? <div className={styles.cartButtonIconRTL}><div>{numberdata}</div></div> : <span className="m-1">{t("Cart")}</span>}</div>   
+          <div >{numberdata ? <div className={styles.cartButtonIconRTL}><div>{numberdata}</div></div> : <span className="m-1">{t("Cart")}</span>}<FontAwesomeIcon icon={faCartShopping} style={{color: "#707070",}} /></div>   
            </NavLink>
          </li>
        <div className={styles.shoppingIcon}>
        <li>
          <div className={styles.logo}  onClick={() => navigate("/")}>
-           <img src="images/ecom.png" alt={t("E-commerce")} />
+           <img src="images/ecomArabic.jpeg" alt={t("E-commerce")} />
          </div>
        </li>
        </div>

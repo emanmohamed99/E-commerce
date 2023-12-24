@@ -5,19 +5,19 @@
   float: right;
   color: black;
 }
-.nav2 ul {
+.nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-.nav2 ul li {
+.nav ul li {
   float: left;
   color: black;
 }
 
-.nav2 ul li a {
+.nav ul li a {
   display: block;
   color: black;
   text-align: center;

@@ -17,22 +17,27 @@ const CardCategory = ({title,prefix,img}:categoryType) => {
 
   return (
     
-    <div className={Style.card}>
+    <Card className={Style.card}style={{
+      boxShadow: 'none',
+     border:"none"
+    } }>
      
-     <Card 
+     <div 
     style={{
-      width: '13rem'
+      width: '13rem',
+     
+
     } } onClick={() => navigate(`${prefix}`)}
   >
-    <img src={img} alt={title} />
+    <img src={img} alt={title} className="rounded-circle" />
     <CardBody>
     <CardTitle tag="h5">
     {title}
       </CardTitle>
       </CardBody>
    
-  </Card>
   </div>
+  </Card>
   );
 };
 

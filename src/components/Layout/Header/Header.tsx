@@ -10,7 +10,8 @@ import { useTranslation } from "react-i18next";
 import { logout } from "../../../store/auth/authSlice";
 import { Fragment } from "react";
 import { NavItem } from "react-bootstrap";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 function Header() {
   const numberdata = useAppSelector(getMemoizedNumItems);
   const { currentUser } = useAppSelector((state) => state.auth);
@@ -42,10 +43,8 @@ function Header() {
       </div>
       <Navbar collapseOnSelect expand="lg" className=" bg-dark" dir="">
         <Navbar.Brand> </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          className="bg-light m-1"
-        />
+      
+        <Navbar.Toggle aria-controls="basic-navbar-nav"   className="bg-dark border-0 m-1"> <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} /> </Navbar.Toggle>
         <Navbar.Collapse
           className="justify-content-between "
           id="responsive-navbar-nav"

@@ -46,8 +46,8 @@ const OrdersHistory = () => {
                       </div>
                     </div>
                     <div className="col-6 d-flex justify-content-end">
-                    <Button className="d-flex justify-content-center align-content-center bg-transparent border-0"
-                  
+                    <Button className="d-flex justify-content-center align-content-center border-0"
+                   style={{backgroundColor:"transparent"}} 
                 
                       onClick={() => {
                         navigate(

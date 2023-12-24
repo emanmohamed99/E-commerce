@@ -15,18 +15,20 @@ const Profile = () => {
     <div className="m-2 ">
       <div className="container-fluid ">
         <div className="row flex-nowrap">
-          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark bg-opacity-75 rounded collapse show"  id="sidebar" style={{height:"50vh"}}>
+          <div
+            className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark bg-opacity-75 rounded collapse show"
+            id="sidebar"
+            style={{ height: "50vh" }}
+          >
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
-             
-                <span className="fs-5 d-none d-sm-inline">{t("Menu")}</span>
-        
+              <span className="fs-5 d-none d-sm-inline">{t("Menu")}</span>
+
               <ul
                 className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start p-0 "
                 id="menu"
               >
                 <li>
                   <div
-                  
                     data-bs-toggle="collapse"
                     className="nav-link px-0 align-middle"
                   >
@@ -36,24 +38,20 @@ const Profile = () => {
                     className="collapse show nav flex-column ms-1 m-0 p-0"
                     id="submenu1"
                     data-bs-parent="menu"
-                    style={{width:"max-content"}}
+                    style={{ width: "max-content" }}
                   >
                     <li className="w-100">
-                      <div  className="nav-link px-0 ">
+                      <div className="nav-link px-0 ">
                         {" "}
                         <button
-                            className={styles.button}
-                            onClick={() =>
-                              navigate("/main/profile/information")
-                            }
-                          >
-                             <FontAwesomeIcon
-                          icon={faUser}
-                          style={{ color: "#ffffff" }}
-                
-                        />
-                          </button>
-                     
+                          className={styles.button}
+                          onClick={() => navigate("/main/profile/information")}
+                        >
+                      <span className="me-1">  <FontAwesomeIcon
+                            icon={faUser}
+                            style={{ color: "#ffffff" }}
+                          /></span>  
+                        </button>
                         <span className="d-none d-sm-inline">
                           {" "}
                           <button
@@ -62,52 +60,48 @@ const Profile = () => {
                               navigate("/main/profile/information")
                             }
                           >
-                            {t("personal information")}
+                            {t("personal info")}
                           </button>
                         </span>{" "}
                       </div>
                     </li>
                     <li className="w-100">
-                      <div  className="nav-link px-0">
+                      <div className="nav-link px-0">
                         {" "}
                         <button
+                          className={styles.button}
+                          onClick={() => navigate("/main/profile/edit")}
+                        >
+                      <FontAwesomeIcon
+                            icon={faUserPen}
+                            style={{ color: "#ffffff" }}
+                          />{" "}
+                        </button>
+                        <span className="d-none d-sm-inline">
+                          <button
                             className={styles.button}
                             onClick={() => navigate("/main/profile/edit")}
                           >
-                        
-                        <FontAwesomeIcon
-                          icon={faUserPen}
-                          style={{ color: "#ffffff" }}
-                        />{" "}
-                          </button>
-                      
-                      <span className="d-none d-sm-inline">
-                        <button
-                            className={styles.button}
-                            onClick={() => navigate("/main/profile/edit")}
-                          >
-                        
-                            {t("update information")}
+                            {t("update info")}
                           </button>
                         </span>
                       </div>
                     </li>
                     <li className="w-100">
-                      <div  className="nav-link px-0">
+                      <div className="nav-link px-0">
                         {" "}
                         <button
-                            className={styles.button}
-                            onClick={() =>
-                              navigate("/main/profile/ordershistory")
-                            }
-                          >
-                            <FontAwesomeIcon
-                          icon={faCalendarDays}
-                          style={{ color: "#ffffff" }}
-                        />{" "}
-                          </button>
-                    
-                        <span className="d-none d-sm-inline">
+                          className={styles.button}
+                          onClick={() =>
+                            navigate("/main/profile/ordershistory")
+                          }
+                        >
+                        <span className=" me-1"><FontAwesomeIcon
+                            icon={faCalendarDays}
+                            style={{ color: "#ffffff" }}
+                          />{" "}</span>  
+                        </button>
+                        <span className="d-none d-sm-inline ms-1 me-1">
                           <button
                             className={styles.button}
                             onClick={() =>

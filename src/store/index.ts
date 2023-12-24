@@ -1,25 +1,21 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // Defaults to localStorage for web
-import category from './category/categorySlice';
-import products from './product/productSlice';
-import cart from './cart/cartSlice';
-import auth from './auth/authSlice';
-
-
-
+import { configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // Defaults to localStorage for web
+import category from "./category/categorySlice";
+import products from "./product/productSlice";
+import cart from "./cart/cartSlice";
+import auth from "./auth/authSlice";
 
 const authPersistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
-  whitelist: ['currentUser2'], 
+  whitelist: ["currentUser"],
 };
 
-
 const cartPersistConfig = {
-  key: 'cart',
+  key: "cart",
   storage,
-  whitelist: ['items'], 
+  whitelist: ["items"],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, auth);

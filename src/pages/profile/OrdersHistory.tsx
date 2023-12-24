@@ -7,10 +7,10 @@ import { Button, Card, CardBody } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Ecom/Loading/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight ,faAngleLeft} from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 const OrdersHistory = () => {
   const dispatch = useAppDispatch();
-  const currentUser = useAppSelector((state) => state.auth.currentUser2);
+  const currentUser = useAppSelector((state) => state.auth.currentUser);
   const { userorder, loading, error } = useAppSelector((state) => state.cart);
 
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const OrdersHistory = () => {
       dispatch(getOrder(currentUser.id));
     }
   }, [dispatch, currentUser]);
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const dir = i18n.dir(i18n.language);
   return (
     <div>
@@ -51,7 +51,11 @@ const OrdersHistory = () => {
                         );
                       }}
                     >
-                      {dir=="ltr"?<FontAwesomeIcon icon={faAngleRight} />:<FontAwesomeIcon icon={faAngleLeft} />}
+                      {dir == "ltr" ? (
+                        <FontAwesomeIcon icon={faAngleRight} />
+                      ) : (
+                        <FontAwesomeIcon icon={faAngleLeft} />
+                      )}
                     </Button>
                   </div>
 

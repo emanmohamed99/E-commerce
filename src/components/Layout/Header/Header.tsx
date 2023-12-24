@@ -1,4 +1,3 @@
-
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -14,7 +13,7 @@ import { NavItem } from "react-bootstrap";
 
 function Header() {
   const numberdata = useAppSelector(getMemoizedNumItems);
-  const { currentUser2 } = useAppSelector((state) => state.auth);
+  const { currentUser } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
@@ -29,7 +28,7 @@ function Header() {
         <ul>
           <li>
             <div className={styles.logo}>
-              <img src="images/ecom.jpg" alt={t("E commerce")} />
+              <img src="images/ecom.png" alt={t("E-commerce")} />
             </div>
           </li>
           <div className={styles.shoppingIcon}>
@@ -42,12 +41,14 @@ function Header() {
         </ul>
       </div>
       <Navbar collapseOnSelect expand="lg" className=" bg-dark" dir="">
-        <Navbar.Brand >{" "}</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="bg-light m-1"/>
+        <Navbar.Brand> </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          className="bg-light m-1"
+        />
         <Navbar.Collapse
           className="justify-content-between "
           id="responsive-navbar-nav"
-         
         >
           <Nav>
             <Link
@@ -63,13 +64,18 @@ function Header() {
               {t("Categories")}
             </Link>
           </Nav>
-          
+
           <Nav>
-            {currentUser2.email.length > 0 ? (
-              <NavDropdown    title={
-                <span className="text-white m-1">{t("welcome")}{" "}{currentUser2.username}</span>
-            }id="navbarScrollingDropdown"  >
-                <NavDropdown.Item onClick={() => navigate("/main/profile")} >
+            {currentUser.email.length > 0 ? (
+              <NavDropdown
+                title={
+                  <span className="text-white m-1">
+                    {t("welcome")} {currentUser.username}
+                  </span>
+                }
+                id="navbarScrollingDropdown"
+              >
+                <NavDropdown.Item onClick={() => navigate("/main/profile")}>
                   {" "}
                   {t("profile")}
                 </NavDropdown.Item>
@@ -101,10 +107,8 @@ function Header() {
                 </NavItem>
               </Fragment>
             )}
-      
-           
-      <NavItem>
-          
+
+            <NavItem>
               <span>
                 {" "}
                 {i18n.language === "en" && (
@@ -118,11 +122,9 @@ function Header() {
                   />
                 )}
               </span>
-         
-          </NavItem>
-          <NavItem>
-           
-              <span >
+            </NavItem>
+            <NavItem>
+              <span>
                 {" "}
                 {i18n.language === "ar" && (
                   <input
@@ -135,10 +137,7 @@ function Header() {
                   />
                 )}
               </span>
-           
-          </NavItem>
-              
-           
+            </NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

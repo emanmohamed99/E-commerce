@@ -33,6 +33,7 @@ float: right;
   .logo{
     width: 150px;
     height: 50px;
+    padding: 0.3em 0;
   }
  
  .button{

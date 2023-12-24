@@ -20,7 +20,7 @@ import OrdersHistory from "../pages/profile/OrdersHistory";
 import Home from "../pages/Home";
 import OrderHistory from "../pages/profile/OrderHistory";
 function AppRoutes() {
-  const user = useAppSelector((state) => state.auth.currentUser2);
+  const user = useAppSelector((state) => state.auth.currentUser);
   const userId = user.id;
 
   const router = createBrowserRouter([
@@ -63,10 +63,7 @@ function AppRoutes() {
 
         {
           path: "main/profile",
-          element:
-            <Profile />
-          ,
-
+          element: <Profile />,
           children: [
             {
               index: true,
@@ -92,9 +89,7 @@ function AppRoutes() {
         },
         {
           path: "main/login",
-          element: 
-            <Login />
-           ,
+          element: <Login />,
         },
       ],
     },

@@ -31,28 +31,27 @@ const OrderHistory = () => {
       <Loading loading={loading} error={error}>
               <Card
                 
-             
               >
                 <CardBody>
                  
                       <div
                        
-                        className="m-1  d-flex align-items-center"
+                        className="m-1 d-flex align-items-center col-12"
                       >
                       <div
-                 
-                        style={{width:"10rem"}}
-                        className="d-flex m-1 "
+               
+                      
+                        className="d-flex m-1 col-2 "
                        
                       >
-                         <div className="d-flex m-1 w-25">
+                         <div className="d-flex m-1">
                         <img
                           src={productsData[0]?.img}
                           alt={productsData[0]?.title}
                         /></div>
                        
                       </div>
-                      <div>
+                      <div className="col-10">
                       <div className="m-1">{productsData[0]?.title}</div>
                      {dir=="ltr"?<div className="m-1">{t("EGP")}{" "}{productsData[0]?.price}</div>:<div className="m-1">{productsData[0]?.price} {" "}{t("EGP")}</div>}
                       </div>

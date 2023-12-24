@@ -1,31 +1,35 @@
+
+/* Default font size for all screen sizes */
 body {
-    font-size: 1rem;
-}
- @media (min-width:400px) and (max-width:768px)
- {
+    font-size: 1em; /* Adjust this as your base font size */
+    
+  }
+  
+  /* Media query for smaller screens (phones) */
+  @media only screen and (max-width: 768px) {
     body {
-        font-size: 10px;
+      font-size: 12px; /* Font size for smaller screens */
     }
-}
- 
-   
-@media (min-width:768px ) and (max-width: 1024px)  {
+    
+  }
+  
+  /* Media query for medium screens (tablets) */
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
     body {
-        font-size: 12px;
+      font-size: 16px; /* Font size for medium screens */
     }
-}
-@media (min-width:1024px) {
+  }
+  
+  /* Media query for larger screens (desktops) */
+  @media only screen and (min-width: 1025px) {
     body {
-        font-size: 16px;
+      font-size: 18px; /* Font size for larger screens */
     }
-}
-@media (min-width:1280px) {
-    body {
-        font-size: 16px;
-    }
-}
+  }
+  
 img{
     width: 100%;
+    height: auto;
 }
 .dropdown-toggle::after {
     display: inline-block;

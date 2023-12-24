@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Ecom/Loading/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-
+import styles from "../../Layouts/ProfileLayout/profile.module.css"
 const OrdersHistory = () => {
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const { userorder, loading, error } = useAppSelector((state) => state.cart);
-
+ 
   const navigate = useNavigate();
   useEffect(() => {
     if (currentUser.id !== 0) {
@@ -33,16 +33,20 @@ const OrdersHistory = () => {
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="m-1 d-flex align-items-center col-6">
                       <div className="d-flex m-2 col-3">
+                        <div className="position-relative">
                         <img
                           src={order.product?.img}
                           alt={order.product?.title}
                         />
-                      </div>
+                      
+                        {dir=== "ltr"?(<div className={styles.orderNumberLTR}><div>x{order.quantity}</div>
+                        </div>):<div className={styles.orderNumberRTL}><div>x{order.quantity}</div></div>}
+                        </div>
+                        
+                      </div> 
                       <div className="col-9">
                         <div>{order.product?.title}</div>
-                        <div>
-                          {t("quantity")}: {order.quantity}
-                        </div>
+                      
                       </div>
                     </div>
                     <div className="col-6 d-flex justify-content-end">

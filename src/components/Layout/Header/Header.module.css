@@ -1,64 +1,89 @@
+.shoppingIcon {
+  float: right;
+}
+.directionChange {
+  float: right;
+  color: black;
+}
+.nav2 ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-  
- 
-  .shoppingIcon{
-float: right;
-  }
-  .directionChange{
-    float: right;
-    color: black;
-   
-  }
-  .nav2 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-   
-  }
-  
-  .nav2 ul li {
-    float: left;
-    color: black;
-  }
-  
-  .nav2 ul li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    
-  }
-  .logo{
-    width: 150px;
-    height: 50px;
-    padding: 0.3em 0;
-  }
- 
- .button{
-background-color: transparent;
-border: none;
- }
- .buttonColor{
+.nav2 ul li {
+  float: left;
+  color: black;
+}
+
+.nav2 ul li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.logo {
+  width: 150px;
+  height: 50px;
+  padding: 0.3em 0;
+  margin: 0 0.3em;
+  cursor: pointer;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+}
+.buttonColor {
   background-color: transparent;
   border: none;
   color: white;
   margin-top: 0.3em;
-   }
-  .color{
-    color: white;
-  }
-   .nav-link {
-    color: white !important;; 
-  
-  }
-  a {
-    color: white;
-  }
- 
-  .dropdown-toggle:active, .open .dropdown-toggle {
-    background:#FFF !important; 
-    color:#000 !important;
-  
+}
+
+.nav-link {
+  color: white !important;
+}
+a {
+  color: white;
+}
+
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+  background: #fff !important;
+  color: #000 !important;
+}
+.cartButtonIconLTR {
+  width: 20px;
+  height: 20px;
+  background-color: #007bffbb;
+  text-align: center;
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 50%;
+  right: 0;
+  justify-content: center;
+  border-radius: 100%;
+  align-items: center;
+  color: white;
+  margin-top: 3px;
+}
+.cartButtonIconRTL {
+  width: 20px;
+  height: 20px;
+  background-color: #007bffbb;
+  text-align: center;
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 50%;
+  left: 2em;
+  justify-content: center;
+  border-radius: 100%;
+  align-items: center;
+  color: white;
+  margin-top: 3px;
 }

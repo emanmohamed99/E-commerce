@@ -11,7 +11,7 @@ import { logout } from "../../../store/auth/authSlice";
 import { Fragment } from "react";
 import { NavItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faCartShopping } from "@fortawesome/free-solid-svg-icons";
 function Header() {
   const numberdata = useAppSelector(getMemoizedNumItems);
   const { currentUser } = useAppSelector((state) => state.auth);
@@ -20,31 +20,51 @@ function Header() {
   const handleLogout = () => {
     dispatch(logout());
   };
-  const { t, i18n } = useTranslation();
 
+  const { t, i18n } = useTranslation();
+  const dir = i18n.dir(i18n.language);
   const navigate = useNavigate();
   return (
     <div>
+    {dir=== "ltr"?(
+   
       <div className={styles.nav2}>
         <ul>
           <li>
-            <div className={styles.logo}>
+            <div className={styles.logo}  onClick={() => navigate("/")}>
               <img src="images/ecom.png" alt={t("E-commerce")} />
             </div>
           </li>
           <div className={styles.shoppingIcon}>
             <li>
               <NavLink to="/main/shoppingCard">
-                🛒&nbsp;&nbsp;{numberdata ? numberdata : t("Cart")}
+             <div ><FontAwesomeIcon icon={faCartShopping} style={{color: "#707070",}} />{numberdata ? <div className={styles.cartButtonIconLTR}><div>{numberdata}</div></div> : <span className="m-1">{t("Cart")}</span>}</div>   
               </NavLink>
             </li>
           </div>
         </ul>
-      </div>
+      </div>):(
+   
+   <div className={styles.nav2}>
+     <ul>
+     <li>
+           <NavLink to="/main/shoppingCard">
+          <div ><FontAwesomeIcon icon={faCartShopping} style={{color: "#707070",}} />{numberdata ? <div className={styles.cartButtonIconRTL}><div>{numberdata}</div></div> : <span className="m-1">{t("Cart")}</span>}</div>   
+           </NavLink>
+         </li>
+       <div className={styles.shoppingIcon}>
+       <li>
+         <div className={styles.logo}  onClick={() => navigate("/")}>
+           <img src="images/ecom.png" alt={t("E-commerce")} />
+         </div>
+       </li>
+       </div>
+     </ul>
+   </div>)}
       <Navbar collapseOnSelect expand="lg" className=" bg-dark" dir="">
         <Navbar.Brand> </Navbar.Brand>
       
-        <Navbar.Toggle aria-controls="basic-navbar-nav"   className="bg-dark border-0 m-1"> <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} /> </Navbar.Toggle>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"  className="bg-dark border-0 m-1"> <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} /> </Navbar.Toggle>
         <Navbar.Collapse
           className="justify-content-between "
           id="responsive-navbar-nav"
@@ -57,7 +77,7 @@ function Header() {
               {t("Home")}
             </Link>
             <Link
-              className="text-decoration-none color m-1 text-white"
+              className="text-decoration-none m-1 text-white"
               to="/main/category"
             >
               {t("Categories")}

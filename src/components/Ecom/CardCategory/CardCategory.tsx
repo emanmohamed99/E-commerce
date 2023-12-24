@@ -17,15 +17,15 @@ const CardCategory = ({title,prefix,img}:categoryType) => {
 
   return (
     
-    <Card className={Style.card}style={{
+    <div className={Style.card}style={{
       boxShadow: 'none',
-     border:"none"
+    
     } }>
      
-     <div 
+     <Card 
     style={{
       width: '13rem',
-     
+      border:"none"
 
     } } onClick={() => navigate(`${prefix}`)}
   >
@@ -36,8 +36,8 @@ const CardCategory = ({title,prefix,img}:categoryType) => {
       </CardTitle>
       </CardBody>
    
-  </div>
   </Card>
+  </div>
   );
 };
 

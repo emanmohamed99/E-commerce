@@ -7,7 +7,7 @@ import RootLayout from "../Layouts/MainLayout/MainLayout";
 import ErrorPage from "../pages/ErrorPage";
 import Products from "../pages/Products";
 import Category from "../pages/Category";
-import ShoppingCard from "../pages/Cart";
+
 import Login from "../pages/login/login";
 import Register from "../pages/register/Register";
 import Profile from "../Layouts/ProfileLayout/ProfileLayout";
@@ -19,6 +19,7 @@ import ProfileEdit from "../pages/profile/profileEdit";
 import OrdersHistory from "../pages/profile/OrdersHistory";
 import Home from "../pages/Home";
 import OrderHistory from "../pages/profile/OrderHistory";
+import Cart from "../pages/cart/Cart";
 function AppRoutes() {
   const user = useAppSelector((state) => state.auth.currentUser);
   const userId = user.id;
@@ -47,8 +48,8 @@ function AppRoutes() {
         },
 
         {
-          path: "main/shoppingCard",
-          element: <ShoppingCard />,
+          path: "main/cart",
+          element: <Cart />,
         },
 
         {

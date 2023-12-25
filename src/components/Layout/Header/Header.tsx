@@ -36,8 +36,8 @@ function Header() {
             </li>
             <div className={styles.shoppingIcon}>
               <li>
-                <NavLink to="/main/shoppingCard">
-                  <div>
+                <NavLink to="/main/cart">
+                  <div  className="ms-1 me-1">
                     <FontAwesomeIcon
                       icon={faCartShopping}
                       style={{ color: "#707070" }}
@@ -59,7 +59,7 @@ function Header() {
         <div className={styles.nav}>
           <ul>
             <li>
-              <NavLink to="/main/shoppingCard">
+              <NavLink to="/main/cart">
                 <div>
                   {numberdata ? (
                     <div className={styles.cartButtonIconRTL}>
@@ -133,17 +133,13 @@ function Header() {
                 id="navbarScrollingDropdown"
               >
                 <NavDropdown.Item
-                  onClick={() => navigate("/main/profile")}
+                  onClick={() => {navigate("/main/profile")
+            
+                }}
                   className={styles.color}
                 >
                   {" "}
                   {t("profile")}
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  className={styles.color}
-                  onClick={() => navigate("/main/profile/ordershistory")}
-                >
-                  {t("orders")}
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   className={styles.button}

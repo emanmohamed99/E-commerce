@@ -1,44 +1,40 @@
-import { useAppDispatch, useAppSelector } from "../../../Hooks/hooks";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import styles from "./Cart.module.css";
-import { removeFromCart, updateQuantity } from "../../../store/cart/cartSlice";
+
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Addorders,
-  checkoutCart,
-  fetchProductbyids,
-} from "../../../store/cart/thunk/getCart";
+
 import { useEffect } from "react";
 
-import { Tproduct } from "../../../store/product/types";
+
 import { useTranslation } from "react-i18next";
 import { Button, Table } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
-import { showAlert } from "../../feedback/alert";
-import { Loading } from "../../feedback";
 
-type CartType = {
-  items: {
-    [id: string]: {
-      quantity: number;
-    };
-  };
-  totalPrice: number;
-  checkoutState: "LOADING" | "READY" | "ERROR";
-  errorMessage: string;
-};
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
+import { showAlert } from "../../components/feedback/alert";
+import { Loading } from "../../components/feedback";
+import { Addorders, checkoutCart, fetchProductbyids } from "../../store/cart/thunk/getCart";
+import { Tproduct } from "../../store/product/types";
+import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/cartSlice";
 
-const Cart = ({ items, totalPrice, checkoutState, errorMessage }: CartType) => {
+
+const Cart = () => {
   const dispatch = useAppDispatch();
   const { productsData, loading, error } = useAppSelector(
     (state) => state.cart
   );
   const currentUser = useAppSelector((state) => state.auth.currentUser);
+  const {items} = useAppSelector((state) => state.cart);
 
+  const totalPrice = useAppSelector(getTotalPrice);
+  const checkoutState = useAppSelector((state) => state.cart.checkoutState);
+ 
+  const errorMessage = useAppSelector((state) => state.cart.errorMessage);
   const orders: { product: Tproduct | undefined; quantity: number }[] = [];
 
   const { t } = useTranslation();
@@ -76,7 +72,6 @@ const Cart = ({ items, totalPrice, checkoutState, errorMessage }: CartType) => {
         "error"
       );
     }
-
     dispatch(updateQuantity({ id, quantity, max_quantity }));
   }
 

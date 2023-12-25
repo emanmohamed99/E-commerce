@@ -42,3 +42,19 @@ img{
     border-left: 0.3em solid transparent;
     color: white;
   }
+  .dropdown-menu{
+    background-color:#343a40;
+ 
+   }
+ 
+ 
+  #mainNav a {
+   text-decoration: none;
+   margin: 0 0.3em;
+   color: white;
+  }
+
+  #mainNav a.active {
+  color:#007bffbb ;
+  text-decoration: underline;
+  }

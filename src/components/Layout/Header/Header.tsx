@@ -11,7 +11,7 @@ import { logout } from "../../../store/auth/authSlice";
 import { Fragment } from "react";
 import { NavItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 function Header() {
   const numberdata = useAppSelector(getMemoizedNumItems);
   const { currentUser } = useAppSelector((state) => state.auth);
@@ -26,62 +26,99 @@ function Header() {
   const navigate = useNavigate();
   return (
     <div>
-    {dir=== "ltr"?(
-   
-      <div className={styles.nav}>
-        <ul>
-          <li>
-            <div className={styles.logo}  onClick={() => navigate("/")}>
-              <img src="images/ecom.png" alt={t("E-commerce")} />
+      {dir === "ltr" ? (
+        <div className={styles.nav}>
+          <ul>
+            <li>
+              <div className={styles.logo} onClick={() => navigate("/")}>
+                <img src="images/ecom.png" alt={t("E-commerce")} />
+              </div>
+            </li>
+            <div className={styles.shoppingIcon}>
+              <li>
+                <NavLink to="/main/shoppingCard">
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      style={{ color: "#707070" }}
+                    />
+                    {numberdata ? (
+                      <div className={styles.cartButtonIconLTR}>
+                        <div>{numberdata}</div>
+                      </div>
+                    ) : (
+                      <span className="m-1">{t("Cart")}</span>
+                    )}
+                  </div>
+                </NavLink>
+              </li>
             </div>
-          </li>
-          <div className={styles.shoppingIcon}>
+          </ul>
+        </div>
+      ) : (
+        <div className={styles.nav}>
+          <ul>
             <li>
               <NavLink to="/main/shoppingCard">
-             <div ><FontAwesomeIcon icon={faCartShopping} style={{color: "#707070",}} />{numberdata ? <div className={styles.cartButtonIconLTR}><div>{numberdata}</div></div> : <span className="m-1">{t("Cart")}</span>}</div>   
+                <div>
+                  {numberdata ? (
+                    <div className={styles.cartButtonIconRTL}>
+                      <div>{numberdata}</div>
+                    </div>
+                  ) : (
+                    <span className="m-1">{t("Cart")}</span>
+                  )}
+                  <FontAwesomeIcon
+                    icon={faCartShopping}
+                    style={{ color: "#707070" }}
+                  />
+                </div>
               </NavLink>
             </li>
-          </div>
-        </ul>
-      </div>):(
-   
-   <div className={styles.nav}>
-     <ul>
-     <li>
-           <NavLink to="/main/shoppingCard">
-          <div >{numberdata ? <div className={styles.cartButtonIconRTL}><div>{numberdata}</div></div> : <span className="m-1">{t("Cart")}</span>}<FontAwesomeIcon icon={faCartShopping} style={{color: "#707070",}} /></div>   
-           </NavLink>
-         </li>
-       <div className={styles.shoppingIcon}>
-       <li>
-         <div className={styles.logo}  onClick={() => navigate("/")}>
-           <img src="images/ecomArabic.jpeg" alt={t("E-commerce")} />
-         </div>
-       </li>
-       </div>
-     </ul>
-   </div>)}
-      <Navbar collapseOnSelect expand="lg" className=" bg-dark" dir="">
+            <div className={styles.shoppingIcon}>
+              <li>
+                <div className={styles.logo} onClick={() => navigate("/")}>
+                  <img src="images/ecomArabic.jpeg" alt={t("E-commerce")} />
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+      )}
+      <Navbar collapseOnSelect expand="lg" className=" bg-dark">
         <Navbar.Brand> </Navbar.Brand>
-      
-        <Navbar.Toggle aria-controls="basic-navbar-nav"  className="bg-dark border-0 m-1"> <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} /> </Navbar.Toggle>
+
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          className="bg-dark border-0 m-1"
+        >
+          {" "}
+          <FontAwesomeIcon icon={faBars} style={{ color: "#ffffff" }} />{" "}
+        </Navbar.Toggle>
         <Navbar.Collapse
           className="justify-content-between "
           id="responsive-navbar-nav"
         >
-          <Nav>
-            <Link
-              className="active text-decoration-none m-1 text-white"
-              to="/main"
-            >
-              {t("Home")}
-            </Link>
-            <Link
-              className="text-decoration-none m-1 text-white"
+          <Nav id="mainNav">
+            <NavItem>
+              <NavLink end
+                to="/main"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                {t("Home")}
+              </NavLink>
+            </NavItem>
+
+            <NavLink
               to="/main/category"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
             >
               {t("Categories")}
-            </Link>
+            </NavLink>
           </Nav>
 
           <Nav>
@@ -94,11 +131,15 @@ function Header() {
                 }
                 id="navbarScrollingDropdown"
               >
-                <NavDropdown.Item onClick={() => navigate("/main/profile")}>
+                <NavDropdown.Item
+                  onClick={() => navigate("/main/profile")}
+                  className={styles.color}
+                >
                   {" "}
                   {t("profile")}
                 </NavDropdown.Item>
                 <NavDropdown.Item
+                  className={styles.color}
                   onClick={() => navigate("/main/profile/ordershistory")}
                 >
                   {t("orders")}
@@ -127,7 +168,7 @@ function Header() {
               </Fragment>
             )}
 
-            <NavItem>
+            <NavItem className="me-1 ms-1">
               <span>
                 {" "}
                 {i18n.language === "en" && (
@@ -142,7 +183,7 @@ function Header() {
                 )}
               </span>
             </NavItem>
-            <NavItem>
+            <NavItem className="me-1 ms-1">
               <span>
                 {" "}
                 {i18n.language === "ar" && (

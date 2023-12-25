@@ -37,12 +37,7 @@
   border: none;
   color: white;
 }
-.buttonColor {
-  background-color: transparent;
-  border: none;
-  color: white;
-  margin-top: 0.3em;
-}
+
 
 .nav-link {
   color: white !important;

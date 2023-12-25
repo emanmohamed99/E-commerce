@@ -86,7 +86,7 @@ function Header() {
         </div>
       )}
       <Navbar collapseOnSelect expand="lg" className=" bg-dark">
-        <Navbar.Brand> </Navbar.Brand>
+        <Navbar.Brand className="visible"> </Navbar.Brand>
 
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
@@ -99,7 +99,7 @@ function Header() {
           className="justify-content-between "
           id="responsive-navbar-nav"
         >
-          <Nav id="mainNav">
+          <Nav id="mainNav" className="mb-1 mb-lg-0">
             <NavItem className="pb-2 pb-lg-0">
               <NavLink end
                 to="/main"
@@ -110,7 +110,7 @@ function Header() {
                 {t("Home")}
               </NavLink>
             </NavItem>
-
+            <NavItem className="pt-1 pt-lg-0">
             <NavLink
               to="/main/category"
               className={({ isActive, isPending }) =>
@@ -119,6 +119,7 @@ function Header() {
             >
               {t("Categories")}
             </NavLink>
+            </NavItem>
           </Nav>
 
           <Nav>
@@ -173,7 +174,9 @@ function Header() {
                
                 {i18n.language === "en" && (
                   <input
-                    className={styles.buttonColor}
+                  className="p-0 "
+                
+                    style={{background:"transparent",border:"none",color:"white",marginTop:"0.3em"}}
                     type="button"
                     value="العربية"
                     onClick={() => {
@@ -188,7 +191,8 @@ function Header() {
               
                 {i18n.language === "ar" && (
                   <input
-                    className={styles.buttonColor}
+                  className="p-0 "
+                  style={{background:"transparent",border:"none",color:"white",marginTop:"0.3em"}}
                     type="button"
                     value="English"
                     onClick={() => {

@@ -1,13 +1,11 @@
 // import Spinner from 'react-bootstrap/Spinner';
 import styles from "./Spinner.module.css";
-import iconLoading from "../../../assets/LoadingIcon/loadingIcon.json";
-import Lottie from "lottie-react"
+import iconLoading from "../../../../assets/LoadingIcon/loadingIcon.json";
+import Lottie from "lottie-react";
 function SpinnerComponent() {
   return (
-
     <div className={styles.WrapperIcon}>
-   
-    <Lottie  animationData={iconLoading}/>
+      <Lottie animationData={iconLoading} />
     </div>
   );
 }

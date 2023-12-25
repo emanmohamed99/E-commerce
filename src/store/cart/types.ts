@@ -1,10 +1,10 @@
-import { product } from "../product/types";
+import { Tproduct } from "../product/types";
 
 
 export type CheckoutState = "LOADING" | "READY" | "ERROR";
 export type order={
     quantity: number;
-    product: product|undefined; 
+    product: Tproduct|undefined; 
 }
 export type Torders= {
    orders:order[],

@@ -1,10 +1,8 @@
 import { Card, CardBody, CardTitle, Pagination } from "reactstrap";
 
-
-
 import "swiper/css";
 import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
-import Loading from "../components/Ecom/Loading/Loading";
+
 import { useEffect } from "react";
 import { fetchProducts } from "../store/product/thunk/getProduct";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,8 +14,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import { useTranslation } from "react-i18next";
-import { Navigation, Scrollbar } from 'swiper/modules';
-
+import { Navigation, Scrollbar } from "swiper/modules";
+import { Loading } from "../components/feedback";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -31,24 +29,20 @@ const Home = () => {
   const numberOfElements = 5; // Number of elements to retrieve from the end
 
   const lastElements = products.slice(-numberOfElements).reverse();
-  const { i18n} = useTranslation();
+  const { i18n } = useTranslation();
 
   const dir = i18n.dir(i18n.language);
- 
-
 
   return (
     <Loading loading={loading} error={error}>
       <div className="m-2">
         <Swiper
-       modules={[Navigation, Pagination, Scrollbar, ]}
-       spaceBetween={50}
-       navigation
-       pagination={{ clickable: true }}
-       scrollbar={{ draggable: true }}
-         
-      
-          dir={dir} 
+          modules={[Navigation, Pagination, Scrollbar]}
+          spaceBetween={50}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          dir={dir}
           key={dir}
           breakpoints={{
             // when window width is >= 320px
@@ -74,11 +68,14 @@ const Home = () => {
           }}
         >
           {products.map((product) => (
-            <SwiperSlide key={product.id} className="d-flex justify-content-center" >
+            <SwiperSlide
+              key={product.id}
+              className="d-flex justify-content-center"
+            >
               <Card
                 style={{
                   width: "13rem",
-                  marginBottom:"1rem"
+                  marginBottom: "1rem",
                 }}
               >
                 {" "}
@@ -90,9 +87,10 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="d-flex justify-content-center justify-content-lg-between justify-content-md-between justify-content-sm-between flex-wrap m-4 ">
+        <div className="d-flex justify-content-center  justify-content-sm-between flex-wrap m-4 ">
           {lastElements.map((product) => (
-            <Card key={product.id}
+            <Card
+              key={product.id}
               style={{
                 width: "13rem",
                 margin: "1em 0",

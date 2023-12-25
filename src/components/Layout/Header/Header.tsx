@@ -100,7 +100,7 @@ function Header() {
           id="responsive-navbar-nav"
         >
           <Nav id="mainNav">
-            <NavItem>
+            <NavItem className="pb-2 pb-lg-0">
               <NavLink end
                 to="/main"
                 className={({ isActive, isPending }) =>
@@ -169,8 +169,8 @@ function Header() {
             )}
 
             <NavItem className="me-1 ms-1">
-              <span>
-                {" "}
+              <span >
+               
                 {i18n.language === "en" && (
                   <input
                     className={styles.buttonColor}
@@ -184,8 +184,8 @@ function Header() {
               </span>
             </NavItem>
             <NavItem className="me-1 ms-1">
-              <span>
-                {" "}
+              <span >
+              
                 {i18n.language === "ar" && (
                   <input
                     className={styles.buttonColor}

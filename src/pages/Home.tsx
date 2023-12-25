@@ -87,6 +87,8 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <h4 className="ms-4 me-4 d-none d-md-block">TRENDS</h4>
+        <h4 className="ms-4 me-4 text-center d-lg-none">TRENDS</h4>
         <div className="d-flex justify-content-center  justify-content-sm-between flex-wrap m-4 ">
           {lastElements.map((product) => (
             <Card

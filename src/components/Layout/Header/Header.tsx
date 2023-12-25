@@ -142,6 +142,15 @@ function Header() {
                   {t("profile")}
                 </NavDropdown.Item>
                 <NavDropdown.Item
+                  onClick={() => {navigate("/main/profile/ordershistory")
+            
+                }}
+                  className={styles.color}
+                >
+                  {" "}
+                  {t("orders")}
+                </NavDropdown.Item>
+                <NavDropdown.Item
                   className={styles.button}
                   onClick={handleLogout}
                 >

@@ -98,8 +98,8 @@ const Cart = () => {
                 <th scope="col"> {t("product")}</th>
                 <th>{t("quantity")}</th>
                 <th>{t("total")}</th>
-                <th>{t("remove")}</th>
-                <th></th>
+                <th colSpan={2}>{t("remove")}</th>
+            
               </tr>
             </thead>
 
@@ -107,12 +107,12 @@ const Cart = () => {
               {productsData.length != 0 ? (
                 productsData.map((product) => (
                   <tr key={product.id} className="w-100">
-                    <th scope="row">
+                    <td>
                       <div className={styles.imageWrapper}>
                         {" "}
                         <img src={product.img} alt={product.title} />
                       </div>{" "}
-                    </th>
+                    </td>
                     <td>{product.title}</td>
                     <td>
                       <select
@@ -149,23 +149,20 @@ const Cart = () => {
                 ))
               ) : (
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td>{t("There is no items")}</td>
-                  <td></td>
-                  <td></td>
+                  
+                  <td className="text-center"colSpan={5}>{t("There is no items")}</td>
+                
                 </tr>
               )}
             </tbody>
 
             <tfoot>
               <tr>
-                <td>{t("total")}</td>
-                <td></td>
-                <td></td>
-                <td className={styles.total}>${totalPrice}</td>
+                <td colSpan={2}>{t("total")}</td>
+            
+                <td colSpan={3}
+                className={styles.total}>${totalPrice}</td>
 
-                <td></td>
               </tr>
             </tfoot>
           </Table>

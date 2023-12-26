@@ -92,7 +92,7 @@ const Cart = () => {
     [styles.checkoutError]: checkoutState === "ERROR",
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
-  console.log(Object.keys(items));
+
   useEffect(() => {
     if (items) {
       dispatch(fetchProductbyids(Object.keys(items)));

@@ -17,11 +17,12 @@ import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 
-import { Loading } from "../../components/feedback";
+
 import { Addorders, checkoutCart, fetchProductbyids } from "../../store/cart/thunk/getCart";
 import { Tproduct } from "../../store/product/types";
 import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/cartSlice";
 import { UseshowAlert } from "../../Hooks/UseshowAlert";
+import { Loading } from "../../components/Ecom";
 
 
 const Cart = () => {

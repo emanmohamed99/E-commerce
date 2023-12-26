@@ -15,7 +15,8 @@ import "swiper/css/scrollbar";
 
 import { useTranslation } from "react-i18next";
 import { Navigation, Scrollbar } from "swiper/modules";
-import { Loading } from "../components/feedback";
+import { Loading } from "../components/Ecom";
+
 
 const Home = () => {
   const dispatch = useAppDispatch();

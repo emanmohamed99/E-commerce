@@ -1,3 +1,4 @@
 import CardCategory from "./CardCategory/CardCategory";
 import CardProduct from "./CardProduct/CardProduct";
-export { CardCategory, CardProduct};
+import Loading from './Loading/Loading';
+export { CardCategory, CardProduct,Loading};

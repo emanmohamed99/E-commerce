@@ -5,7 +5,8 @@ import { fetchProductbyids } from "../../store/cart/thunk/getCart";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody } from "reactstrap";
 import { useParams } from "react-router-dom";
-import { Loading } from "../../components/feedback";
+import { Loading } from "../../components/Ecom";
+
 
 
 const OrderHistory = () => {

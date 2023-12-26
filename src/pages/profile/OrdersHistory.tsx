@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../Layouts/ProfileLayout/profile.module.css";
-import { Loading } from "../../components/feedback";
+import { Loading } from "../../components/Ecom";
+
 const OrdersHistory = () => {
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector((state) => state.auth.currentUser);

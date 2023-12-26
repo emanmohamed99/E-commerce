@@ -4,7 +4,8 @@ import { Tcategory } from "../../../store/category/types";
 import { Tproduct } from "../../../store/product/types";
 
 import "swiper/css";
-import { Loading } from "../../feedback";
+import { Loading } from "../../Ecom";
+
 type GridListTypes = {
   loading?: boolean;
   error?: null | string;

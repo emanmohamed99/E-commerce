@@ -28,7 +28,7 @@ const OrdersHistory = () => {
     <div>
       <Loading loading={loading} error={error}>
         <div>
-          {userorder.map((dataItem, index) =>
+          {userorder.length!=0?userorder.map((dataItem, index) =>
             dataItem.orders.map((order, orderIndex) => (
               <Card key={orderIndex + 1} body className="m-1">
                 <CardBody>
@@ -87,7 +87,7 @@ const OrdersHistory = () => {
                 </CardBody>
               </Card>
             ))
-          )}
+          ):t("There is no items")}
         </div>
       </Loading>
     </div>

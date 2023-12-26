@@ -10,13 +10,16 @@ type useItemDetailsProps={
   
   } }
 }
+
 const useItemDetails = ({id,items}:useItemDetailsProps) => {
   const dispatch = useAppDispatch();
   const { loading, error, productsData } = useAppSelector((state) => state.cart);
-
   useEffect(() => {
     if(id&&items){
     dispatch(fetchProductbyids(id));}
+    else if(id){
+      dispatch(fetchProductbyids(id))
+    }
   }, [dispatch,items]);
 
   return { loading, error, productsData };

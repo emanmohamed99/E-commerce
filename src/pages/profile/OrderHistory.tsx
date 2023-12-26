@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useAppDispatch } from "../../Hooks/hooks";
 
-import { fetchProductbyids } from "../../store/cart/thunk/getCart";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody } from "reactstrap";
 import { useParams } from "react-router-dom";
@@ -11,17 +8,13 @@ import useItemDetails from "../../Hooks/use-item-details";
 
 
 const OrderHistory = () => {
-  const dispatch = useAppDispatch();
+ 
 
  
 
   const { id } = useParams();
   const {productsData,loading,error}  = useItemDetails({id})
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchProductbyids(id));
-    }
-  }, [dispatch, id]);
+
   const { t, i18n } = useTranslation();
   const dir = i18n.dir(i18n.language);
   return (

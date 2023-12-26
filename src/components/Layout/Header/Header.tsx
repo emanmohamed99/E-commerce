@@ -9,7 +9,7 @@ import "../../../i18n";
 import { useTranslation } from "react-i18next";
 import { logout } from "../../../store/auth/authSlice";
 import { Fragment } from "react";
-import {  NavItem } from "react-bootstrap";
+import { NavItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 function Header() {
@@ -23,6 +23,7 @@ function Header() {
 
   const { t, i18n } = useTranslation();
   const dir = i18n.dir(i18n.language);
+  
   const navigate = useNavigate();
   return (
     <div>
@@ -37,18 +38,27 @@ function Header() {
             <div className={styles.shoppingIcon}>
               <li>
                 <NavLink to="/main/cart">
-                  <div  className="ms-1 me-1">
+                  <div className="ms-1 me-1">
+                    <div >
+                  {numberdata ? (<> <FontAwesomeIcon
+                  className="pe-3"
+                      icon={faCartShopping}
+                      style={{ color: "#707070" ,marginLeft:"0.3em"}}
+                    />
+                  
+                      <div className={styles.cartButtonIconLTR}>
+                        <div>{numberdata}</div>
+                      </div>
+                      </>
+                    ) : ( <>
                     <FontAwesomeIcon
                       icon={faCartShopping}
                       style={{ color: "#707070" }}
                     />
-                    {numberdata ? (
-                      <div className={styles.cartButtonIconLTR}>
-                        <div>{numberdata}</div>
-                      </div>
-                    ) : (
-                      <span className="m-1">{t("Cart")}</span>
+                      
+                      <span className="m-1">{t("Cart")}</span></>
                     )}
+                  </div>
                   </div>
                 </NavLink>
               </li>
@@ -60,7 +70,7 @@ function Header() {
           <ul>
             <li>
               <NavLink to="/main/cart">
-                <div>
+                <div className="ms-1">
                   {numberdata ? (
                     <div className={styles.cartButtonIconRTL}>
                       <div>{numberdata}</div>
@@ -101,7 +111,8 @@ function Header() {
         >
           <Nav id="mainNav" className="mb-1 mb-lg-0">
             <NavItem className="pb-2 pb-lg-0">
-              <NavLink end
+              <NavLink
+                end
                 to="/main"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
@@ -111,14 +122,14 @@ function Header() {
               </NavLink>
             </NavItem>
             <NavItem className="pt-1 pt-lg-0">
-            <NavLink
-              to="/main/category"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : ""
-              }
-            >
-              {t("Categories")}
-            </NavLink>
+              <NavLink
+                to="/main/category"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                {t("Categories")}
+              </NavLink>
             </NavItem>
           </Nav>
 
@@ -126,36 +137,68 @@ function Header() {
             {currentUser.email.length > 0 ? (
               <NavDropdown
                 title={
-                  <span className="text-white m-1">
+                  <span className="text-white m-1 text-left">
                     {t("welcome")} {currentUser.username}
                   </span>
                 }
                 id="navbarScrollingDropdown"
               >
-                <NavDropdown.Item
-                  onClick={() => {navigate("/main/profile")
-            
-                }}
+               {dir === "ltr" ?  <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/main/profile");
+                  }}
+                  style={{
+                   textAlign:'left'
+
+                  }}
                   className={styles.color}
                 >
-                  {" "}
+                 
                   {t("profile")}
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  onClick={() => {navigate("/main/profile/ordershistory")
-            
-                }}
+                </NavDropdown.Item>:<NavDropdown.Item
+                  onClick={() => {
+                    navigate("/main/profile");
+                  }}
+                  style={{
+                   textAlign:'right'
+
+                  }}
                   className={styles.color}
                 >
-                  {" "}
+                 
+                  {t("profile")}
+                </NavDropdown.Item>}
+                {dir === "ltr" ? <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/main/profile/ordershistory");
+                  }}
+                  style={{
+                    textAlign:'left'
+ 
+                   }}
+                  className={styles.color}
+                >
+                 
                   {t("orders")}
-                </NavDropdown.Item>
+                </NavDropdown.Item>:<NavDropdown.Item
+                  onClick={() => {
+                    navigate("/main/profile/ordershistory");
+                  }}
+                  style={{
+                    textAlign:'right'
+ 
+                   }}
+                  className={styles.color}
+                >
+                 
+                  {t("orders")}
+                </NavDropdown.Item>}
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   className={styles.button}
                   onClick={handleLogout}
                 >
-               {t("logout")}
+                  {t("logout")}
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
@@ -176,13 +219,16 @@ function Header() {
             )}
 
             <NavItem className="me-1 ms-1">
-              <span >
-               
+              <span>
                 {i18n.language === "en" && (
                   <input
-                  className="p-0 "
-                
-                    style={{background:"transparent",border:"none",color:"white",marginTop:"0.3em"}}
+                    className="p-0 "
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      color: "white",
+                      marginTop: "0.3em",
+                    }}
                     type="button"
                     value="العربية"
                     onClick={() => {
@@ -193,12 +239,16 @@ function Header() {
               </span>
             </NavItem>
             <NavItem className="me-1 ms-1">
-              <span >
-              
+              <span>
                 {i18n.language === "ar" && (
                   <input
-                  className="p-0 "
-                  style={{background:"transparent",border:"none",color:"white",marginTop:"0.3em"}}
+                    className="p-0 "
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      color: "white",
+                      marginTop: "0.4em",
+                    }}
                     type="button"
                     value="English"
                     onClick={() => {

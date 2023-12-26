@@ -22,7 +22,7 @@
   display: block;
   color: black;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 0px;
   text-decoration: none;
 }
 .logo {
@@ -79,7 +79,7 @@ a {
   position: absolute;
   top: 0;
   bottom: 50%;
-  left: 2em;
+  left: 1.2em;
   justify-content: center;
   border-radius: 100%;
   align-items: center;

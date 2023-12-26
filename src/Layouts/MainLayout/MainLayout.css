@@ -5,27 +5,7 @@ body {
     
   }
   
-  /* Media query for smaller screens (phones) */
-  @media only screen and (max-width: 768px) {
-    body {
-      font-size: 12px; /* Font size for smaller screens */
-    }
-    
-  }
-  
-  /* Media query for medium screens (tablets) */
-  @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    body {
-      font-size: 16px; /* Font size for medium screens */
-    }
-  }
-  
-  /* Media query for larger screens (desktops) */
-  @media only screen and (min-width: 1025px) {
-    body {
-      font-size: 18px; /* Font size for larger screens */
-    }
-  }
+ 
   
 img{
     width: 100%;
@@ -69,4 +49,5 @@ img{
 .navbar-nav .dropdown-menu {
   position: static;
   margin: 0 1em;
+ 
 }

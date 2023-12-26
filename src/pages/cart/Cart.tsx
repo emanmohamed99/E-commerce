@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import styles from "./Cart.module.css";
-
+import Swal from "sweetalert2";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -21,7 +21,7 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { Addorders, checkoutCart, fetchProductbyids } from "../../store/cart/thunk/getCart";
 import { Tproduct } from "../../store/product/types";
 import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/cartSlice";
-import { UseshowAlert } from "../../Hooks/UseshowAlert";
+
 import { Loading } from "../../components/Ecom";
 
 
@@ -58,6 +58,18 @@ const Cart = () => {
       dispatch(Addorders({ orders: orders, userId: currentUser.id }));
     }
   }
+
+
+ function showAlert(text:string ) {
+    Swal.fire({
+      title: "error",
+      text: text,
+      icon: "error",
+
+      confirmButtonText: "OK",
+      confirmButtonColor:"#007bffbb"
+    });
+  }
   function onQuantityChanged(
     e: React.ChangeEvent<HTMLSelectElement>,
     id: number,
@@ -67,11 +79,9 @@ const Cart = () => {
     if (quantity > 3) {
       e.target.value = "3";
 
-      UseshowAlert(
+      showAlert(
         `sorry but the maximum quantity is ${max_quantity}`,
-        "error",
-        "error",
-        "error"
+       
       );
     }
     dispatch(updateQuantity({ id, quantity, max_quantity }));

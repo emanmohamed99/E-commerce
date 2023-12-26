@@ -16,8 +16,7 @@ const RootLayout = () => {
   return (
     <>
       <Header />
-      <div className="overflow-scroll" style={{height:"100vh"}}>
-      <Outlet /></div>
+      <Outlet />
     
     </>
   );

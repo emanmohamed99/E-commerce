@@ -16,11 +16,12 @@ import { useNavigate } from "react-router-dom";
 
 
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { showAlert } from "../../components/feedback/alert";
+
 import { Loading } from "../../components/feedback";
 import { Addorders, checkoutCart, fetchProductbyids } from "../../store/cart/thunk/getCart";
 import { Tproduct } from "../../store/product/types";
 import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/cartSlice";
+import { UseshowAlert } from "../../Hooks/UseshowAlert";
 
 
 const Cart = () => {
@@ -65,7 +66,7 @@ const Cart = () => {
     if (quantity > 3) {
       e.target.value = "3";
 
-      showAlert(
+      UseshowAlert(
         `sorry but the maximum quantity is ${max_quantity}`,
         "error",
         "error",

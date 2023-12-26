@@ -95,10 +95,11 @@ const Cart = () => {
           <Table className={tableClasses}>
             <thead>
               <tr>
-                <th scope="col"> {t("product")}</th>
+                
+                <th colSpan={2}> {t("product")}</th>
                 <th>{t("quantity")}</th>
                 <th>{t("total")}</th>
-                <th colSpan={2}>{t("remove")}</th>
+                <th >{t("remove")}</th>
             
               </tr>
             </thead>
@@ -158,9 +159,9 @@ const Cart = () => {
 
             <tfoot>
               <tr>
-                <td colSpan={2}>{t("total")}</td>
+                <td colSpan={3}>{t("total")}</td>
             
-                <td colSpan={3}
+                <td colSpan={2}
                 className={styles.total}>${totalPrice}</td>
 
               </tr>

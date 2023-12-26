@@ -9,7 +9,7 @@ import "../../../i18n";
 import { useTranslation } from "react-i18next";
 import { logout } from "../../../store/auth/authSlice";
 import { Fragment } from "react";
-import { NavItem } from "react-bootstrap";
+import {  NavItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 function Header() {
@@ -150,11 +150,12 @@ function Header() {
                   {" "}
                   {t("orders")}
                 </NavDropdown.Item>
+                <NavDropdown.Divider />
                 <NavDropdown.Item
                   className={styles.button}
                   onClick={handleLogout}
                 >
-                  {t("logout")}
+               {t("logout")}
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
@@ -162,7 +163,7 @@ function Header() {
                 <NavItem className="d-flex align-items-center m-1">
                   <Link className="text-decoration-none" to="/main/login">
                     {" "}
-                    {t("Log in")}
+                    {t("Login")}
                   </Link>
                 </NavItem>
                 <NavItem className="d-flex align-items-center m-1">

@@ -37,6 +37,8 @@
   background-color: transparent;
   border: none;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 

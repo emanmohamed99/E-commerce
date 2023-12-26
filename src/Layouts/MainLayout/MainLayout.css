@@ -62,3 +62,11 @@ img{
     padding-top: 0rem; 
      padding-bottom: 0rem;
 }
+.dropdown-divider {
+  border-top: black 1px solid;
+    margin: 0.1em;
+}
+.navbar-nav .dropdown-menu {
+  position: static;
+  margin: 0 1em;
+}

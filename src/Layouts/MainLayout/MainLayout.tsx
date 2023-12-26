@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "../../components/Layout/Header/Header";
+
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../../i18n"
 import "./MainLayout.css"
+import { Header } from "../../components/Layout";
 const RootLayout = () => {
   const { i18n} = useTranslation();
   useEffect(() => {

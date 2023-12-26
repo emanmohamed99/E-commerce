@@ -5,9 +5,10 @@ import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
 
 import { GridList } from "../components/Layout";
 
-import CardCategory from "../components/Ecom/CardCategory/CardCategory";
+
 import {  Tcategory} from "../store/category/types";
 import { fetchCategories } from "../store/category/thunk/getCategory";
+import { CardCategory } from "../components/Ecom";
 
 
 

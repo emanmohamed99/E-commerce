@@ -39,7 +39,7 @@ const Login = () => {
     <div className={styles.formWrapper}>
       <Form onSubmit={formik.handleSubmit} className={styles.form}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <h3>{t("log in")}</h3>
+          <h3>{t("Login")}</h3>
           <Form.Label>{t("Email")}</Form.Label>
           <Form.Control
             type="email"
@@ -72,7 +72,7 @@ const Login = () => {
 
         <div className={styles.button}>
           <Button variant="primary" type="submit">
-            {t("log in")}
+            {t("Login")}
           </Button>
         </div>
       </Form>

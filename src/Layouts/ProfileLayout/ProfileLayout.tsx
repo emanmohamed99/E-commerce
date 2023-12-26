@@ -12,7 +12,7 @@ const Profile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (
-    <div className="m-2 ">
+    <div className="m-2" >
       <div className="container-fluid ">
         <div className="row flex-nowrap">
           <div
@@ -21,7 +21,7 @@ const Profile = () => {
             style={{ height: "50vh" }}
           >
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
-              {/* <span className="fs-5 d-none d-sm-inline">{t("Menu")}</span> */}
+          
 
               <ul
                 className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start p-0 "

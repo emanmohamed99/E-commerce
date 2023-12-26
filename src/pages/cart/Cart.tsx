@@ -92,12 +92,12 @@ const Cart = () => {
     [styles.checkoutError]: checkoutState === "ERROR",
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
-
+  console.log(Object.keys(items));
   useEffect(() => {
     if (items) {
       dispatch(fetchProductbyids(Object.keys(items)));
     }
-  }, [dispatch, items]);
+  }, [dispatch,items]);
   return (
     <Loading loading={loading} error={error}>
       <div>
@@ -177,30 +177,21 @@ const Cart = () => {
               </tr>
             </tfoot>
           </Table>
-          {currentUser.username ? (
             <form onSubmit={onCheckout} className={styles.form}>
               {checkoutState === "ERROR" && errorMessage ? (
                 <p className={styles.errorBox}>{errorMessage}</p>
               ) : null}
-              <Button className={styles.button} type="submit">
+                {currentUser.username ? (<Button className={styles.button} type="submit">
                 {t("checkout")}
-              </Button>
-            </form>
-          ) : (
-            <form onSubmit={onCheckout} className={styles.form}>
-              {checkoutState === "ERROR" && errorMessage ? (
-                <p className={styles.errorBox}>{errorMessage}</p>
-              ) : null}
-              <Button
+              </Button>):( <Button
                 className={styles.button}
                 onClick={() => {
                   navigate("/main/login");
                 }}
               >
                 {t("checkout")}
-              </Button>
+              </Button>)}
             </form>
-          )}
         </main>
       </div>
     </Loading>

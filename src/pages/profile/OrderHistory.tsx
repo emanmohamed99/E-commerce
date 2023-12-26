@@ -1,23 +1,22 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
+import { useAppDispatch } from "../../Hooks/hooks";
 
 import { fetchProductbyids } from "../../store/cart/thunk/getCart";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody } from "reactstrap";
 import { useParams } from "react-router-dom";
 import { Loading } from "../../components/Ecom";
+import useItemDetails from "../../Hooks/use-item-details";
 
 
 
 const OrderHistory = () => {
   const dispatch = useAppDispatch();
 
-  const { productsData, loading, error } = useAppSelector(
-    (state) => state.cart
-  );
+ 
 
   const { id } = useParams();
-
+  const {productsData,loading,error}  = useItemDetails({id})
   useEffect(() => {
     if (id) {
       dispatch(fetchProductbyids(id));

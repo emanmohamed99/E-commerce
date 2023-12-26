@@ -40,7 +40,7 @@ const Login = () => {
       <Form onSubmit={formik.handleSubmit} className={styles.form}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <h3>{t("log in")}</h3>
-          <Form.Label>{t("email")}</Form.Label>
+          <Form.Label>{t("Email")}</Form.Label>
           <Form.Control
             type="email"
             name="email"
@@ -54,7 +54,7 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>{t("password")}</Form.Label>
+          <Form.Label>{t("Password")}</Form.Label>
           <Form.Control
             type="password"
             name="password"

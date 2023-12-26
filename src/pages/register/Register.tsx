@@ -50,7 +50,7 @@ const Register = () => {
         <Form onSubmit={formik.handleSubmit} className={styles.form}>
           <h3> {t("sign up")}</h3>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label> {t("email")}</Form.Label>
+            <Form.Label> {t("Email")}</Form.Label>
             <Form.Control
               type="email"
               name="email"
@@ -75,7 +75,7 @@ const Register = () => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
-            <Form.Label>{t("password")}</Form.Label>
+            <Form.Label>{t("Password")}</Form.Label>
             <Form.Control
               type="password"
               name="password"

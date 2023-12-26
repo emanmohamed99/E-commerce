@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { useEffect } from "react";
+
 
 
 import { useTranslation } from "react-i18next";
@@ -18,18 +18,19 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 
 
-import { Addorders, checkoutCart, fetchProductbyids } from "../../store/cart/thunk/getCart";
+import { Addorders, checkoutCart } from "../../store/cart/thunk/getCart";
 import { Tproduct } from "../../store/product/types";
 import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/cartSlice";
 
 import { Loading } from "../../components/Ecom";
+import useItemDetails from "../../Hooks/use-item-details";
 
 
 const Cart = () => {
   const dispatch = useAppDispatch();
-  const { productsData, loading, error } = useAppSelector(
-    (state) => state.cart
-  );
+  // const { productsData, loading, error } = useAppSelector(
+  //   (state) => state.cart
+  // );
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const {items} = useAppSelector((state) => state.cart);
 
@@ -92,12 +93,13 @@ const Cart = () => {
     [styles.checkoutError]: checkoutState === "ERROR",
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
-
-  useEffect(() => {
-    if (items) {
-      dispatch(fetchProductbyids(Object.keys(items)));
-    }
-  }, [dispatch,items]);
+  const id=Object.keys(items);
+  const { loading, error, productsData } = useItemDetails({ id,items });
+  // useEffect(() => {
+  //   if (items) {
+  //     dispatch(fetchProductbyids(Object.keys(items)));
+  //   }
+  // }, [dispatch,items]);
   return (
     <Loading loading={loading} error={error}>
       <div>

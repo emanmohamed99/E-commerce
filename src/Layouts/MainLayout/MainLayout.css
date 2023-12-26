@@ -35,7 +35,6 @@ img{
   }
 
   #mainNav a.active {
-  color:#007bffbb ;
   text-decoration: underline;
   }
   .form-floating>.form-control:not(:placeholder-shown) {

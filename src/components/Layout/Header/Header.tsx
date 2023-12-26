@@ -247,7 +247,7 @@ function Header() {
                       background: "transparent",
                       border: "none",
                       color: "white",
-                      marginTop: "0.4em",
+                      margin: "0.5em",
                     }}
                     type="button"
                     value="English"

@@ -18,7 +18,7 @@ const Products = () => {
   const { name } = useParams();
 
   const dispatch = useAppDispatch();
-
+ 
   useEffect(() => {
     if (name) {
       dispatch(fetchproduct(name));

@@ -27,17 +27,17 @@ img{
     background-color:#343a40;
  
    }
- 
- 
-  #mainNav a {
+  #Navbar a {
    text-decoration: none;
    margin: 0 0.3em;
-   color: white;
+   position: relative;
   }
 
-  #mainNav a.active {
+  
+  #Navbar a.active {
   text-decoration: underline;
   }
+  
   .form-floating>.form-control:not(:placeholder-shown) {
     padding-top: 0rem; 
      padding-bottom: 0rem;

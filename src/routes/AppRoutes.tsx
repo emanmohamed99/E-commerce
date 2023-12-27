@@ -1,5 +1,5 @@
 import {
-  Navigate,
+
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
@@ -11,9 +11,6 @@ import Category from "../pages/Category";
 import Login from "../pages/login/login";
 import Register from "../pages/register/Register";
 import Profile from "../Layouts/ProfileLayout/ProfileLayout";
-
-import { useAppSelector } from "../Hooks/hooks";
-
 import ProfileInfo from "../pages/profile/ProfileInfo";
 import ProfileEdit from "../pages/profile/profileEdit";
 import OrdersHistory from "../pages/profile/OrdersHistory";
@@ -21,8 +18,8 @@ import Home from "../pages/Home";
 import Cart from "../pages/cart/Cart";
 import OrderDetails from "../pages/profile/OrderDetails";
 function AppRoutes() {
-  const user = useAppSelector((state) => state.auth.currentUser);
-  const userId = user.id;
+
+
 
   const router = createBrowserRouter([
     {
@@ -55,11 +52,9 @@ function AppRoutes() {
         {
           path: "main/register",
 
-          element: !userId ? (
+          element: 
             <Register />
-          ) : (
-            <Navigate to="/main/profile"></Navigate>
-          ),
+          
         },
 
         {

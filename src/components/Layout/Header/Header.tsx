@@ -1,14 +1,13 @@
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useAppDispatch, useAppSelector } from "../../../Hooks/hooks";
 import { getMemoizedNumItems } from "../../../store/cart/cartSlice";
 import "../../../i18n";
 import { useTranslation } from "react-i18next";
 import { logout } from "../../../store/auth/authSlice";
-import { Fragment } from "react";
 import { NavItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -95,7 +94,7 @@ function Header() {
           </ul>
         </div>
       )}
-      <Navbar collapseOnSelect expand="lg" className=" bg-dark">
+      <Navbar collapseOnSelect expand="lg" className=" bg-dark" id="Navbar">
         <Navbar.Brand className="visible"> </Navbar.Brand>
 
         <Navbar.Toggle
@@ -103,7 +102,7 @@ function Header() {
           className="bg-dark border-0 m-1"
         >
           {" "}
-          <FontAwesomeIcon icon={faBars} style={{ color: "#ffffff" }} />{" "}
+          <FontAwesomeIcon icon={faBars} style={{ color: "#ffffff" }} />
         </Navbar.Toggle>
         <Navbar.Collapse
           className="justify-content-between "
@@ -202,20 +201,27 @@ function Header() {
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <Fragment>
+              <Nav>
                 <NavItem className="d-flex align-items-center m-1">
-                  <Link className="text-decoration-none" to="/main/login">
-                    {" "}
+                  <NavLink className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                } to="/main/login">
+                   
                     {t("Login")}
-                  </Link>
+                   
+                  </NavLink>
                 </NavItem>
                 <NavItem className="d-flex align-items-center m-1">
-                  <Link className="text-decoration-none" to="/main/register">
-                    {" "}
+                  <NavLink className={({ isActive, isPending }) =>
+                  isPending ? "pending " : isActive ? "active  " : ""
+                } to="/main/register"
+               
+                >
+                
                     {t("Sign Up")}
-                  </Link>
+                  </NavLink>
                 </NavItem>
-              </Fragment>
+              </Nav>
             )}
 
             <NavItem className="me-1 ms-1">

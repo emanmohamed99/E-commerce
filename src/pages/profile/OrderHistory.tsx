@@ -8,10 +8,6 @@ import useItemDetails from "../../Hooks/use-item-details";
 
 
 const OrderHistory = () => {
- 
-
- 
-
   const { id } = useParams();
   const {productsData,loading,error}  = useItemDetails({id})
 

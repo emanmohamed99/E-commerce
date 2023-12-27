@@ -4,26 +4,19 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import styles from "./Cart.module.css";
 import Swal from "sweetalert2";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
-
-
-
 import { useTranslation } from "react-i18next";
 import { Button, Table } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-
-
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-
-
 import { Addorders, checkoutCart } from "../../store/cart/thunk/getCart";
 import { Tproduct } from "../../store/product/types";
 import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/cartSlice";
 
 
 import useItemDetails from "../../Hooks/use-item-details";
+import { Loading } from "../../components/Ecom";
+
 
 
 const Cart = () => {
@@ -92,11 +85,12 @@ const Cart = () => {
     [styles.checkoutLoading]: checkoutState === "LOADING",
   });
   const id=Object.keys(items);
-  const { productsData } = useItemDetails({ id,items });
+  const { productsData ,loading,error} = useItemDetails({ id,items });
 
   return (
   
       <div>
+        <Loading loading={loading} error={error}>
         <main className="page">
           <Table className={tableClasses}>
             <thead>
@@ -189,6 +183,7 @@ const Cart = () => {
               </Button>)}
             </form>
         </main>
+        </Loading>
       </div>
   
   );

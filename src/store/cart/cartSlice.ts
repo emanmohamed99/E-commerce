@@ -116,13 +116,10 @@ const cartSlice = createSlice({
     builder.addCase(getOrder.pending, (state) => {
       state.loading = true;
         state.error = null;
-     
     })
     builder.addCase(getOrder.fulfilled, (state,action) => {
       state.loading = false;
       state.userorder=action.payload
-    
-     
     })
     builder.addCase(getOrder.rejected, (state,action) => {
       state.loading = false;

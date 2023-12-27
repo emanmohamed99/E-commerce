@@ -20,7 +20,7 @@ const useItemDetails = ({id,items}:useItemDetailsProps) => {
     else if(id){
       dispatch(fetchProductbyids(id))
     }
-  }, [dispatch,items]);
+  }, [dispatch]);
 
   return { loading, error, productsData };
 };

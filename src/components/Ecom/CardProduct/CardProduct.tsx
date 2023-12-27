@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 
 
-// Import Swiper styles
+
 import 'swiper/css';
 
 
@@ -41,7 +41,7 @@ const CardProduct = ({
   const dispatch = useAppDispatch();
 
 
-const max_quantity2=items[id]?max_quantity - items[id].quantity:max_quantity
+const remainQuantity=items[id]?max_quantity - items[id].quantity:max_quantity
 
 const { t } = useTranslation();
   return (
@@ -64,13 +64,13 @@ const { t } = useTranslation();
       >
         { t("Available Quantity")}  :
         
-        {max_quantity2 }
+        {remainQuantity }
       </CardSubtitle>
       <CardText>
         {t("price")}:{" "}
       {price}
       </CardText>
-      {max_quantity2?
+      {remainQuantity?
       <Button disabled={false}
             onClick={() =>{
               dispatch(addToCart({ id,

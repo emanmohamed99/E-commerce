@@ -6,7 +6,6 @@ import { CheckoutState, Torders } from './types';
 
 export interface CartState {
   items: { [id: string]: {
-
     quantity:number,
   
   } };

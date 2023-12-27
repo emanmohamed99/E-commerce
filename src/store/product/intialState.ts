@@ -1,7 +1,7 @@
-import { product } from "./types";
+import { Tproduct } from "./types";
 
 export interface ProductsState {
-  products: product[];
+  products: Tproduct[];
   loading: boolean;
   error: null | string;
 }

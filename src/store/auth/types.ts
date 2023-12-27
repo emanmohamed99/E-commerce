@@ -1,4 +1,4 @@
-import { product } from "../product/types";
+import { Tproduct } from "../product/types";
 
 export type Tauth = {
    email:string,
@@ -25,7 +25,7 @@ export type Tauth = {
 
   };
   export type Torder={
-   productsData:product[]|null,
+   productsData:Tproduct[]|null,
    items:{ [id: string]: {
       quantity:number,
     } ,

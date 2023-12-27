@@ -39,5 +39,10 @@
           "welcome":"مرحبا",
           "Login":"تسجيل الدخول",
           "Sign Up":"الاشتراك",
-          "Password":"كلمة المرور"
+          "Password":"كلمة المرور",
+          "Profile":"الملف الشخصى",
+          "Order Details":"تفاصيل الطلب",
+          "Update Information":"تعديل البيانات",
+          "Orders":"الطلبات",
+          "Shopping Cart":"عربة التسوق"
         }

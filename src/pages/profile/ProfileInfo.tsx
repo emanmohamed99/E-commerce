@@ -12,8 +12,7 @@ const ProfileInfo = () => {
 
   return (
     <div>
-      <h3>{t("profile")}</h3>
-
+      <h3>{t("Profile")}</h3>
       <Card
         style={{
           margin: "2rem",

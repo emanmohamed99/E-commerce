@@ -43,6 +43,7 @@ const ProfileEdit = () => {
   };
   return (
     <div className={styles.profileEditWrapper}>
+       <h3 className="d-flex justify-content-center">{t("Update Information")}</h3>
       <Form onSubmit={handleSubmit}>
         <Label for="exampleUsername">{t("Username")} </Label>
         <FormGroup floating>

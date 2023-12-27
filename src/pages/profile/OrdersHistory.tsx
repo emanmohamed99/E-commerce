@@ -28,6 +28,7 @@ const OrdersHistory = () => {
     <div>
       <Loading loading={loading} error={error}>
         <div>
+        <h3 className="d-flex justify-content-center mb-2">{t("Orders")}</h3>
           {userorder.length!=0?userorder.map((dataItem, index) =>
             dataItem.orders.map((order, orderIndex) => (
               <Card key={orderIndex + 1} body className="m-1">

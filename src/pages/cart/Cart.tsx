@@ -92,6 +92,7 @@ const Cart = () => {
       <div>
         <Loading loading={loading} error={error}>
         <main className="page">
+        <h3 className="d-flex justify-content-center mt-1">{t("Shopping Cart")}</h3>
           <Table className={tableClasses}>
             <thead>
               <tr>

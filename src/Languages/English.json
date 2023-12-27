@@ -40,5 +40,10 @@
   "welcome":"welcome",
   "Login":"Login",
   "Sign Up":"Sign Up",
-  "Password":"Password"
+  "Password":"Password",
+  "Profile":"Profile",
+  "Order Details":"Order Details",
+  "Update Information":"Update Information",
+  "Orders":"Orders",
+  "Shopping Cart":"Shopping Cart"
 }

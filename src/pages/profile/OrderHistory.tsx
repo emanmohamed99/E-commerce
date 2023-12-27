@@ -16,6 +16,9 @@ const OrderHistory = () => {
   return (
     <div>
       <Loading loading={loading} error={error}>
+        
+        <div>
+        <h3 className="d-flex justify-content-center mb-2">{t("Order Details")}</h3>
         <Card>
           <CardBody>
             <div className="m-1 d-flex align-items-center col-12">
@@ -42,6 +45,7 @@ const OrderHistory = () => {
             </div>
           </CardBody>
         </Card>
+        </div>
       </Loading>
     </div>
   );

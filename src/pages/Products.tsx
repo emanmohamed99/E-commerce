@@ -6,7 +6,7 @@ import { Tproduct } from "../store/product/types";
 import { useParams } from "react-router-dom";
 
 import { GridList } from "../components/Layout";
-import { fetchProducts, fetchproduct } from "../store/product/thunk/getProduct";
+import { fetchproduct } from "../store/product/thunk/getProduct";
 import { CardProduct } from "../components/Ecom";
 
 const Products = () => {
@@ -22,9 +22,7 @@ const Products = () => {
   useEffect(() => {
     if (name) {
       dispatch(fetchproduct(name));
-    } else {
-      dispatch(fetchProducts());
-    }
+    } 
   }, [dispatch, name]);
 
   return (

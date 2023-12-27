@@ -18,8 +18,8 @@ import ProfileInfo from "../pages/profile/ProfileInfo";
 import ProfileEdit from "../pages/profile/profileEdit";
 import OrdersHistory from "../pages/profile/OrdersHistory";
 import Home from "../pages/Home";
-import OrderHistory from "../pages/profile/OrderHistory";
 import Cart from "../pages/cart/Cart";
+import OrderDetails from "../pages/profile/OrderDetails";
 function AppRoutes() {
   const user = useAppSelector((state) => state.auth.currentUser);
   const userId = user.id;
@@ -84,7 +84,7 @@ function AppRoutes() {
             },
             {
               path: "orderhistory/:id",
-              element: <OrderHistory />,
+              element: <OrderDetails />,
             },
           ],
         },

@@ -83,7 +83,7 @@ function AppRoutes() {
               element: <OrdersHistory />,
             },
             {
-              path: "orderhistory/:id",
+              path: "ordershistory/:id",
               element: <OrderDetails />,
             },
           ],

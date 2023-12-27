@@ -63,7 +63,7 @@ const OrdersHistory = () => {
                         style={{ backgroundColor: "transparent" }}
                         onClick={() => {
                           navigate(
-                            `/main/profile/OrderHistory/${order.product?.id}`
+                            `/main/profile/ordershistory/${order.product?.id}`
                           );
                         }}
                       >

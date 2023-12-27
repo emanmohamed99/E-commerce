@@ -11,7 +11,7 @@ const addOrderAPI = (userorder:Torders) => Promise.resolve(axios.post(`http://lo
 const getOrderAPI = (User_id:number) => Promise.resolve(axios.get(`http://localhost:7400/orders/?userId=${User_id}`));
 
 const checkout= async function checkout(items: CartItems): Promise<CheckoutResponse> {
- 
+
   const modifier = Object.keys(items).length > 0 ? "success" : "error";
   const url = `/checkout-${modifier}.json`;
 
@@ -26,5 +26,5 @@ const checkout= async function checkout(items: CartItems): Promise<CheckoutRespo
   return data as CheckoutResponse;
 }
 
-export default checkout;
-export {addOrderAPI,getOrderAPI} ;
+
+export {addOrderAPI,getOrderAPI,checkout} ;

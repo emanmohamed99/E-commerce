@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
 import type { RootState } from "../../index";
-import checkout, { addOrderAPI, getOrderAPI } from "../../../services/getCart";
+import  { addOrderAPI, getOrderAPI,checkout } from "../../../services/getCart";
 import { getProductAPIbyid } from "../../../services/getProducts";
 
 

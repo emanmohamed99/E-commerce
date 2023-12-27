@@ -71,6 +71,7 @@ const cartSlice = createSlice({
           state.checkoutState = "READY";
           state.loading = false;
           state.items = {};
+          state.productsData=[];
         } else {
           state.checkoutState = "ERROR";
         }

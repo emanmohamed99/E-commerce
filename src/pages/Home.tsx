@@ -30,7 +30,7 @@ const Home = () => {
   const numberOfElements = 5; // Number of elements to retrieve from the end
 
   const lastElements = products.slice(-numberOfElements).reverse();
-  const { i18n } = useTranslation();
+  const { t,i18n } = useTranslation();
 
   const dir = i18n.dir(i18n.language);
 
@@ -88,8 +88,8 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <h4 className="ms-4 me-4 d-none d-md-block">TRENDS</h4>
-        <h4 className="ms-4 me-4 text-center d-lg-none">TRENDS</h4>
+        <h4 className="ms-4 me-4 d-none d-md-block">     { t("TRENDS")}</h4>
+        <h4 className="ms-4 me-4 text-center d-lg-none">   { t("TRENDS")}</h4>
         <div className="d-flex justify-content-center  justify-content-sm-between flex-wrap m-4 ">
           {lastElements.map((product) => (
             <Card

@@ -1,4 +1,4 @@
-import { Card, CardBody, CardTitle, Pagination } from "reactstrap";
+import { Card, CardBody, CardSubtitle, CardTitle, Pagination } from "reactstrap";
 
 import "swiper/css";
 import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
@@ -8,14 +8,17 @@ import { fetchProducts } from "../store/product/thunk/getProduct";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css";
+
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import { useTranslation } from "react-i18next";
-import { Navigation, Scrollbar } from "swiper/modules";
+import { A11y, Navigation, Scrollbar } from "swiper/modules";
 import { Loading } from "../components/Ecom";
+import { Button, CardText } from "react-bootstrap";
+import { addToCart } from "../store/cart/cartSlice";
+
 
 
 const Home = () => {
@@ -28,21 +31,22 @@ const Home = () => {
   }, [dispatch]);
 
   const numberOfElements = 5; // Number of elements to retrieve from the end
-
   const lastElements = products.slice(-numberOfElements).reverse();
   const { t,i18n } = useTranslation();
 
   const dir = i18n.dir(i18n.language);
-
+  const items = useAppSelector((state) => state.cart.items);
+  const swiperProducts = products.slice(5,14)
   return (
     <Loading loading={loading} error={error}>
       <div className="m-2">
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar]}
+          modules={[Navigation, Pagination, Scrollbar,A11y]}
           spaceBetween={50}
+          slidesPerView={3}
           navigation
-          pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
+     
           dir={dir}
           key={dir}
           breakpoints={{
@@ -63,46 +67,77 @@ const Home = () => {
             },
             // when window width is >= 1024px
             1024: {
-              slidesPerView: 5,
-              spaceBetween: 50,
+              slidesPerView: 3,
+              spaceBetween: 40,
             },
           }}
         >
-          {products.map((product) => (
+          {swiperProducts.map((product) => (
+   
             <SwiperSlide
               key={product.id}
               className="d-flex justify-content-center"
             >
               <Card
                 style={{
-                  width: "13rem",
+                  width: "20rem",
                   marginBottom: "1rem",
                 }}
               >
                 {" "}
                 <img src={product.img} alt={product.title} />
-                <CardBody>
-                  <CardTitle tag="h6">{product.title}</CardTitle>{" "}
-                </CardBody>
+                <div>
+                  {/* <CardTitle tag="h6">{product.title}</CardTitle>{" "} */}
+                </div>
               </Card>
             </SwiperSlide>
           ))}
         </Swiper>
-        <h4 className="ms-4 me-4 d-none d-md-block">     { t("TRENDS")}</h4>
-        <h4 className="ms-4 me-4 text-center d-lg-none">   { t("TRENDS")}</h4>
+        <h4 className="ms-4 me-4 d-none d-lg-block">     { t("Recommended for you")}</h4>
+        <h4 className="ms-4 me-4 text-center d-lg-none">   { t("Recommended for you")}</h4>
         <div className="d-flex justify-content-center  justify-content-sm-between flex-wrap m-4 ">
           {lastElements.map((product) => (
-            <Card
-              key={product.id}
+              <Card
               style={{
-                width: "13rem",
-                margin: "1em 0",
+                width: '12rem',
+                margin:"1em"
               }}
             >
-              {" "}
-              <img src={product.img} alt={product.title} />
+                <img src={product.img} alt={product.title} />
               <CardBody>
-                <CardTitle tag="h6">{product.title}</CardTitle>{" "}
+                <CardTitle tag="h5">
+                {product.title}
+                </CardTitle>
+                <CardSubtitle
+                  className="mb-2 text-muted"
+                  tag="h6"
+                >
+                  { t("Available Quantity")}  :
+                  
+                  {items[product.id]?product.max_quantity - items[product.id].quantity:product.max_quantity }
+                </CardSubtitle>
+                <CardText>
+                  {t("price")}:{" "}
+                {product.price}
+                </CardText>
+                {(items[product.id]?product.max_quantity - items[product.id].quantity:product.max_quantity)?
+                <Button disabled={false}
+                      onClick={() =>{
+                        dispatch(addToCart( product))        
+                     
+                      }
+                    }
+                    >
+                     { t("Add to cart")}
+                    </Button>: <Button disabled={true}
+                      onClick={() =>{
+                        dispatch(addToCart(product))        
+                     
+                      }
+                    }
+                    >
+                      { t("Add to cart")}
+                    </Button>}
               </CardBody>
             </Card>
           ))}

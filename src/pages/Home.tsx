@@ -36,7 +36,7 @@ const Home = () => {
 
   const dir = i18n.dir(i18n.language);
   const items = useAppSelector((state) => state.cart.items);
-  const swiperProducts = products.slice(5,14)
+  const swiperProducts = products.slice(5,10)
   return (
     <Loading loading={loading} error={error}>
       <div className="m-2">

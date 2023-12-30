@@ -3,7 +3,6 @@ import { UpdateUser } from "../../store/auth/thunk/getAuth";
 import { Form, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { Button, FormGroup, Input, Label } from "reactstrap";
-import styles from "../../Layouts/ProfileLayout/profile.module.css";
 import { useTranslation } from "react-i18next";
 const ProfileEdit = () => {
   const dispatch = useAppDispatch();
@@ -42,7 +41,7 @@ const ProfileEdit = () => {
     setUserData({ email: "", username: "", id: "" });
   };
   return (
-    <div className={styles.profileEditWrapper}>
+    <div style={{height:"100vh"}}>
        <h3 className="d-flex justify-content-center">{t("Update Information")}</h3>
       <Form onSubmit={handleSubmit}>
         <Label for="exampleUsername">{t("Username")} </Label>

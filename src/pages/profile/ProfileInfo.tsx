@@ -11,7 +11,7 @@ const ProfileInfo = () => {
   const currentUser = useAppSelector((state) => state.auth.currentUser);
 
   return (
-    <div>
+    <div style={{height:"100vh"}}>
       <h3>{t("Profile")}</h3>
       <Card
         style={{

@@ -14,7 +14,7 @@ const OrderDetails = () => {
   const { t, i18n } = useTranslation();
   const dir = i18n.dir(i18n.language);
   return (
-    <div>
+    <div style={{height:"100vh"}}>
       <Loading loading={loading} error={error}>
         
         <div>

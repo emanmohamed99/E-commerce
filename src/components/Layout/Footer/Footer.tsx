@@ -21,7 +21,7 @@ const Footer = () => {
           <div>{t("E-commerce is the activity of buying or selling of products on online services or over the Internet")}</div>
         </section>
         <div className=' d-flex  justify-content-center' style={{height:"fit-content"}}>
-        <Button className=' h-auto' outline color="light" rounded
+        <Button className=' h-auto' outline color="light" rounded="true"
         onClick={() => {
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         }}

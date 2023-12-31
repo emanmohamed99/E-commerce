@@ -73,7 +73,6 @@ const Home = () => {
           }}
         >
           {swiperProducts.map((product) => (
-   
             <SwiperSlide
               key={product.id}
               className="d-flex justify-content-center"
@@ -102,6 +101,7 @@ const Home = () => {
                 width: '12rem',
                 margin:"1em"
               }}
+              key={product.id}
             >
                 <img src={product.img} alt={product.title} />
               <CardBody>

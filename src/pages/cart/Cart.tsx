@@ -91,17 +91,15 @@ const Cart = () => {
   
       <div>
         <Loading loading={loading} error={error}>
-        <main className="page">
+        <main className="page" style={{height:"100vh"}}>
         <h3 className="d-flex justify-content-center mt-1">{t("Shopping Cart")}</h3>
           <Table className={tableClasses}>
             <thead>
               <tr>
-                
                 <th colSpan={2}> {t("product")}</th>
                 <th>{t("quantity")}</th>
                 <th>{t("total")}</th>
                 <th >{t("remove")}</th>
-            
               </tr>
             </thead>
 

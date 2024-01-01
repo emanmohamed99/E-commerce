@@ -17,8 +17,9 @@ const RootLayout = () => {
  }, [i18n, i18n.language]);
   return (
     <>
+    <div style={{minHeight:"100vh"}}>
       <Header />
-      <Outlet />
+      <Outlet /></div>
       <Footer/>
  
     </>

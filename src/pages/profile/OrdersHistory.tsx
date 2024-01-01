@@ -25,7 +25,7 @@ const OrdersHistory = () => {
   const { t, i18n } = useTranslation();
   const dir = i18n.dir(i18n.language);
   return (
-    <div>
+    <div >
       <Loading loading={loading} error={error}>
         <div>
         <h3 className="d-flex justify-content-center mb-2">{t("Orders")}</h3>
@@ -88,7 +88,7 @@ const OrdersHistory = () => {
                 </CardBody>
               </Card>
             ))
-          ):t("There is no items")}
+          ):t("There is no Orders")}
         </div>
       </Loading>
     </div>

@@ -41,7 +41,7 @@ const ProfileEdit = () => {
     setUserData({ email: "", username: "", id: "" });
   };
   return (
-    <div style={{height:"100vh"}}>
+    <div >
        <h3 className="d-flex justify-content-center">{t("Update Information")}</h3>
       <Form onSubmit={handleSubmit}>
         <Label for="exampleUsername">{t("Username")} </Label>

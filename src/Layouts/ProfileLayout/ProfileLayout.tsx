@@ -116,7 +116,6 @@ const Profile = () => {
                     </li>
                   </ul>
                 </li>
-                <li></li>
               </ul>
               <hr />
             </div>

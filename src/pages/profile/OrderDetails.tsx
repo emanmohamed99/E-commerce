@@ -19,7 +19,7 @@ const OrderDetails = () => {
         
         <div>
         <h3 className="d-flex justify-content-center mb-2">{t("Order Details")}</h3>
-        <Card className="w-75">
+        <Card>
           <CardBody>
             <div className="m-1 d-flex align-items-center col-12">
               <div className="d-flex m-1 col-2 ">

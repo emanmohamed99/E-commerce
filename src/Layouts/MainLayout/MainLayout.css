@@ -1,12 +1,8 @@
 
 
 body {
-    font-size: 1em; /* Adjust this as your base font size */
-    overflow: scroll;
-    height: 100vh;
+    font-size: 1em; 
   }
-  
- 
   
 img{
     width: 100%;

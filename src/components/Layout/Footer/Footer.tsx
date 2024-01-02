@@ -17,7 +17,7 @@ const Footer = () => {
  
       <MDBContainer className='p-4 pb-0'>
         <div className='d-flex w-100  justify-content-around'>
-        <section  className=''>
+        <section>
           <div>{t("E-commerce is the activity of buying or selling of products on online services or over the Internet")}</div>
         </section>
         <div className=' d-flex  justify-content-center' style={{height:"fit-content"}}>

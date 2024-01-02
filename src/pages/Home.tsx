@@ -1,6 +1,6 @@
 import { Card, CardBody, CardSubtitle, CardTitle } from "reactstrap";
 
-import "swiper/css";
+
 import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
 
 import { useEffect } from "react";

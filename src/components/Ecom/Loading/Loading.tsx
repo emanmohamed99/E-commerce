@@ -1,12 +1,12 @@
 import ErrorLottie from "./ErrorLogo/ErrorLottie";
 import SpinnerComponent from "./spinner/Spinner";
 
-type Loadingtypes = {
+type LoadingProps = {
   loading: boolean | undefined;
   error: string | null | undefined;
-  children: JSX.Element;
+  children: React.JSX.Element;
 };
-const Loading = ({ loading, error, children }: Loadingtypes) => {
+const Loading = ({ loading, error, children }: LoadingProps) => {
   const renderHandler = () => {
     return (
       <>{loading ? <SpinnerComponent /> : error ? <ErrorLottie /> : children}</>

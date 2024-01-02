@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../../i18n"
 import "./MainLayout.css"
-import { Header } from "../../components/Layout";
-import Footer from "../../components/Layout/Footer/Footer";
+import { Footer, Header } from "../../components/Layout";
+
 
 const RootLayout = () => {
   const { i18n} = useTranslation();

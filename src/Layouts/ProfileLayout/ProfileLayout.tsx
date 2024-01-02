@@ -19,7 +19,7 @@ const Profile = () => {
           <div
             className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark bg-opacity-75 rounded collapse show mt-3"
             id="sidebar"
-            style={{ height: "30vh" }}
+            style={{ height: "250px" }}
           >
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
           <div className="mt-3 d-sm-block d-none">{t("Menu")}</div>

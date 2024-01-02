@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { useTranslation } from "react-i18next";
 
-import "swiper/css";
+
 
 type productProps = {
   id: number;

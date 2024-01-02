@@ -3,7 +3,7 @@ import styles from "./GridList.module.css";
 import { Tcategory } from "../../../store/category/types";
 import { Tproduct } from "../../../store/product/types";
 
-import "swiper/css";
+
 import { Loading } from "../../Ecom";
 
 type GridListTypes = {

@@ -1,4 +1,4 @@
-import { Card, CardBody, CardSubtitle, CardTitle, Pagination } from "reactstrap";
+import { Card, CardBody, CardSubtitle, CardTitle } from "reactstrap";
 
 import "swiper/css";
 import { useAppDispatch, useAppSelector } from "../Hooks/hooks";
@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import { useTranslation } from "react-i18next";
-import { A11y, Navigation, Scrollbar } from "swiper/modules";
+import {  Navigation, Pagination, A11y  } from "swiper/modules";
 import { Loading } from "../components/Ecom";
 import { Button, CardText } from "react-bootstrap";
 import { addToCart } from "../store/cart/cartSlice";
@@ -41,12 +41,14 @@ const Home = () => {
     <Loading loading={loading} error={error}>
       <div className="m-2">
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar,A11y]}
+          modules={[Navigation, Pagination, A11y]}
           spaceBetween={50}
           slidesPerView={3}
           navigation
-          scrollbar={{ draggable: true }}
-     
+       
+          pagination={{
+            clickable: true,
+          }}
           dir={dir}
           key={dir}
           breakpoints={{
@@ -80,7 +82,7 @@ const Home = () => {
               <Card
                 style={{
                   width: "20rem",
-                  marginBottom: "1rem",
+                  marginBottom: "2rem",
                 }}
               >
                 {" "}

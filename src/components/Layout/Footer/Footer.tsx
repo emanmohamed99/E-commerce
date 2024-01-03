@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <div>
         
-  <MDBFooter className='text-center text-white bg-dark h-auto p-3' >
+  <MDBFooter className='text-center text-white bg-dark h-auto p-3 position-relative ' >
  
       <MDBContainer className='p-4 pb-0'>
         <div className='d-flex w-100  justify-content-around'>

@@ -112,7 +112,7 @@ function Header() {
             <NavItem className="pb-2 pb-lg-0">
               <NavLink
                 end
-                to="/main"
+                to="/"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }

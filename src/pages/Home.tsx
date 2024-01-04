@@ -18,6 +18,8 @@ import {  Navigation, Pagination, A11y  } from "swiper/modules";
 import { Loading } from "../components/Ecom";
 import { Button, CardText } from "react-bootstrap";
 import { addToCart } from "../store/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -33,17 +35,17 @@ const Home = () => {
   const numberOfElements = 5; // Number of elements to retrieve from the end
   const lastElements = products.slice(-numberOfElements).reverse();
   const { t,i18n } = useTranslation();
-
+const navigate=useNavigate()
   const dir = i18n.dir(i18n.language);
   const items = useAppSelector((state) => state.cart.items);
-  const swiperProducts = products.slice(5,10)
+  // const swiperProducts = products.slice(5,10)
   return (
     <Loading loading={loading} error={error}>
       <div className="m-2">
         <Swiper
           modules={[Navigation, Pagination, A11y]}
           spaceBetween={50}
-          slidesPerView={3}
+          slidesPerView={1}
           navigation
        
           pagination={{
@@ -51,48 +53,30 @@ const Home = () => {
           }}
           dir={dir}
           key={dir}
-          breakpoints={{
-            // when window width is >= 320px
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            // when window width is >= 480px
-            480: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            // when window width is >= 768px
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            // when window width is >= 1024px
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-          }}
+      style={{marginBottom:"10px"}}
+        
         >
-          {swiperProducts.map((product) => (
+       
             <SwiperSlide
-              key={product.id}
+       
               className="d-flex justify-content-center"
             >
-              <Card
-                style={{
-                  width: "20rem",
-                  marginBottom: "2rem",
-                }}
-              >
-                {" "}
-                <img src={product.img} alt={product.title} />
-                <div>
-                  {/* <CardTitle tag="h6">{product.title}</CardTitle>{" "} */}
-                </div>
-              </Card>
+            <div style={{height:"7.5em",position:"relative",width:"100%",cursor:"pointer"}}> {dir==="ltr"?<img src="../../public/images/cover1.webp" alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}}/>:
+            <img src="../../public/images/cover1Arabic.png" alt={t("coverImg")} onClick={()=>{navigate("/main/category")}}  /> } 
+            
+        </div>
             </SwiperSlide>
-          ))}
+            <SwiperSlide
+       
+       className="d-flex justify-content-center"
+     >
+        <div style={{position:"relative",width:"100%",cursor:"pointer"}}> 
+        {dir==="ltr"?<img src="../../public/images/cover2.png"  alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}} />
+        :<img src="../../public/images/cover2Arabic.png"  alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}} />
+      }
+  
+         </div>
+     </SwiperSlide>
         </Swiper>
         <h4 className="ms-4 me-4 d-none d-lg-block">     { t("Recommended for you")}</h4>
         <h4 className="ms-4 me-4 text-center d-lg-none">   { t("Recommended for you")}</h4>

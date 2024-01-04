@@ -47,4 +47,8 @@ img{
   margin: 0 1em;
  
 }
-
+.dropdown-menu a:hover{
+width: 95%;
+margin: auto;
+ 
+}

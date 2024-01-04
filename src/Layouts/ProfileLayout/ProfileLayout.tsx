@@ -2,16 +2,24 @@ import { Outlet, useNavigate } from "react-router-dom";
 import styles from "./profile.module.css";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+
 import {
   faCalendarDays,
   faUserPen,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
+import WithGuard from "../../utils/WithGuard";
+
+
 const Profile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   return (
+    
     <div className="m-2" >
       <div className="container-fluid ">
         <div className="row flex-nowrap">
@@ -129,4 +137,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default WithGuard(Profile)

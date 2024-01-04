@@ -38,14 +38,16 @@ const Login = () => {
   return (
     <div className={styles.formWrapper}>
       <Form onSubmit={formik.handleSubmit} className={styles.form}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" id="exampleForm.ControlInput1">
           <h3>{t("Login")}</h3>
-          <Form.Label>{t("Email")}</Form.Label>
+          <Form.Label htmlFor="emailLogin">{t("Email")}</Form.Label>
+      
           <Form.Control
             type="email"
             name="email"
             onChange={formik.handleChange}
             value={formik.values.email}
+            id="emailLogin"
             required
           />
           <Form.Control.Feedback type="invalid">
@@ -53,13 +55,14 @@ const Login = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>{t("Password")}</Form.Label>
+        <Form.Group className="mb-3" id="exampleForm.ControlTextarea1">
+          <Form.Label htmlFor="passwordLogin">{t("Password")}</Form.Label>
           <Form.Control
             type="password"
             name="password"
             onChange={formik.handleChange}
             value={formik.values.password}
+            id="passwordLogin"
             required
           />
           <Form.Control.Feedback type="invalid">

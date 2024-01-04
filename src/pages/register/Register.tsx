@@ -49,36 +49,39 @@ const Register = () => {
       <div className={styles.formWrapper}>
         <Form onSubmit={formik.handleSubmit} className={styles.form}>
           <h3> {t("sign up")}</h3>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label> {t("Email")}</Form.Label>
+          <Form.Group className="mb-3" id="exampleForm.ControlTextarea1">
+            <Form.Label htmlFor="usernameResister">{t("Username")}</Form.Label>
+            <Form.Control
+              name="username"
+              onChange={formik.handleChange}
+              value={formik.values.username}
+              isInvalid={!!formik.errors.username}
+              id="usernameResister"
+            />
+            <Form.Control.Feedback type="invalid">
+              {formik.errors.username}
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group className="mb-3" id="exampleForm.ControlInput1">
+            <Form.Label  htmlFor="emailResister"> {t("Email")}</Form.Label>
             <Form.Control
               type="email"
               name="email"
               onChange={formik.handleChange}
               value={formik.values.email}
               isInvalid={!!formik.errors.email}
+              id="emailResister"
             />
             <Form.Control.Feedback type="invalid">
               {formik.errors.email}
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>{t("Username")}</Form.Label>
-            <Form.Control
-              name="username"
-              onChange={formik.handleChange}
-              value={formik.values.username}
-              isInvalid={!!formik.errors.username}
-            />
-            <Form.Control.Feedback type="invalid">
-              {formik.errors.username}
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
-            <Form.Label>{t("Password")}</Form.Label>
+          <Form.Group className="mb-3" id="exampleForm.ControlTextarea2">
+            <Form.Label  htmlFor="passwordResister">{t("Password")}</Form.Label>
             <Form.Control
               type="password"
               name="password"
+              id="passwordResister"
               onChange={formik.handleChange}
               value={formik.values.password}
               isInvalid={!!formik.errors.password}

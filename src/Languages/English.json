@@ -50,6 +50,15 @@
 "E-commerce is the activity of buying or selling of products on online services or over the Internet":"E-commerce is the activity of buying or selling of products on online services or over the Internet",
 "All Rights Reserved":"All Rights Reserved",
 "There is no Orders":"There is no Orders",
-"coverImg":"coverImg"
+"coverImg":"coverImg",
+"error":"error",
+"sorry but the maximum quantity is ":"sorry but the maximum quantity is ",
+"new to ecommerce?":"new to ecommerce?",
+"register now":"register now",
+"Required":"Required",
+"Password must contain at least one character":"Password must contain at least one character",
+"Password must be at least 6 characters":"Password must be at least 6 characters",
+"Username must be at least 3 characters":"Username must be at least 3 characters",
+"Username cannot start with a number":"Username cannot start with a number"
 
 }

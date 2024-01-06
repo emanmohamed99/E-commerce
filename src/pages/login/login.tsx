@@ -6,29 +6,43 @@ import { useFormik } from "formik";
 import styles from "./login.module.css";
 
 import { login } from "../../store/auth/authSlice";
-import { useAppDispatch } from "../../Hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { loginuser } from "../../store/auth/thunk/getAuth";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+
+import useCheckout from "../../Hooks/use-checkout";
 
 const Login = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [Error, setError] = useState("");
+  const {items} = useAppSelector((state) => state.cart);
+
+  const handleCheckout = useCheckout();
   const formik = useFormik({
     initialValues: {
       email: "",
       username: "",
       password: "",
     },
-
+  
     onSubmit: (values) => {
       dispatch(loginuser({ email: values.email, password: values.password }))
         .unwrap()
         .then((res) => {
           dispatch(login(res.user));
-          navigate("/main");
+      
+        if(items){
+         const UserId=res.user.id 
+         
+         handleCheckout(UserId);
+        
+            
+        
+        }
+        navigate("/main");
         })
         .catch(() => {
           setError(t("Email or password isn't exist"));
@@ -76,8 +90,13 @@ const Login = () => {
         <div className={styles.button}>
           <Button variant="primary" type="submit">
             {t("Login")}
+            
           </Button>
+    
         </div>
+   <div className="text-center m-2">
+         <div className="m-1">{t("new to ecommerce?")} </div>  
+         <Button variant="secondary" type="submit" onClick={()=>{navigate("/main/register")}}>{t("register now")}</Button></div>
       </Form>
     </div>
   );

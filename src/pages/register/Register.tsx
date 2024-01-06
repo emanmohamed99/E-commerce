@@ -7,24 +7,27 @@ import styles from "./Register.module.css";
 import { postSchema } from "../../utils/validationSchema";
 
 import { login } from "../../store/auth/authSlice";
-import { useAppDispatch } from "../../Hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { registerUser } from "../../store/auth/thunk/getAuth";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import useCheckout from "../../Hooks/use-checkout";
 
 const Register = () => {
- 
+
   const [Error, setError] = useState("");
   const navigate = useNavigate();
-
+  const {items} = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+  const handleCheckout = useCheckout();
   const formik = useFormik({
     initialValues: {
       email: "",
       username: "",
       password: "",
     },
+  
     validationSchema: postSchema,
     onSubmit: (values) => {
       dispatch(
@@ -37,6 +40,12 @@ const Register = () => {
         .unwrap()
         .then((res) => {
           dispatch(login(res.user));
+          if(items){
+            const UserId=res.user.id 
+            
+            handleCheckout(UserId);
+           
+           }
           navigate("/");
         })
         .catch(() => {

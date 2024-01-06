@@ -9,13 +9,15 @@ import { useTranslation } from "react-i18next";
 import { Button, Table } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { Addorders, checkoutCart } from "../../store/cart/thunk/getCart";
-import { Tproduct } from "../../store/product/types";
+
+
 import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/cartSlice";
 
 
 import useItemDetails from "../../Hooks/use-item-details";
 import { Loading } from "../../components/Ecom";
+
+import useCheckout from "../../Hooks/use-checkout";
 
 
 
@@ -29,32 +31,21 @@ const Cart = () => {
   const checkoutState = useAppSelector((state) => state.cart.checkoutState);
  
   const errorMessage = useAppSelector((state) => state.cart.errorMessage);
-  const orders: { product: Tproduct | undefined; quantity: number }[] = [];
-
+  // const orders: { product: Tproduct | undefined; quantity: number }[] = [];
+  const handleCheckout = useCheckout();
   const { t } = useTranslation();
   const navigate = useNavigate();
   function onCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    dispatch(checkoutCart());
-
-    if (checkoutState == "READY" && Object.keys(items).length > 0) {
-      for (const productId in items) {
-        const quantity = items[productId].quantity;
-        const product = productsData?.find(
-          (product) => product.id === Number(productId)
-        );
-        const order = { product: product, quantity: quantity };
-        orders.push(order);
-      }
-
-      dispatch(Addorders({ orders: orders, userId: currentUser.id }));
-    }
+    const UserId=currentUser.id
+    handleCheckout(UserId)
+  
   }
 
 
- function showAlert(text:string ) {
+ function showAlert(text:string,title:string ) {
     Swal.fire({
-      title: "error",
+      title: title,
       text: text,
       icon: "error",
 
@@ -72,7 +63,7 @@ const Cart = () => {
       e.target.value = "3";
 
       showAlert(
-        `sorry but the maximum quantity is ${max_quantity}`,
+        t("sorry but the maximum quantity is ")+max_quantity,t("error")
        
       );
     }
@@ -175,7 +166,7 @@ const Cart = () => {
               </Button>):( <Button
                 className={styles.button}
                 onClick={() => {
-                  navigate("/main/login");
+                  navigate("/main/login")
                 }}
               >
                 {t("checkout")}

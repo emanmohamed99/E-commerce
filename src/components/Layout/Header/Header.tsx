@@ -31,7 +31,7 @@ function Header() {
           <ul>
             <li>
               <div className={styles.logo} onClick={() => navigate("/")}>
-                <img src="images/ecom.png" alt={t("E-commerce")} />
+                <img src="/images/ecom.png" alt={t("E-commerce")} />
               </div>
             </li>
             <div className={styles.shoppingIcon}>
@@ -87,7 +87,7 @@ function Header() {
             <div className={styles.shoppingIcon}>
               <li>
                 <div className={styles.logo} onClick={() => navigate("/")}>
-                  <img src="images/ecomArabic.jpeg" alt={t("E-commerce")} />
+                  <img src="/images/ecomArabic.jpeg" alt={t("E-commerce")} />
                 </div>
               </li>
             </div>
@@ -136,7 +136,7 @@ function Header() {
             {currentUser.email.length > 0 ? (
               <NavDropdown
                 title={
-                  <span className="text-white m-1 text-left">
+                  <span className="text-white text-left">
                     {t("welcome")} {currentUser.username}
                   </span>
                 }
@@ -209,16 +209,6 @@ function Header() {
                    
                     {t("Login")}
                    
-                  </NavLink>
-                </NavItem>
-                <NavItem className="d-flex align-items-center m-1">
-                  <NavLink className={({ isActive, isPending }) =>
-                  isPending ? "pending " : isActive ? "active  " : ""
-                } to="/main/register"
-               
-                >
-                
-                    {t("Sign Up")}
                   </NavLink>
                 </NavItem>
               </Nav>

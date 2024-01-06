@@ -63,7 +63,7 @@ const Cart = () => {
       e.target.value = "3";
 
       showAlert(
-        t("sorry but the maximum quantity is ")+max_quantity,t("error")
+        t("sorry but the avalible quantity is ")+max_quantity,t("error")
        
       );
     }

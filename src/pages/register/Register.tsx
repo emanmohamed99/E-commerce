@@ -19,7 +19,8 @@ const Register = () => {
   const navigate = useNavigate();
   const {items} = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const dir = i18n.dir(i18n.language);
   const handleCheckout = useCheckout();
   const formik = useFormik({
     initialValues: {
@@ -61,6 +62,8 @@ const Register = () => {
           <Form.Group className="mb-3" id="exampleForm.ControlTextarea1">
             <Form.Label htmlFor="usernameResister">{t("Username")}</Form.Label>
             <Form.Control
+           
+        style={ dir==="ltr"?{backgroundPosition:  "right calc(.375em + .1875rem) center"}:{backgroundPosition:  "left calc(.375em + .1875rem) center"}}
               name="username"
               onChange={formik.handleChange}
               value={formik.values.username}
@@ -74,6 +77,7 @@ const Register = () => {
           <Form.Group className="mb-3" id="exampleForm.ControlInput1">
             <Form.Label  htmlFor="emailResister"> {t("Email")}</Form.Label>
             <Form.Control
+              style={ dir==="ltr"?{backgroundPosition:  "right calc(.375em + .1875rem) center"}:{backgroundPosition:  "left calc(.375em + .1875rem) center"}}
               type="email"
               name="email"
               onChange={formik.handleChange}
@@ -88,6 +92,7 @@ const Register = () => {
           <Form.Group className="mb-3" id="exampleForm.ControlTextarea2">
             <Form.Label  htmlFor="passwordResister">{t("Password")}</Form.Label>
             <Form.Control
+              style={ dir==="ltr"?{backgroundPosition:  "right calc(.375em + .1875rem) center"}:{backgroundPosition:  "left calc(.375em + .1875rem) center"}}
               type="password"
               name="password"
               id="passwordResister"

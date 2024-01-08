@@ -17,7 +17,9 @@ import { getTotalPrice, removeFromCart, updateQuantity } from "../../store/cart/
 import useItemDetails from "../../Hooks/use-item-details";
 import { Loading } from "../../components/Ecom";
 
-import useCheckout from "../../Hooks/use-checkout";
+
+import { Addorders, checkoutCart } from "../../store/cart/thunk/getCart";
+import { Tproduct } from "../../store/product/types";
 
 
 
@@ -32,16 +34,30 @@ const Cart = () => {
  
   const errorMessage = useAppSelector((state) => state.cart.errorMessage);
 
-  const handleCheckout = useCheckout();
+
+
+  const orders: { product: Tproduct | undefined; quantity: number }[] = [];
+
   const { t } = useTranslation();
   const navigate = useNavigate();
   function onCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const UserId=currentUser.id
-    handleCheckout(UserId)
+    dispatch(checkoutCart());
+    if (checkoutState == "READY" && Object.keys(items).length > 0) {
+        for (const productId in items) {
+          const quantity = items[productId].quantity;
+          const product = productsData?.find(
+            (product) => product.id === Number(productId)
+          );
+          const order = { product: product, quantity: quantity };
+          orders.push(order);
+        }
   
+        dispatch(Addorders({ orders: orders, userId: currentUser.id }));
+      
+ 
   }
-
+  }
 
  function showAlert(text:string,title:string ) {
     Swal.fire({
@@ -165,6 +181,7 @@ const Cart = () => {
                 {t("checkout")}
               </Button>):( <Button
                 className={styles.button}
+           
                 onClick={() => {
                   navigate("/main/login")
                 }}

@@ -10,6 +10,7 @@ import {
   fetchProductbyid,
   getOrder,
 } from "./thunk/getCart";
+import { logout } from "../auth/authSlice";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -119,6 +120,10 @@ const cartSlice = createSlice({
     builder.addCase(getOrder.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message || "";
+    });
+    builder.addCase(logout, (state) => {
+      state.productsData = [];
+      state.items = {};
     });
   },
 });

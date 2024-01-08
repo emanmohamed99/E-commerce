@@ -63,7 +63,7 @@ const Register = () => {
             <Form.Label htmlFor="usernameResister">{t("Username")}</Form.Label>
             <Form.Control
            
-        style={ dir==="ltr"?{backgroundPosition:  "right calc(.375em + .1875rem) center"}:{backgroundPosition:  "left calc(.375em + .1875rem) center"}}
+        style={ dir==="ltr"?{backgroundPosition: "right calc(.375em + .1875rem) center"}:{backgroundPosition:  "left calc(.375em + .1875rem) center"}}
               name="username"
               onChange={formik.handleChange}
               value={formik.values.username}

@@ -52,3 +52,12 @@ width: 95%;
 margin: auto;
  
 }
+.navbar-nav {
+  
+  --bs-nav-link-padding-y: 0px;
+
+}
+.dropdown{
+  display: flex;
+  align-items: center;
+}

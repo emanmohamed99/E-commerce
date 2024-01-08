@@ -1,7 +1,7 @@
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import {  NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useAppDispatch, useAppSelector } from "../../../Hooks/hooks";
 import { getMemoizedNumItems } from "../../../store/cart/cartSlice";
@@ -22,7 +22,7 @@ function Header() {
 
   const { t, i18n } = useTranslation();
   const dir = i18n.dir(i18n.language);
-  
+
   const navigate = useNavigate();
   return (
     <div>
@@ -38,26 +38,30 @@ function Header() {
               <li>
                 <NavLink to="/main/cart">
                   <div className="ms-1 me-1">
-                    <div >
-                  {numberdata ? (<> <FontAwesomeIcon
-                  className="pe-3"
-                      icon={faCartShopping}
-                      style={{ color: "#707070" ,marginLeft:"0.3em"}}
-                    />
-                  
-                      <div className={styles.cartButtonIconLTR}>
-                        <div>{numberdata}</div>
-                      </div>
-                      </>
-                    ) : ( <>
-                    <FontAwesomeIcon
-                      icon={faCartShopping}
-                      style={{ color: "#707070" }}
-                    />
-                      
-                      <span className="m-1">{t("Cart")}</span></>
-                    )}
-                  </div>
+                    <div>
+                      {numberdata ? (
+                        <>
+                          {" "}
+                          <FontAwesomeIcon
+                            className="pe-3"
+                            icon={faCartShopping}
+                            style={{ color: "#707070", marginLeft: "0.3em" }}
+                          />
+                          <div className={styles.cartButtonIconLTR}>
+                            <div>{numberdata}</div>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <FontAwesomeIcon
+                            icon={faCartShopping}
+                            style={{ color: "#707070" }}
+                          />
+
+                          <span className="m-1">{t("Cart")}</span>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </NavLink>
               </li>
@@ -94,9 +98,7 @@ function Header() {
           </ul>
         </div>
       )}
-      <Navbar collapseOnSelect expand="lg" className=" bg-dark" id="Navbar">
-        <Navbar.Brand className="visible"> </Navbar.Brand>
-
+      <Navbar collapseOnSelect expand="lg" className=" bg-dark  d-flex justify-content-end d-lg-block" id="Navbar">
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           className="bg-dark border-0 m-1"
@@ -108,8 +110,11 @@ function Header() {
           className="justify-content-between "
           id="responsive-navbar-nav"
         >
-          <Nav id="mainNav" className="mb-1 mb-lg-0">
-            <NavItem className="pb-2 pb-lg-0">
+          <Nav
+            id="mainNav"
+            className="mb-1 mb-lg-0"
+          >
+            <NavItem className="ms-lg-1 me-lg-1  pb-lg-0">
               <NavLink
                 end
                 to="/"
@@ -142,56 +147,56 @@ function Header() {
                 }
                 id="navbarScrollingDropdown"
               >
-               {dir === "ltr" ?  <NavDropdown.Item
-                  onClick={() => {
-                    navigate("/main/profile");
-                  }}
-                  style={{
-                   textAlign:'left'
-
-                  }}
-                  className={styles.color}
-                >
-                 
-                  {t("profile")}
-                </NavDropdown.Item>:<NavDropdown.Item
-                  onClick={() => {
-                    navigate("/main/profile");
-                  }}
-                  style={{
-                   textAlign:'right'
-
-                  }}
-                  className={styles.color}
-                >
-                 
-                  {t("profile")}
-                </NavDropdown.Item>}
-                {dir === "ltr" ? <NavDropdown.Item
-                  onClick={() => {
-                    navigate("/main/profile/ordershistory");
-                  }}
-                  style={{
-                    textAlign:'left'
- 
-                   }}
-                  className={styles.color}
-                >
-                 
-                  {t("orders")}
-                </NavDropdown.Item>:<NavDropdown.Item
-                  onClick={() => {
-                    navigate("/main/profile/ordershistory");
-                  }}
-                  style={{
-                    textAlign:'right'
- 
-                   }}
-                  className={styles.color}
-                >
-                 
-                  {t("orders")}
-                </NavDropdown.Item>}
+                {dir === "ltr" ? (
+                  <NavDropdown.Item
+                    onClick={() => {
+                      navigate("/main/profile");
+                    }}
+                    style={{
+                      textAlign: "left",
+                    }}
+                    className={styles.color}
+                  >
+                    {t("profile")}
+                  </NavDropdown.Item>
+                ) : (
+                  <NavDropdown.Item
+                    onClick={() => {
+                      navigate("/main/profile");
+                    }}
+                    style={{
+                      textAlign: "right",
+                    }}
+                    className={styles.color}
+                  >
+                    {t("profile")}
+                  </NavDropdown.Item>
+                )}
+                {dir === "ltr" ? (
+                  <NavDropdown.Item
+                    onClick={() => {
+                      navigate("/main/profile/ordershistory");
+                    }}
+                    style={{
+                      textAlign: "left",
+                    }}
+                    className={styles.color}
+                  >
+                    {t("orders")}
+                  </NavDropdown.Item>
+                ) : (
+                  <NavDropdown.Item
+                    onClick={() => {
+                      navigate("/main/profile/ordershistory");
+                    }}
+                    style={{
+                      textAlign: "right",
+                    }}
+                    className={styles.color}
+                  >
+                    {t("orders")}
+                  </NavDropdown.Item>
+                )}
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   className={styles.button}
@@ -202,13 +207,14 @@ function Header() {
               </NavDropdown>
             ) : (
               <Nav>
-                <NavItem className="d-flex align-items-center m-1">
-                  <NavLink className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""
-                } to="/main/login">
-                   
+                <NavItem className="d-flex align-items-center">
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "active" : ""
+                    }
+                    to="/main/login"
+                  >
                     {t("Login")}
-                   
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -218,12 +224,12 @@ function Header() {
               <span>
                 {i18n.language === "en" && (
                   <input
-                    className="p-0 "
+                    className="p-0"
                     style={{
                       background: "transparent",
                       border: "none",
                       color: "white",
-                      marginTop: "0.3em",
+                      margin: "0.3em 0",
                     }}
                     type="button"
                     value="العربية"
@@ -243,7 +249,7 @@ function Header() {
                       background: "transparent",
                       border: "none",
                       color: "white",
-                      margin: "0.5em",
+                      margin: "0.3em 0",
                     }}
                     type="button"
                     value="English"

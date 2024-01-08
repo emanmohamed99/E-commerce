@@ -25,7 +25,8 @@ const CardCategory = ({title,prefix,img}:categoryProps) => {
      <Card 
     style={{
       width: '13rem',
-      border:"none"
+      border:"none",
+      cursor:"pointer"
 
     } } onClick={() => navigate(`${prefix}`)}
   >

@@ -31,7 +31,7 @@ const Cart = () => {
   const checkoutState = useAppSelector((state) => state.cart.checkoutState);
  
   const errorMessage = useAppSelector((state) => state.cart.errorMessage);
-  // const orders: { product: Tproduct | undefined; quantity: number }[] = [];
+
   const handleCheckout = useCheckout();
   const { t } = useTranslation();
   const navigate = useNavigate();

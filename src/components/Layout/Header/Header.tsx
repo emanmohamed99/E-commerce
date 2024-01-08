@@ -137,7 +137,7 @@ function Header() {
             </NavItem>
           </Nav>
 
-          <Nav>
+          <Nav className="d-lg-flex align-items-lg-center">
             {currentUser.email.length > 0 ? (
               <NavDropdown
                 title={

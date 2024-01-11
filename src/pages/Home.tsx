@@ -61,8 +61,8 @@ const navigate=useNavigate()
        
               className="d-flex justify-content-center"
             >
-            <div style={{height:"7.5em",position:"relative",width:"100%",cursor:"pointer"}}> {dir==="ltr"?<img src="../../public/images/cover1.webp" alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}}/>:
-            <img src="../../public/images/cover1Arabic.png" alt={t("coverImg")} onClick={()=>{navigate("/main/category")}}  /> } 
+            <div style={{height:"7.5em",position:"relative",width:"100%",cursor:"pointer"}}> {dir==="ltr"?<img src="images/cover1.webp" alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}}/>:
+            <img src="images/cover1Arabic.png" alt={t("coverImg")} onClick={()=>{navigate("/main/category")}}  /> } 
             
         </div>
             </SwiperSlide>
@@ -71,8 +71,8 @@ const navigate=useNavigate()
        className="d-flex justify-content-center"
      >
         <div style={{position:"relative",width:"100%",cursor:"pointer"}}> 
-        {dir==="ltr"?<img src="../../public/images/cover2.png"  alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}} />
-        :<img src="../../public/images/cover2Arabic.png"  alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}} />
+        {dir==="ltr"?<img src="images/cover2.png"  alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}} />
+        :<img src="images/cover2Arabic.png"  alt={t("coverImg")}  onClick={()=>{navigate("/main/category")}} />
       }
   
          </div>

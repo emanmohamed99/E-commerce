@@ -31,7 +31,7 @@ function Header() {
           <ul>
             <li>
               <div className={styles.logo} onClick={() => navigate("/")}>
-                <img src="/images/ecom.png" alt={t("E-commerce")} />
+                <img src="images/ecom.png" alt={t("E-commerce")} />
               </div>
             </li>
             <div className={styles.shoppingIcon}>
@@ -91,7 +91,7 @@ function Header() {
             <div className={styles.shoppingIcon}>
               <li>
                 <div className={styles.logo} onClick={() => navigate("/")}>
-                  <img src="/images/ecomArabic.jpeg" alt={t("E-commerce")} />
+                  <img src="images/ecomArabic.jpeg" alt={t("E-commerce")} />
                 </div>
               </li>
             </div>

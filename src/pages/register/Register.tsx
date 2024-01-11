@@ -7,10 +7,11 @@ import styles from "./Register.module.css";
 import { postSchema } from "../../utils/validationSchema";
 
 import { login } from "../../store/auth/authSlice";
-import { useAppDispatch } from "../../Hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { registerUser } from "../../store/auth/thunk/getAuth";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import useCheckout from "../../Hooks/use-checked";
 
 
 const Register = () => {
@@ -21,7 +22,8 @@ const Register = () => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
   const dir = i18n.dir(i18n.language);
-
+  const {ischeckedout,items} = useAppSelector((state) => state.cart);
+  const handleCheckout = useCheckout();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -40,9 +42,17 @@ const Register = () => {
       )
         .unwrap()
         .then((res) => {
-          dispatch(login(res.user));
-         
-          navigate("/");
+          if(Object.keys(items).length>0&&ischeckedout){
+            const UserId=res.user.id 
+   
+            handleCheckout(UserId);
+            dispatch(login(res.user))
+            navigate("/")
+   
+           
+          }
+ else{dispatch(login(res.user));
+navigate("/");}
         })
         .catch(() => {
           setError("user already exist please go to log in page")

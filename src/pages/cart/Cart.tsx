@@ -89,7 +89,7 @@ const Cart = () => {
         <Loading loading={loading} error={error}>
         <main className="page" >
         <h3 className="d-flex justify-content-center mt-1">{t("Shopping Cart")}</h3>
-          <Table className={tableClasses}>
+        {productsData.length != 0 ?<Table className={tableClasses}>
             <thead>
               <tr>
                 <th colSpan={2}> {t("product")}</th>
@@ -100,7 +100,7 @@ const Cart = () => {
             </thead>
 
             <tbody>
-              {productsData.length != 0 ? (
+              { (
                 productsData.map((product) => (
                   <tr key={product.id} className="w-100">
                     <td>
@@ -143,13 +143,7 @@ const Cart = () => {
                     </td>
                   </tr>
                 ))
-              ) : (
-                <tr>
-                  
-                  <td className="text-center"colSpan={5}>{t("There is no items")}</td>
-                
-                </tr>
-              )}
+              ) }
             </tbody>
 
             <tfoot>
@@ -161,7 +155,7 @@ const Cart = () => {
 
               </tr>
             </tfoot>
-          </Table>
+          </Table>:(<div className="w-100 d-flex justify-content-center my-3 text-center"><div><div  className=" bg-black d-flex justify-content-center" style={{height:"300px"}}><img src="/images/cart.jpg" alt={("cart")} /></div><h5>{t("Your shopping cart looks empty")} </h5><h6>{t("What are you waiting for?") }</h6></div></div>)}
             <form onSubmit={onCheckout} className={styles.form}>
            
                 {currentUser.username&& Object.keys(items).length>0? 
@@ -177,7 +171,7 @@ const Cart = () => {
                 }}
               >
                 {t("checkout")}
-              </Button>):(<Button className={styles.button} disabled={true}> {t("Cart must not be empty") }  </Button> ))}
+              </Button>):(<div className="d-flex justify-content-center w-100 "><Button className={styles.button} onClick={()=>{navigate("/")}}> {t("START SHOPPING")  }  </Button> </div>))}
             </form>
         </main>
         </Loading>

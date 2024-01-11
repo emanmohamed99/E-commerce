@@ -60,6 +60,8 @@
 "Password must be at least 6 characters":"Password must be at least 6 characters",
 "Username must be at least 3 characters":"Username must be at least 3 characters",
 "Username cannot start with a number":"Username cannot start with a number",
-"Cart must not be empty":"Cart must not be empty"
-
+"Cart must not be empty":"Cart must not be empty",
+"Your shopping cart looks empty":"Your shopping cart looks empty",
+"What are you waiting for?":"What are you waiting for?",
+"START SHOPPING":"START SHOPPING"
 }

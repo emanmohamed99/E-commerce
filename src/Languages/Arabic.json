@@ -60,5 +60,8 @@
 "Password must be at least 6 characters":"يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
 "Username must be at least 3 characters":"يجب أن يكون اسم المستخدم 3 أحرف على الأقل",
 "Username cannot start with a number":"لا يمكن أن يبدأ اسم المستخدم برقم",
-"Cart must not be empty":"العربة لا يحب ان تكون فارغة"
+"Cart must not be empty":"العربة لا يحب ان تكون فارغة",
+"Your shopping cart looks empty":"عربة التسوق الخاصة بك تبدو فارغة",
+"What are you waiting for?":"ماذا تنتظر؟",
+"START SHOPPING":"ابدأ التسوق"
 }

@@ -57,6 +57,9 @@ const cartSlice = createSlice({
         state.items[id].quantity = max_quantity;
       }
     },
+    checkedout(state,){
+      state.ischeckedout=true
+    }
   },
   extraReducers: function (builder) {
     builder.addCase(checkoutCart.pending, (state) => {
@@ -82,7 +85,7 @@ const cartSlice = createSlice({
       state.checkoutState = "ERROR";
       state.loading = false;
       state.error = action.error.message || "";
-      state.errorMessage = action.error.message || "";
+
     });
     builder.addCase(fetchProductbyid.pending, (state) => {
       state.loading = true;
@@ -155,7 +158,7 @@ export const getTotalPrice = createSelector(
     return total;
   }
 );
-
+export const {checkedout}= cartSlice.actions;
 export const { addToCart } = cartSlice.actions;
 export const { removeFromCart } = cartSlice.actions;
 export const { updateQuantity } = cartSlice.actions;

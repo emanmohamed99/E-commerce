@@ -19,6 +19,7 @@ export interface CartState {
   productsData: Tproduct[]|Tproduct[]
   orderData:Torder[],
   userorder:Torders[]
+  ischeckedout:boolean
 }
 export const initialStateCart: CartState = {
 
@@ -30,8 +31,8 @@ export const initialStateCart: CartState = {
 
   productsData: [],
   orderData:[],
-  userorder:[]
-  
+  userorder:[],
+  ischeckedout:false
 }
 interface ProductsState {
   categories:  Tcategory[];

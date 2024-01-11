@@ -6,10 +6,13 @@ import { useFormik } from "formik";
 import styles from "./login.module.css";
 
 import { login } from "../../store/auth/authSlice";
-import { useAppDispatch } from "../../Hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { loginuser } from "../../store/auth/thunk/getAuth";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+
+import useCheckout from "../../Hooks/use-checked";
+
 
 
 
@@ -18,20 +21,30 @@ const Login = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [Error, setError] = useState("");
-
+  const {ischeckedout,items} = useAppSelector((state) => state.cart);
+  const handleCheckout = useCheckout();
   const formik = useFormik({
     initialValues: {
       email: "",
       username: "",
       password: "",
     },
-  
+
     onSubmit: (values) => {
       dispatch(loginuser({ email: values.email, password: values.password }))
         .unwrap()
         .then((res) => {
-          dispatch(login(res.user));
-        navigate("/");
+          if(Object.keys(items).length>0&&ischeckedout){
+                     const UserId=res.user.id 
+            
+                     handleCheckout(UserId);
+                     dispatch(login(res.user))
+                     navigate("/")
+            
+                    
+                   }
+          else{dispatch(login(res.user));
+        navigate("/");}
         })
         .catch(() => {
           setError(t("Email or password isn't exist"));

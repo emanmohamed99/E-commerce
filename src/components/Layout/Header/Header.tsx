@@ -245,7 +245,7 @@ function Header() {
               <span>
                 {i18n.language === "ar" && (
                   <input
-                    className="p-0 "
+                    className="p-0 m-lg-1"
                     style={{
                       background: "transparent",
                       border: "none",

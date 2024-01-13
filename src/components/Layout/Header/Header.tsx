@@ -31,7 +31,7 @@ function Header() {
           <ul>
             <li>
               <div className={styles.logo} onClick={() => navigate("/")}>
-                <img src="images/ecom.png" alt={t("E-commerce")} />
+                <img src="/images/ecom.png" alt={t("E-commerce")} />
               </div>
             </li>
             <div className={styles.shoppingIcon}>
@@ -82,6 +82,7 @@ function Header() {
                     <span className="m-1">{t("Cart")}</span>
                   )}
                   <FontAwesomeIcon
+                  className="ms-2"
                     icon={faCartShopping}
                     style={{ color: "#707070" }}
                   />
@@ -90,8 +91,8 @@ function Header() {
             </li>
             <div className={styles.shoppingIcon}>
               <li>
-                <div className={styles.logo} onClick={() => navigate("/")}>
-                  <img src="images/ecomArabic.jpeg" alt={t("E-commerce")} />
+                <div className={styles.logo} style={{margin:"0px"}} onClick={() => navigate("/")}>
+                  <img src="/images/ecomArabic.jpeg" alt={t("E-commerce")} />
                 </div>
               </li>
             </div>

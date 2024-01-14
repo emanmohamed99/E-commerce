@@ -221,7 +221,7 @@ function Header() {
               </Nav>
             )}
 
-            <NavItem className="me-1 ms-1">
+            <NavItem className="me-1 ms-1 me-lg-0">
               <span>
                 {i18n.language === "en" && (
                   <input
@@ -241,11 +241,11 @@ function Header() {
                 )}
               </span>
             </NavItem>
-            <NavItem className="me-1 ms-1">
+            <NavItem className="me-1 me-lg-0 ms-1">
               <span>
                 {i18n.language === "ar" && (
                   <input
-                    className="p-0 m-lg-1"
+                    className="p-0 ms-lg-1"
                     style={{
                       background: "transparent",
                       border: "none",

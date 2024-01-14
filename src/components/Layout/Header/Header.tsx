@@ -71,9 +71,9 @@ function Header() {
       ) : (
         <div className={styles.nav}>
           <ul>
-            <li>
+            <li className="ms-1">
               <NavLink to="/main/cart">
-                <div className="ms-1">
+                <div>
                   {numberdata ? (
                     <div className={styles.cartButtonIconRTL}>
                       <div>{numberdata}</div>

@@ -71,7 +71,7 @@ const Login = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-3" id="exampleForm.ControlTextarea1">
+        <Form.Group className="mb-3" id="exampleForm.ControlTextarea">
           <Form.Label htmlFor="passwordLogin">{t("Password")}</Form.Label>
           <Form.Control
             type="password"

@@ -39,7 +39,7 @@ const Login = () => {
             
                      handleCheckout(UserId);
                      dispatch(login(res.user))
-                     navigate("/")
+                   
             
                     
                    }

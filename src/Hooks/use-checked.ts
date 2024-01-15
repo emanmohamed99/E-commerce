@@ -2,8 +2,10 @@ import { Addorders, checkoutCart } from "../store/cart/thunk/getCart";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import useItemDetails from "./use-item-details";
 import { Tproduct } from "../store/product/types";
+import { useNavigate } from "react-router-dom";
 
 const useCheckout = () => {
+  const navigate=useNavigate()
   const dispatch = useAppDispatch();
 
   const checkoutState = useAppSelector((state) => state.cart.checkoutState);
@@ -27,6 +29,7 @@ const useCheckout = () => {
 
       dispatch(Addorders({ orders: orders, userId: userId }));
     }
+    navigate("/main/CheckoutSucess")
   };
   return handleCheckout;
 };

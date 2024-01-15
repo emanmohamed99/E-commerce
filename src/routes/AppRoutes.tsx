@@ -17,6 +17,7 @@ import OrdersHistory from "../pages/profile/OrdersHistory";
 import Home from "../pages/Home";
 import Cart from "../pages/cart/Cart";
 import OrderDetails from "../pages/profile/OrderDetails";
+import CheckoutSucess from "../pages/CheckoutSucess";
 function AppRoutes() {
 
 
@@ -54,6 +55,13 @@ function AppRoutes() {
 
           element: 
             <Register />
+          
+        },
+        {
+          path: "main/CheckoutSucess",
+
+          element: 
+            <CheckoutSucess />
           
         },
 

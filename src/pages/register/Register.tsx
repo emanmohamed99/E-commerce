@@ -47,7 +47,7 @@ const Register = () => {
    
             handleCheckout(UserId);
             dispatch(login(res.user))
-            navigate("/")
+           
    
            
           }

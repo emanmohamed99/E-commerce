@@ -63,6 +63,7 @@ const CardProduct = ({
           </CardText>
           {remainQuantity ? (
             <Button
+            className="w-100"
               disabled={false}
               onClick={() => {
                 dispatch(
@@ -74,6 +75,7 @@ const CardProduct = ({
             </Button>
           ) : (
             <Button
+            className="w-100"
               disabled={true}
               onClick={() => {
                 dispatch(

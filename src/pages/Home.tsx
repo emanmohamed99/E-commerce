@@ -123,6 +123,7 @@ const Home = () => {
                     : product.max_quantity
                 ) ? (
                   <Button
+                  className="w-100"
                     disabled={false}
                     onClick={() => {
                       dispatch(addToCart(product));

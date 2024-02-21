@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import getCategoryAPI from "../../../services/getCategory";
 
 export const fetchCategories = createAsyncThunk(
-    "book/fetchcategory",
+    "categories/fetchcategory",
     async (_, thunkAPI) => {
       const { rejectWithValue } = thunkAPI;
       try {
